@@ -14,15 +14,27 @@ import {
 const GL = require("gl-react-native");
 //const Shader = require('./src/shader.js');
 //import Shader from './src/shader.js'
-import HelloGL from "./src/HelloGL.js";
+/*
+<Surface width={256} height={171} ref="helloGL">
+  <AnimatedHelloGL
+      width={256}
+      height={180}
+    />
+</Surface>
+
+
+*/
+import HelloGL from "./src/HelloGL";
+//import AnimatedHelloGL from "./src/AnimatedHelloGL";
 const { Surface } = require("gl-react-native"); // in React Native context
 export default class VideodrommMobile extends Component {
   render() {
     return (
       <View style={styles.container}>
-          <Surface width={256} height={171} ref="helloGL">
-            <HelloGL />
-        </Surface>
+      <Surface width={256} height={171} ref="helloGL">
+        <HelloGL />
+      </Surface>
+
         </View>
     );
   }
