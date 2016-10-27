@@ -5,12 +5,12 @@
  */
 const GL = require("gl-react-native");
 import React, { Component } from 'react';
-import {
+/*import {
   AppRegistry,
   StyleSheet,
   Text,
   View
-} from 'react-native';
+} from 'react-native';*/
 const shaders = GL.Shaders.create({
   helloGL: {
     frag: `
@@ -29,7 +29,10 @@ module.exports = GL.createComponent(
     uniforms={{ blue }}
   />,
   { displayName: "HelloGL" });
-/*class Shader extends Component {
+/*
+
+
+class Shader extends Component {
   render() {
     return (
       <View style={styles.container}>
