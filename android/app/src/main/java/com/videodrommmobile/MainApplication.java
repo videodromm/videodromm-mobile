@@ -1,5 +1,7 @@
 package com.videodrommmobile;
 
+import com.projectseptember.RNGL.RNGLPackage;
+
 import android.app.Application;
 import android.util.Log;
 
@@ -11,8 +13,6 @@ import com.facebook.react.shell.MainReactPackage;
 
 import java.util.Arrays;
 import java.util.List;
-
-import com.projectseptember.RNGL.RNGLPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
