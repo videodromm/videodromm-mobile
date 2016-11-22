@@ -17,16 +17,21 @@ const shaders = GL.Shaders.create({
 precision highp float;
 varying vec2 uv;
 uniform float blue;
+uniform float time;
+
 void main () {
-  gl_FragColor = vec4(uv.x, uv.y, blue, 1.0);
+  gl_FragColor = vec4(uv.x, uv.y, sin(time), 1.0);
 }`
   }
 });
 module.exports = GL.createComponent(
-  ({ blue }) =>
+  ({ blue,time }) =>
   <GL.Node
     shader={shaders.helloGL}
-    uniforms={{ blue }}
+    uniforms={{ 
+      blue,
+      time
+    }}
   />,
   { displayName: "HelloGL" });
 /*
