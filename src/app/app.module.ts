@@ -7,7 +7,7 @@ import { Storage, IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 
 import { CardsPage } from '../pages/cards/cards';
-import { ContentPage } from '../pages/content/content';
+import { ColorsPage } from '../pages/colors/colors';
 import { ShaderCreatePage } from '../pages/shader-create/shader-create';
 import { ShaderDetailPage } from '../pages/shader-detail/shader-detail';
 import { ListMasterPage } from '../pages/list-master/list-master';
@@ -54,7 +54,7 @@ export function provideSettings(storage: Storage) {
   declarations: [
     MyApp,
     CardsPage,
-    ContentPage,
+    ColorsPage,
     ShaderCreatePage,
     ShaderDetailPage,
     ListMasterPage,
@@ -80,7 +80,7 @@ export function provideSettings(storage: Storage) {
   entryComponents: [
     MyApp,
     CardsPage,
-    ContentPage,
+    ColorsPage,
     ShaderCreatePage,
     ShaderDetailPage,
     ListMasterPage,

@@ -5,7 +5,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { CardsPage } from '../pages/cards/cards';
-import { ContentPage } from '../pages/content/content';
+import { ColorsPage } from '../pages/colors/colors';
 import { FirstRunPage } from '../pages/pages';
 import { ListMasterPage } from '../pages/list-master/list-master';
 import { MenuPage } from '../pages/menu/menu';
@@ -44,7 +44,7 @@ export class MyApp {
   pages: any[] = [
     { title: 'Tabs', component: TabsPage },
     { title: 'Cards', component: CardsPage },
-    { title: 'Content', component: ContentPage },
+    { title: 'Colors', component: ColorsPage },
     { title: 'Master Detail', component: ListMasterPage },
     { title: 'Menu', component: MenuPage },
     { title: 'Settings', component: SettingsPage },

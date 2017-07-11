@@ -29,8 +29,6 @@ export class SettingsPage {
   pageTitle: string;
 
   subSettings: any = SettingsPage;
-  // This is a variable for our WebSocket.
-  //ws:any;
 
   constructor(public navCtrl: NavController,
     public settings: Settings,
@@ -89,8 +87,7 @@ export class SettingsPage {
      this.wsClient.send(this.options.username);
   }
   // Attempt to connect to ws server
-  connect() {
-    
+  connect() {   
     this.wsClient.connect();
   }    
  

@@ -36,7 +36,7 @@ export class WSClient {
   */
   handleMessageReceived(data) {
     // Simply call logMessage(), passing the received data.
-    console.log(data.data);
+    console.log('ws msg received:' + data.data);
   }
 
   /**
