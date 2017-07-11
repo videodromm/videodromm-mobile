@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ pageTitle }}</ion-title>
+    <ion-title>Connect to Websocket server</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -11,18 +11,23 @@
   <form [formGroup]="form" *ngIf="settingsReady">
     <ion-list *ngIf="page == 'main'">
       <ion-item>
-        <ion-label>{{ 'SETTINGS_USERNAME' | translate }}</ion-label>
+        <ion-label>User name</ion-label>
         <ion-input formControlName="username"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label>{{ 'SETTINGS_WSSERVERHOST' | translate }}</ion-label>
-        <ion-input formControlName="wsserverhost"></ion-input>
+        <ion-label>Secure (ws or wss)</ion-label>
+        <ion-toggle formControlName="wsserversecure"></ion-toggle>
       </ion-item>
 
       <ion-item>
-        <ion-label>{{ 'SETTINGS_WSSERVERPORT' | translate }}</ion-label>
-        <ion-input formControlName="wsserverport"></ion-input>
+        <ion-label>Websocket server host</ion-label>
+        <ion-input placeholder="127.0.0.1" formControlName="wsserverhost"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Websocket server port</ion-label>
+        <ion-input placeholder="8088" formControlName="wsserverport"></ion-input>
       </ion-item>
 
       

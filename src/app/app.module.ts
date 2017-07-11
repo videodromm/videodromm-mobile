@@ -45,6 +45,7 @@ export function provideSettings(storage: Storage) {
     showtutorial: true,
     wsserverhost: '127.0.0.1',
     wsserverport: '8088',
+    wsserversecure: false,
     username: ''
   });
 }

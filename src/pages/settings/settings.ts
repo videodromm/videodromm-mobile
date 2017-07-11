@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
-
+import { MainPage } from "../pages";
 import { Settings } from '../../providers/settings';
 
 import { TranslateService } from '@ngx-translate/core';
-
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 /**
  * The Settings page is a simple form that syncs with a Settings provider
  * to enable the user to customize settings for the app.
@@ -45,9 +46,10 @@ export class SettingsPage {
 
   _buildForm() {
     let group: any = {
+      username: [this.options.username],
       wsserverhost: [this.options.wsserverhost],
       wsserverport: [this.options.wsserverport],
-      username: [this.options.username]
+      wsserversecure: [this.options.wsserversecure]
     };
 
     switch (this.page) {
@@ -101,64 +103,54 @@ export class SettingsPage {
   // Attempt to connect to ws server
   doLogin() {
     
-    this.connect();
-    /*this.user.login(this.account).subscribe((resp) => {
+    this.connect().subscribe((resp) => {
       this.navCtrl.push(MainPage);
     }, (err) => {
-      this.navCtrl.push(MainPage);
-      // Unable to log in
-      let toast = this.toastCtrl.create({
-        message: this.loginErrorString,
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
-    });*/
+      console.log('Not connected to '+this.options.wsserverhost + ' port' +this.options.wsserverport);
+    });
   }    
   /** This function initiates the connection to the web socket server. */
   connect() {
-    console.log('connect');
-        // Create a new WebSocket to the SERVER_URL (defined above). The empty
-        // array ([]) is for the protocols, which we are not using for this
-        // demo.
-        this.ws = new WebSocket('ws://' + this.options.wsserverhost + ':' + this.options.wsserverport, []);
-        // Set the function to be called when a message is received.
-        this.ws.onmessage = this.handleMessageReceived;
-        // Set the function to be called when we have connected to the server.
-        this.ws.onopen = this.handleConnected;
-        // Set the function to be called when an error occurs.
-        this.ws.onerror = this.handleError;
-    }
+    console.log('connect to '+this.options.wsserverhost + ' port' +this.options.wsserverport);
+    let secure:string = (this.options.wsserversecure) ? 'wss://' : 'ws://';
+    this.ws = new WebSocket(secure + this.options.wsserverhost + ':' + this.options.wsserverport, []);
+    // Set the function to be called when a message is received.
+    this.ws.onmessage = this.handleMessageReceived;
+    // Set the function to be called when we have connected to the server.
+    this.ws.onopen = this.handleConnected;
+    // Set the function to be called when an error occurs.
+    this.ws.onerror = this.handleError;
+    return this.ws;
+  }
 
-    /**
-        This is the function that is called when the WebSocket receives
-        a message.
-    */
-    handleMessageReceived(data) {
-        // Simply call logMessage(), passing the received data.
-        console.log(data.data);
-    }
+  /**
+      This is the function that is called when the WebSocket receives
+      a message.
+  */
+  handleMessageReceived(data) {
+    // Simply call logMessage(), passing the received data.
+    console.log(data.data);
+  }
 
-    /**
-        This is the function that is called when the WebSocket connects
-        to the server.
-    */
-    handleConnected(data) {
-        // Create a log message which explains what has happened and includes
-        // the url we have connected too.
-        var logMsg = 'Connected to server: ' + data.target.url;
-        // Add the message to the log.
-        console.log(logMsg);
-       
-    }
+  /**
+      This is the function that is called when the WebSocket connects
+      to the server.
+  */
+  handleConnected(data) {
+    // Create a log message which explains what has happened and includes
+    // the url we have connected too.
+    var logMsg = 'Connected to server: ' + data.target.url + ' ip ' + JSON.stringify(data);
+    // Add the message to the log.
+    console.log(logMsg);
+  }
 
-    /**
-        This is the function that is called when an error occurs with our
-        WebSocket.
-    */
-    handleError(err) {
-        // Print the error to the console so we can debug it.
-        console.log("Error: ", err);
-    }
+  /**
+      This is the function that is called when an error occurs with our
+      WebSocket.
+  */
+  handleError(err) {
+    // Print the error to the console so we can debug it.
+    console.log("Error: ", err);
+  }
 
 }
