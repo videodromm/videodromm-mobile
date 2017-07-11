@@ -11,8 +11,8 @@
   <form [formGroup]="form" *ngIf="settingsReady">
     <ion-list *ngIf="page == 'main'">
       <ion-item>
-        <ion-label>{{ 'SETTINGS_SHOWTUTORIAL' | translate }}</ion-label>
-        <ion-toggle formControlName="showtutorial"></ion-toggle>
+        <ion-label>{{ 'SETTINGS_USERNAME' | translate }}</ion-label>
+        <ion-input formControlName="username"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -22,13 +22,10 @@
 
       <ion-item>
         <ion-label>{{ 'SETTINGS_WSSERVERPORT' | translate }}</ion-label>
-        <ion-select formControlName="wsserverport">
-          <ion-option value="1" checked="true">1</ion-option>
-          <ion-option value="2">2</ion-option>
-          <ion-option value="3">3</ion-option>
-        </ion-select>
+        <ion-input formControlName="wsserverport"></ion-input>
       </ion-item>
 
+      
       <button ion-item [navPush]="subSettings" [navParams]="profileSettings">
         {{ 'SETTINGS_PROFILE_BUTTON' | translate }}
       </button>
@@ -36,10 +33,16 @@
 
     <ion-list *ngIf="page == 'profile'">
       <ion-item>
-        <ion-label>{{ 'SETTINGS_USERNAME' | translate }}</ion-label>
-        <ion-input formControlName="username"></ion-input>
+        <ion-label>{{ 'SETTINGS_SHOWTUTORIAL' | translate }}</ion-label>
+        <ion-toggle formControlName="showtutorial"></ion-toggle>
       </ion-item>
     </ion-list>
   </form>
+  <div padding>
+    <button ion-button color="primary" block (click)="doLogin()">Connect</button>
+  </div>
+  <div padding>
+    <button ion-button color="secondary" block (click)="doSend()">Send</button>
+  </div>
 
 </ion-content>

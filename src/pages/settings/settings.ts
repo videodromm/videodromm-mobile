@@ -33,6 +33,8 @@ export class SettingsPage {
   pageTitle: string;
 
   subSettings: any = SettingsPage;
+  // This is a variable for our WebSocket.
+  ws:any;
 
   constructor(public navCtrl: NavController,
     public settings: Settings,
@@ -43,9 +45,9 @@ export class SettingsPage {
 
   _buildForm() {
     let group: any = {
-      showtutorial: [this.options.showtutorial],
       wsserverhost: [this.options.wsserverhost],
-      wsserverport: [this.options.wsserverport]
+      wsserverport: [this.options.wsserverport],
+      username: [this.options.username]
     };
 
     switch (this.page) {
@@ -53,7 +55,7 @@ export class SettingsPage {
         break;
       case 'profile':
         group = {
-          username: [this.options.username]
+          showtutorial: [this.options.showtutorial]
         };
         break;
     }
@@ -92,4 +94,71 @@ export class SettingsPage {
   ngOnChanges() {
     console.log('Ng All Changes');
   }
+  // Send test message
+  doSend() {
+     this.ws.send(this.options.username);
+  }
+  // Attempt to connect to ws server
+  doLogin() {
+    
+    this.connect();
+    /*this.user.login(this.account).subscribe((resp) => {
+      this.navCtrl.push(MainPage);
+    }, (err) => {
+      this.navCtrl.push(MainPage);
+      // Unable to log in
+      let toast = this.toastCtrl.create({
+        message: this.loginErrorString,
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+    });*/
+  }    
+  /** This function initiates the connection to the web socket server. */
+  connect() {
+    console.log('connect');
+        // Create a new WebSocket to the SERVER_URL (defined above). The empty
+        // array ([]) is for the protocols, which we are not using for this
+        // demo.
+        this.ws = new WebSocket('ws://' + this.options.wsserverhost + ':' + this.options.wsserverport, []);
+        // Set the function to be called when a message is received.
+        this.ws.onmessage = this.handleMessageReceived;
+        // Set the function to be called when we have connected to the server.
+        this.ws.onopen = this.handleConnected;
+        // Set the function to be called when an error occurs.
+        this.ws.onerror = this.handleError;
+    }
+
+    /**
+        This is the function that is called when the WebSocket receives
+        a message.
+    */
+    handleMessageReceived(data) {
+        // Simply call logMessage(), passing the received data.
+        console.log(data.data);
+    }
+
+    /**
+        This is the function that is called when the WebSocket connects
+        to the server.
+    */
+    handleConnected(data) {
+        // Create a log message which explains what has happened and includes
+        // the url we have connected too.
+        var logMsg = 'Connected to server: ' + data.target.url;
+        // Add the message to the log.
+        console.log(logMsg);
+       
+    }
+
+    /**
+        This is the function that is called when an error occurs with our
+        WebSocket.
+    */
+    handleError(err) {
+        // Print the error to the console so we can debug it.
+        console.log("Error: ", err);
+    }
+
 }

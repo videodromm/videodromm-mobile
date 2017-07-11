@@ -11,15 +11,10 @@ import { ContentPage } from '../pages/content/content';
 import { ShaderCreatePage } from '../pages/shader-create/shader-create';
 import { ShaderDetailPage } from '../pages/shader-detail/shader-detail';
 import { ListMasterPage } from '../pages/list-master/list-master';
-import { LoginPage } from '../pages/login/login';
-import { MapPage } from '../pages/map/map';
 import { MenuPage } from '../pages/menu/menu';
 import { SearchPage } from '../pages/search/search';
 import { SettingsPage } from '../pages/settings/settings';
-import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
-import { TutorialPage } from '../pages/tutorial/tutorial';
-import { WelcomePage } from '../pages/welcome/welcome';
 
 import { Api } from '../providers/api';
 import { shaders } from '../mocks/providers/shaders';
@@ -27,7 +22,6 @@ import { Settings } from '../providers/settings';
 import { User } from '../providers/user';
 
 import { Camera } from '@ionic-native/camera';
-import { GoogleMaps } from '@ionic-native/google-maps';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
@@ -63,15 +57,10 @@ export function provideSettings(storage: Storage) {
     ShaderCreatePage,
     ShaderDetailPage,
     ListMasterPage,
-    LoginPage,
-    MapPage,
     MenuPage,
     SearchPage,
     SettingsPage,
-    SignupPage,
-    TabsPage,
-    TutorialPage,
-    WelcomePage
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -94,22 +83,16 @@ export function provideSettings(storage: Storage) {
     ShaderCreatePage,
     ShaderDetailPage,
     ListMasterPage,
-    LoginPage,
-    MapPage,
     MenuPage,
     SearchPage,
     SettingsPage,
-    SignupPage,
-    TabsPage,
-    TutorialPage,
-    WelcomePage
+    TabsPage
   ],
   providers: [
     Api,
     shaders,
     User,
     Camera,
-    GoogleMaps,
     SplashScreen,
     StatusBar,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
