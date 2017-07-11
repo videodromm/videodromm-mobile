@@ -28,6 +28,7 @@ export class WSClient {
     this.ws.onerror = this.handleError;
   }
   send(msg: string) {
+    console.log('ws send: '+msg);
     this.ws.send(msg);
   }
   /**
