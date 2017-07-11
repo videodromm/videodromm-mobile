@@ -9,7 +9,7 @@
 <ion-content>
 
   <form [formGroup]="form" *ngIf="settingsReady">
-    <ion-list *ngIf="page == 'main'">
+    <ion-list>
       <ion-item>
         <ion-label>User name</ion-label>
         <ion-input formControlName="username"></ion-input>
@@ -29,25 +29,13 @@
         <ion-label>Websocket server port</ion-label>
         <ion-input placeholder="8088" formControlName="wsserverport"></ion-input>
       </ion-item>
-
-      
-      <button ion-item [navPush]="subSettings" [navParams]="profileSettings">
-        {{ 'SETTINGS_PROFILE_BUTTON' | translate }}
-      </button>
-    </ion-list>
-
-    <ion-list *ngIf="page == 'profile'">
-      <ion-item>
-        <ion-label>{{ 'SETTINGS_SHOWTUTORIAL' | translate }}</ion-label>
-        <ion-toggle formControlName="showtutorial"></ion-toggle>
-      </ion-item>
     </ion-list>
   </form>
   <div padding>
-    <button ion-button color="primary" block (click)="doLogin()">Connect</button>
+    <button ion-button color="primary" block (click)="connect()">Connect</button>
   </div>
   <div padding>
-    <button ion-button color="secondary" block (click)="doSend()">Send</button>
+    <button ion-button color="secondary" block (click)="send()">Send</button>
   </div>
 
 </ion-content>

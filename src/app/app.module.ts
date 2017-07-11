@@ -19,7 +19,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { Api } from '../providers/api';
 import { shaders } from '../mocks/providers/shaders';
 import { Settings } from '../providers/settings';
-import { User } from '../providers/user';
+import { WSClient } from '../providers/wsclient';
 
 import { Camera } from '@ionic-native/camera';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -92,7 +92,7 @@ export function provideSettings(storage: Storage) {
   providers: [
     Api,
     shaders,
-    User,
+    WSClient,
     Camera,
     SplashScreen,
     StatusBar,
