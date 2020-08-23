@@ -26,7 +26,7 @@ import { Button,
     interface Window { socket: any; ws: any; }
 }
 function initWs() {
-  window.ws = (function (uri) {
+  window.ws = (function (uri:string) {
     console.log('ws init')
     window.ws = new WebSocket(uri);
     /*window.ws.onmessage = function (evt) {
@@ -53,10 +53,11 @@ function initWs() {
   });
 
   //window.socket = new ws('ws://127.0.0.1:8088');
-  //window.socket = new ws('ws://192.168.43.150:8088');
+  window.socket = new WebSocket('ws://127.0.0.1:8088');
 }
 initWs();
-  const emitToSocket = (value, index) => {
+  const emitToSocket = (value:number, index:number) => {
+    console.log(value);
     /*
     CONNECTING	0
     OPEN	1
@@ -66,9 +67,11 @@ initWs();
     if (window.socket && window.socket.readyState === 1) {
       window.socket.send('{"params" :[{"name" : ' + index + ',"value" :' + value + '}]}');
       //console.log(`emitToSocket readyState ${window.ws.readyState}, val: ${value}, idx: ${index} `);
+      console.log(`emitToSocket readyStateval: ${value}, idx: ${index} `);
 
     } else {
       //console.log(`not ready, state ${window.ws.readyState}`);
+      console.log(`not ready`);
     }
 
   };
@@ -89,7 +92,7 @@ initWs();
       window.socket.send('{"params" :[{"name" : 42,"value" :' + pos.x + '},{"name" : 43,"value" :' + pos.y + '}]}');
     }
   }
-  const xFadeChange = (val) => {
+  const xFadeChange = (val:number) => {
     console.log(`mouseChange ${val} `);
     emitToSocket(val, 18);
   }
