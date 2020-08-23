@@ -12,14 +12,18 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-router": "^5.1.8",
     "@types/react-router-dom": "^5.1.5",
+    "formik": "^2.1.5",
     "ionicons": "^5.0.1",
-    "node-sass": "^4.13.0",
+    "nexusui": "^2.1.5",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-nexusui": "^0.1.7",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1",
-    "reselect": "^4.0.0"
+    "react-scripts": "^3.4.3",
+    "reselect": "^4.0.0",
+    "yup": "^0.29.3"
   },
   "scripts": {
     "start": "react-scripts start",

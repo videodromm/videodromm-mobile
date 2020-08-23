@@ -1,7 +1,106 @@
+
 import React, { useState } from 'react';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonText, IonTextarea, IonToast } from '@ionic/react';
 import './Login.scss';
 import { connect } from '../data/connect';
+import { Button,
+  Toggle,
+  Dial,
+  Number,
+  Position,
+  Slider,
+  Envelope,
+  Multislider,
+  Piano,
+  RadioButton,
+  Select,
+  Sequencer,
+  TextButton,
+  Tilt,
+  Pan,
+  Pan2D } from 'react-nexusui';
+  const dialColors = ['#a70', '#f00', '#0f0', '#00f', '#aaa', '#f00', '#0f0', '#00f', '#370', '#ff0', '#fff', '#a0f', '#a70', '#270', '#fff', '#a0f', '#370', '#ff0'];
+  const dialNames = ['time', 'red', 'green', 'blue', 'alpha', 'red*', 'green*', 'blue*', 'sobel', 'badtv', 'steps', 'ratio', 'zoom', 'audio*', 'expo', 'pixel8', 'trixel', 'chroma'];
+
+  declare global {
+    interface Window { socket: any; ws: any; }
+}
+function initWs() {
+  window.ws = (function (uri) {
+    console.log('ws init')
+    window.ws = new WebSocket(uri);
+    /*window.ws.onmessage = function (evt) {
+      var messageData = JSON.parse(evt.data);
+      var customEvt = new CustomEvent('msg');
+      customEvt.data = messageData.params[0];
+      console.log(`ws rcvd name:${messageData.params[0].name} value:${messageData.params[0].value}`);
+      dispatchEvent(customEvt);
+      window.ws.dispatchEvent(customEvt);
+    };*/
+    this.emit = function (evt, data) {
+      window.ws.send(JSON.stringify({ event: evt, message: data }));
+    };
+    this.send = function (data) {
+      window.ws.send(data);
+    };
+    this.on = function (evt, func) {
+      console.log(`ws on ${evt.data} `);
+      window.ws.addEventListener(evt, func);
+    };
+    window.ws.onerror = function (e) { console.log('error: ' + JSON.stringify(e)) };
+    window.ws.onopen = function (evt) { console.log('Socket opened') };
+    window.ws.onclose = function (evt) { console.log('Socket closed') };
+  });
+
+  //window.socket = new ws('ws://127.0.0.1:8088');
+  //window.socket = new ws('ws://192.168.43.150:8088');
+}
+initWs();
+  const emitToSocket = (value, index) => {
+    /*
+    CONNECTING	0
+    OPEN	1
+    CLOSING	2
+    CLOSED	3
+    */
+    if (window.socket && window.socket.readyState === 1) {
+      window.socket.send('{"params" :[{"name" : ' + index + ',"value" :' + value + '}]}');
+      //console.log(`emitToSocket readyState ${window.ws.readyState}, val: ${value}, idx: ${index} `);
+
+    } else {
+      //console.log(`not ready, state ${window.ws.readyState}`);
+    }
+
+  };
+
+
+  function TitleAndChildren({ children, title }) {
+    return (
+      <div style={{ margin: 10 }}>
+        <h2 className={"subtitle"} style={{ textAlign: "center" }}>{title}</h2>
+        {children}
+      </div>
+    );
+  }
+
+  const mouseChange = (pos) => {
+    console.log(`mouseChange ${pos.x} ${pos.y} `);
+    if (window.socket && window.ws.readyState === 1) {
+      window.socket.send('{"params" :[{"name" : 42,"value" :' + pos.x + '},{"name" : 43,"value" :' + pos.y + '}]}');
+    }
+  }
+  const xFadeChange = (val) => {
+    console.log(`mouseChange ${val} `);
+    emitToSocket(val, 18);
+  }
+  const mixChange = (valuesArray) => {
+    console.log(`mixChange ${JSON.stringify(valuesArray)} } `);// 31 to 39
+    valuesArray.map((item, index) => {
+
+      console.log(`mixChange ${item} ${index} `);
+      emitToSocket(item, 31 + index);
+    });
+  }
 
 interface OwnProps { }
 
@@ -27,6 +126,8 @@ const Support: React.FC<SupportProps> = () => {
       setShowToast(true);
     }
   };
+  let dials = [] as React.ReactElement[];
+  let dialRefs = React.useRef([] as any[]);
 
   return (
     <IonPage id="support-page">
@@ -41,9 +142,28 @@ const Support: React.FC<SupportProps> = () => {
       <IonContent>
 
         <div className="login-logo">
-          <img src="assets/img/appicon.svg" alt="Ionic logo" />
+        <TextButton text="Click me" onChange={console.log} />
         </div>
 
+        <div className="login-logo">
+        <Dial
+          interaction={"radial"}
+          key={0}
+          onReady={dialRef => {
+            dialRefs.current.push(dialRef);
+            dialRef.colorize("accent", dialColors[0]);
+          }}
+          onChange={value => {
+            console.log(value)
+            emitToSocket(value, 0);
+          }}
+          value={1}
+          min={0}
+          max={1}
+        />
+
+
+        </div>
         <form noValidate onSubmit={send}>
           <IonList>
             <IonItem>
@@ -66,9 +186,9 @@ const Support: React.FC<SupportProps> = () => {
             </IonCol>
           </IonRow>
         </form>
-       
+
       </IonContent>
-     
+
       <IonToast
         isOpen={showToast}
         duration={3000}
