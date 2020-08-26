@@ -1,0 +1,8 @@
+{
+  "appId": "com.videodromm.mobile",
+  "appName": "vdmobile",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "cordova": {}
+}
