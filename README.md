@@ -1,5 +1,5 @@
 # Ionic React Conference Application
-
+<application android:usesCleartextTraffic="true" />
 
 This application is purely a kitchen-sink demo of the Ionic Framework and React.
 
