@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "ionic-react-conference-app",
+  "appId": "com.videodromm.mobile",
+  "appName": "vdmobile",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "build",
