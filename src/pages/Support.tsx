@@ -115,7 +115,7 @@ interface SupportProps extends OwnProps, DispatchProps { }
 
 const Support: React.FC<SupportProps> = () => {
 
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState('ws://192.168.0.47:8088');
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [messageError, setMessageError] = useState(false);
   const [showToast, setShowToast] = useState(false);
@@ -141,7 +141,7 @@ const Support: React.FC<SupportProps> = () => {
           <IonButtons slot="start">
             <IonMenuButton></IonMenuButton>
           </IonButtons>
-          <IonTitle>Support</IonTitle>
+          <IonTitle>Videodromm Websocket Controller</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -197,7 +197,7 @@ const Support: React.FC<SupportProps> = () => {
                 max={1}
               />
             </IonCol>
-             <IonCol>
+            <IonCol>
               <Dial
                 interaction={"radial"}
                 key={4}
@@ -214,9 +214,77 @@ const Support: React.FC<SupportProps> = () => {
                 max={1}
               />
             </IonCol>
+            <IonCol>
+              <Dial
+                interaction={"radial"}
+                key={5}
+                onReady={dialRef => {
+                  dialRefs.current.push(dialRef);
+                  dialRef.colorize("accent", dialColors[5]);
+                }}
+                onChange={value => {
+                  console.log(value)
+                  emitToSocket(value, 5);
+                }}
+                value={1}
+                min={0}
+                max={1}
+              />
+            </IonCol>
+            <IonCol>
+              <Dial
+                interaction={"radial"}
+                key={6}
+                onReady={dialRef => {
+                  dialRefs.current.push(dialRef);
+                  dialRef.colorize("accent", dialColors[6]);
+                }}
+                onChange={value => {
+                  console.log(value)
+                  emitToSocket(value, 6);
+                }}
+                value={1}
+                min={0}
+                max={1}
+              />
+            </IonCol>
+            <IonCol>
+              <Dial
+                interaction={"radial"}
+                key={7}
+                onReady={dialRef => {
+                  dialRefs.current.push(dialRef);
+                  dialRef.colorize("accent", dialColors[7]);
+                }}
+                onChange={value => {
+                  console.log(value)
+                  emitToSocket(value, 7);
+                }}
+                value={1}
+                min={0}
+                max={1}
+              />
+            </IonCol>
+            <IonCol>
+              <Dial
+                interaction={"radial"}
+                key={8}
+                onReady={dialRef => {
+                  dialRefs.current.push(dialRef);
+                  dialRef.colorize("accent", dialColors[8]);
+                }}
+                onChange={value => {
+                  console.log(value)
+                  emitToSocket(value, 8);
+                }}
+                value={1}
+                min={0}
+                max={1}
+              />
+            </IonCol>
           </IonRow>
-        <div className="login-logo">
-          <TextButton text="Click me" onChange={console.log} />
+        {/* <div className="login-logo">
+          <TextButton text="Connect" onChange={console.log} />
         </div>
 
         <div className="login-logo">
@@ -237,27 +305,28 @@ const Support: React.FC<SupportProps> = () => {
           />
 
 
-        </div>
+        </div> */}
         <form noValidate onSubmit={send}>
           <IonList>
             <IonItem>
-              <IonLabel position="stacked" color="primary">Enter your support message below</IonLabel>
-              <IonTextarea name="message" value={message} spellCheck={false} autocapitalize="off" rows={6} onIonChange={e => setMessage(e.detail.value!)}
+              <IonLabel position="stacked" color="primary">Enter your websocket server (example: ws://192.168.0.47:8088)</IonLabel>
+              <IonTextarea name="message" value={message} spellCheck={false} autocapitalize="off" rows={1} onIonChange={e => setMessage(e.detail.value!)}
                 required>
               </IonTextarea>
             </IonItem>
 
             {formSubmitted && messageError && <IonText color="danger">
               <p className="ion-padding-start">
-                Support message is required
+                WS server is required
               </p>
             </IonText>}
           </IonList>
 
           
           <IonRow>
+            {/* expand="block" */}
             <IonCol>
-              <IonButton type="submit" expand="block">Submit</IonButton>
+              <IonButton type="submit" >Connect</IonButton>
             </IonCol></IonRow>
         </form>
 
@@ -266,7 +335,7 @@ const Support: React.FC<SupportProps> = () => {
       <IonToast
         isOpen={showToast}
         duration={3000}
-        message="Your support request has been sent"
+        message="You are connected"
         onDidDismiss={() => setShowToast(false)} />
     </IonPage>
   );
