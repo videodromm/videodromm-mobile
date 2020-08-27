@@ -55,7 +55,8 @@ function initWs() {
   });
 
   //window.socket = new ws('ws://127.0.0.1:8088');
-  window.socket = new WebSocket('ws://192.168.0.24:8088');
+  //window.socket = new WebSocket('ws://192.168.0.24:8088');
+  window.socket = new WebSocket('ws://51.210.25.82:8088');
 }
 initWs();
 const emitToSocket = (value: number, index: number) => {
@@ -78,7 +79,7 @@ const emitToSocket = (value: number, index: number) => {
 
 };
 
-
+/*
 function TitleAndChildren({ children, title }) {
   return (
     <div style={{ margin: 10 }}>
@@ -105,7 +106,7 @@ const mixChange = (valuesArray) => {
     console.log(`mixChange ${item} ${index} `);
     emitToSocket(item, 31 + index);
   });
-}
+}*/
 
 interface OwnProps { }
 
@@ -115,7 +116,7 @@ interface SupportProps extends OwnProps, DispatchProps { }
 
 const Support: React.FC<SupportProps> = () => {
 
-  const [message, setMessage] = useState('ws://192.168.0.47:8088');
+  const [message, setMessage] = useState('ws://51.210.25.82:8088');
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [messageError, setMessageError] = useState(false);
   const [showToast, setShowToast] = useState(false);
