@@ -1,6 +1,6 @@
 {
   "name": "vdmobile",
-  "version": "0.0.1",
+  "version": "1.0.20200828",
   "private": true,
   "dependencies": {
     "@capacitor/android": "^2.4.0",
@@ -28,6 +28,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "ionic:build": "npm run build && npx cap copy && npx cap open android",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

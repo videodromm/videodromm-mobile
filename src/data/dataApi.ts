@@ -96,8 +96,14 @@ function initWs(host: string) {
     //console.log(`ws rcvd p:${evt.data.params} value:${evt.data.params}`);
     //console.log(`ws rcvd p0:${evt.data.params[0]} value:${evt.data.params[0]}`);
     //console.log(`ws rcvd name:${evt.data.params[0].name} value:${evt.data.params[0].value}`);
-    var messageData = JSON.parse(evt.data);
-    console.log(`ws rcvd name:${messageData.name} value:${messageData.params[0].value}`);
+    if (evt.data) {
+      var messageData = JSON.parse(evt.data);
+      if (messageData.params[0]) {
+        console.log(`ws rcvd name:${messageData.params[0].name} value:${messageData.params[0].value}`);
+
+      }
+
+    }
 
     /*var customEvt = new CustomEvent('msg');
     customEvt.data = messageData.params[0];

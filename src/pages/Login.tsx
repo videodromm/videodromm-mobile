@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonInput, IonText } from '@ionic/react';
+import { IonToast, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonInput, IonText } from '@ionic/react';
 import './Login.scss';
 import { setIsLoggedIn, setHost } from '../data/user/user.actions';
 import { connect } from '../data/connect';
@@ -21,6 +21,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setHost: setHostAc
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [hostError, setHostError] = useState(false);
   const [portError, setPortError] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   const login = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,6 +36,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setHost: setHostAc
     if(host && port) {
       //await setIsLoggedIn(true);
       await setHostAction(`ws://${host}:${port}`);
+      setShowToast(true);
       history.push('/support', {direction: 'none'});
     }
   };
@@ -46,7 +48,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setHost: setHostAc
           <IonButtons slot="start">
             <IonMenuButton></IonMenuButton>
           </IonButtons>
-          <IonTitle>Connect</IonTitle>
+          <IonTitle>Websocket server</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -85,16 +87,18 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setHost: setHostAc
 
           <IonRow>
             <IonCol>
-              <IonButton type="submit" expand="block">Connect</IonButton>
+              <IonButton type="submit">Connect</IonButton>
             </IonCol>
-            <IonCol>
-              <IonButton routerLink="/signup" color="light" expand="block">Signup</IonButton>
-            </IonCol>
+            
           </IonRow>
         </form>
 
       </IonContent>
-
+      <IonToast
+        isOpen={showToast}
+        duration={3000}
+        message="You are connected"
+        onDidDismiss={() => setShowToast(false)} />
     </IonPage>
   );
 };

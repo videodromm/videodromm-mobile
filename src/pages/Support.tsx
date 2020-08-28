@@ -85,19 +85,7 @@ const Support: React.FC<SupportProps> = () => {
   const [message, setMessage] = useState('ws://51.210.25.82:8088');
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [messageError, setMessageError] = useState(false);
-  const [showToast, setShowToast] = useState(false);
 
-  const send = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormSubmitted(true);
-    if (!message) {
-      setMessageError(true);
-    }
-    if (message) {
-      setMessage('');
-      setShowToast(true);
-    }
-  };
   let dials = [] as React.ReactElement[];
   let dialRefs = React.useRef([] as any[]);
 
@@ -273,37 +261,11 @@ const Support: React.FC<SupportProps> = () => {
 
 
         </div> */}
-        <form noValidate onSubmit={send}>
-          <IonList>
-            <IonItem>
-              <IonLabel position="stacked" color="primary">Enter your websocket server (example: ws://192.168.0.47:8088)</IonLabel>
-              <IonTextarea name="message" value={message} spellCheck={false} autocapitalize="off" rows={1} onIonChange={e => setMessage(e.detail.value!)}
-                required>
-              </IonTextarea>
-            </IonItem>
-
-            {formSubmitted && messageError && <IonText color="danger">
-              <p className="ion-padding-start">
-                WS server is required
-              </p>
-            </IonText>}
-          </IonList>
-
-          
-          <IonRow>
-            {/* expand="block" */}
-            <IonCol>
-              <IonButton type="submit" >Connect</IonButton>
-            </IonCol></IonRow>
-        </form>
+        
 
       </IonContent>
 
-      <IonToast
-        isOpen={showToast}
-        duration={3000}
-        message="You are connected"
-        onDidDismiss={() => setShowToast(false)} />
+      
     </IonPage>
   );
 };
