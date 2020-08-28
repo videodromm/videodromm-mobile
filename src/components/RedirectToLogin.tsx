@@ -3,16 +3,16 @@ import { IonRouterContext } from '@ionic/react';
 
 interface RedirectToLoginProps {
   setIsLoggedIn: Function;
-  setUsername: Function;
+  setHost: Function;
 }
 
-const RedirectToLogin: React.FC<RedirectToLoginProps> = ({ setIsLoggedIn, setUsername }) => {
+const RedirectToLogin: React.FC<RedirectToLoginProps> = ({ setIsLoggedIn, setHost }) => {
   const ionRouterContext = useContext(IonRouterContext);
   useEffect(() => {
     setIsLoggedIn(false);
-    setUsername(undefined);
+    setHost(undefined);
     ionRouterContext.push('/tabs/schedule')
-  }, [setIsLoggedIn, setUsername, ionRouterContext]);
+  }, [setIsLoggedIn, setHost, ionRouterContext]);
   return null;
 };
 

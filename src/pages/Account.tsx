@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonList, IonItem, IonAlert } from '@ionic/react';
 import './Account.scss';
-import { setUsername } from '../data/user/user.actions';
+import { setHost } from '../data/user/user.actions';
 import { connect } from '../data/connect';
 import { RouteComponentProps } from 'react-router';
 
 interface OwnProps extends RouteComponentProps { }
 
 interface StateProps {
-  username?: string;
+  host?: string;
 }
 
 interface DispatchProps {
-  setUsername: typeof setUsername;
+  setHost: typeof setHost;
 }
 
 interface AccountProps extends OwnProps, StateProps, DispatchProps { }
 
-const Account: React.FC<AccountProps> = ({ setUsername, username }) => {
+const Account: React.FC<AccountProps> = ({ setHost, host }) => {
 
   const [showAlert, setShowAlert] = useState(false);
 
@@ -36,14 +36,14 @@ const Account: React.FC<AccountProps> = ({ setUsername, username }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        {username &&
+        {host &&
           (<div className="ion-padding-top ion-text-center">
             <img src="https://www.gravatar.com/avatar?d=mm&s=140" alt="avatar" />
-            <h2>{ username }</h2>
+            <h2>{ host }</h2>
             <IonList inset>
               <IonItem onClick={() => clicked('Update Picture')}>Update Picture</IonItem>
-              <IonItem onClick={() => setShowAlert(true)}>Change Username</IonItem>
-              <IonItem onClick={() => clicked('Change Password')}>Change Password</IonItem>
+              <IonItem onClick={() => setShowAlert(true)}>Change Host</IonItem>
+              <IonItem onClick={() => clicked('Change Port')}>Change Port</IonItem>
               <IonItem routerLink="/support" routerDirection="none">Support</IonItem>
               <IonItem routerLink="/logout" routerDirection="none">Logout</IonItem>
             </IonList>
@@ -52,22 +52,22 @@ const Account: React.FC<AccountProps> = ({ setUsername, username }) => {
       </IonContent>
       <IonAlert
         isOpen={showAlert}
-        header="Change Username"
+        header="Change Host"
         buttons={[
           'Cancel',
           {
             text: 'Ok',
             handler: (data) => {
-              setUsername(data.username);
+              setHost(data.host);
             }
           }
         ]}
         inputs={[
           {
             type: 'text',
-            name: 'username',
-            value: username,
-            placeholder: 'username'
+            name: 'host',
+            value: host,
+            placeholder: 'host'
           }
         ]}
         onDidDismiss={() => setShowAlert(false)}
@@ -78,10 +78,10 @@ const Account: React.FC<AccountProps> = ({ setUsername, username }) => {
 
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
-    username: state.user.username
+    host: state.user.host
   }),
   mapDispatchToProps: {
-    setUsername,
+    setHost,
   },
   component: Account
 })

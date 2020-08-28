@@ -7,8 +7,8 @@ export function userReducer(state: UserState, action: UserActions): UserState {
       return { ...state, loading: action.isLoading };
     case 'set-user-data':
       return { ...state, ...action.data };
-    case 'set-username':
-      return { ...state, username: action.username };
+    case 'set-host':
+      return { ...state, host: action.host };
     case 'set-has-seen-tutorial':
       return { ...state, hasSeenTutorial: action.hasSeenTutorial };
     case 'set-dark-mode':

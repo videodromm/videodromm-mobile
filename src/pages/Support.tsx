@@ -24,41 +24,7 @@ import {
 const dialColors = ['#a70', '#f00', '#0f0', '#00f', '#aaa', '#f00', '#0f0', '#00f', '#370', '#ff0', '#fff', '#a0f', '#a70', '#270', '#fff', '#a0f', '#370', '#ff0'];
 const dialNames = ['time', 'red', 'green', 'blue', 'alpha', 'red*', 'green*', 'blue*', 'sobel', 'badtv', 'steps', 'ratio', 'zoom', 'audio*', 'expo', 'pixel8', 'trixel', 'chroma'];
 
-declare global {
-  interface Window { socket: any; ws: any; }
-}
-function initWs() {
-  window.ws = (function (uri: string) {
-    console.log('ws init')
-    window.ws = new WebSocket(uri);
-    /*window.ws.onmessage = function (evt) {
-      var messageData = JSON.parse(evt.data);
-      var customEvt = new CustomEvent('msg');
-      customEvt.data = messageData.params[0];
-      console.log(`ws rcvd name:${messageData.params[0].name} value:${messageData.params[0].value}`);
-      dispatchEvent(customEvt);
-      window.ws.dispatchEvent(customEvt);
-    };*/
-    this.emit = function (evt, data) {
-      window.ws.send(JSON.stringify({ event: evt, message: data }));
-    };
-    this.send = function (data) {
-      window.ws.send(data);
-    };
-    this.on = function (evt, func) {
-      console.log(`ws on ${evt.data} `);
-      window.ws.addEventListener(evt, func);
-    };
-    window.ws.onerror = function (e) { console.log('error: ' + JSON.stringify(e)) };
-    window.ws.onopen = function (evt) { console.log('Socket opened') };
-    window.ws.onclose = function (evt) { console.log('Socket closed') };
-  });
-
-  //window.socket = new ws('ws://127.0.0.1:8088');
-  //window.socket = new WebSocket('ws://192.168.0.24:8088');
-  window.socket = new WebSocket('ws://51.210.25.82:8088');
-}
-initWs();
+/**/
 const emitToSocket = (value: number, index: number) => {
   console.log(value);
   /*

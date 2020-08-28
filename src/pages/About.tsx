@@ -66,7 +66,7 @@ const About: React.FC<AboutProps> = () => {
           <h3 className="ion-padding-top ion-padding-start">About</h3>
 
           <p className="ion-padding-start ion-padding-end">
-            The Ionic Conference is a one-day conference on { displayDate(conferenceDate, 'mediumDate') } featuring talks from the Ionic team. It is focused on Ionic applications being built with Ionic Framework. This includes migrating apps to the latest version of the framework, Angular concepts, Webpack, Sass, and many other technologies used in Ionic 2. Tickets are completely sold out, and we’re expecting more than 1000 developers – making this the largest Ionic conference ever!
+            The Ionic Conference is a one-day conference on { displayDate(conferenceDate, 'mediumDate') } feathostng talks from the Ionic team. It is focused on Ionic applications being built with Ionic Framework. This includes migrating apps to the latest version of the framework, Angular concepts, Webpack, Sass, and many other technologies used in Ionic 2. Tickets are completely sold out, and we’re expecting more than 1000 developers – making this the largest Ionic conference ever!
           </p>
 
           <h3 className="ion-padding-top ion-padding-start">Details</h3>
@@ -109,7 +109,7 @@ const About: React.FC<AboutProps> = () => {
             </IonItem>
             <IonItem>
               <IonLabel>
-               Password
+               Port
               </IonLabel>
               <IonLabel className="ion-text-end">
                 makegoodthings

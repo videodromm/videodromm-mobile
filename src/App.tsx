@@ -27,7 +27,7 @@ import MainTabs from './pages/MainTabs';
 import { connect } from './data/connect';
 import { AppContextProvider } from './data/AppContext';
 import { loadConfData } from './data/sessions/sessions.actions';
-import { setIsLoggedIn, setUsername, loadUserData } from './data/user/user.actions';
+import { setIsLoggedIn, setHost, loadUserData } from './data/user/user.actions';
 import Account from './pages/Account';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -54,12 +54,12 @@ interface DispatchProps {
   loadConfData: typeof loadConfData;
   loadUserData: typeof loadUserData;
   setIsLoggedIn: typeof setIsLoggedIn;
-  setUsername: typeof setUsername;
+  setHost: typeof setHost;
 }
 
 interface IonicAppProps extends StateProps, DispatchProps { }
 
-const IonicApp: React.FC<IonicAppProps> = ({ darkMode, schedule, setIsLoggedIn, setUsername, loadConfData, loadUserData }) => {
+const IonicApp: React.FC<IonicAppProps> = ({ darkMode, schedule, setIsLoggedIn, setHost, loadConfData, loadUserData }) => {
 
   useEffect(() => {
     loadUserData();
@@ -89,7 +89,7 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, schedule, setIsLoggedIn, 
                 <Route path="/logout" render={() => {
                   return <RedirectToLogin
                     setIsLoggedIn={setIsLoggedIn}
-                    setUsername={setUsername}
+                    setHost={setHost}
                   />;
                 }} />
                 <Route path="/" component={HomeOrTutorial} exact />
@@ -108,6 +108,6 @@ const IonicAppConnected = connect<{}, StateProps, DispatchProps>({
     darkMode: state.user.darkMode,
     schedule: state.data.schedule
   }),
-  mapDispatchToProps: { loadConfData, loadUserData, setIsLoggedIn, setUsername },
+  mapDispatchToProps: { loadConfData, loadUserData, setIsLoggedIn, setHost },
   component: IonicApp
 });
