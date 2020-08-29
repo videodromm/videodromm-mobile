@@ -79,12 +79,31 @@ const Support: React.FC<SupportProps> = () => {
   function TitleAndChildren({ children, title }) {
     return (
       <div style={{ margin: 10 }}>
-        <h2 className={"subtitle"} style={{ textAlign: "center" }}>{title}</h2>
+        <h5 className={"subtitle"} style={{ textAlign: "center" }}>{title}</h5>
         {children}
       </div>
     );
   }
+  function Mobile() {
+    return (
+      <section className="section">
+        <div className="container">
 
+          <div style={{ display: "flex", flexWrap: "wrap" }}>
+            <TitleAndChildren title={"Tilt"}>
+              <Tilt
+                size={[200, 100]}
+                active={true}
+                onChange={tilt => {
+                  console.log("Tilt changed ", tilt.x," ", JSON.stringify(tilt));
+                }}
+              />
+            </TitleAndChildren>
+          </div>
+        </div>
+      </section>
+    );
+  }
   return (
     <IonPage id="support-page">
       <IonHeader>
@@ -96,9 +115,26 @@ const Support: React.FC<SupportProps> = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-      <TitleAndChildren title="Slider">
+      <IonRow>
+        <IonCol>
+          <Mobile />
+          </IonCol>
+        <IonCol>
+          <TitleAndChildren title="Slider">
             <Slider size={[120, 20]} onChange={console.log} />
           </TitleAndChildren>
+        </IonCol>
+        <IonCol>
+          <TitleAndChildren title="Slider">
+            <Slider size={[120, 20]} onChange={console.log} />
+          </TitleAndChildren>
+          </IonCol>
+        <IonCol>
+          <TitleAndChildren title="Slider">
+            <Slider size={[120, 20]} onChange={console.log} />
+          </TitleAndChildren>
+        </IonCol>
+      </IonRow>
       <IonRow>
           <IonCol>
             <Dial
