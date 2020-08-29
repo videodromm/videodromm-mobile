@@ -54,7 +54,7 @@ const Support: React.FC<SupportProps> = () => {
   const dialNames = ['time', 'red', 'green', 'blue', 'alpha', 'red*', 'green*', 'blue*', 'sobel', 'badtv', 'steps', 'ratio', 'zoom', 'audio*', 'expo', 'pixel8', 'trixel', 'chroma'];
   let dials = [] as React.ReactElement[];
   let dialRefs = React.useRef([] as any[]);
- 
+
   const emitToSocket = (value: number, index: number) => {
     /*
     CONNECTING	0
@@ -72,10 +72,10 @@ const Support: React.FC<SupportProps> = () => {
         dialRefs[1].value = 0.5;
       }*/
     }
-  
+
   };
-  
-  
+
+
   function TitleAndChildren({ children, title }) {
     return (
       <div style={{ margin: 10 }}>
@@ -96,6 +96,9 @@ const Support: React.FC<SupportProps> = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
+      <TitleAndChildren title="Slider">
+            <Slider size={[120, 20]} onChange={console.log} />
+          </TitleAndChildren>
       <IonRow>
           <IonCol>
             <Dial
@@ -226,10 +229,10 @@ const Support: React.FC<SupportProps> = () => {
               />
             </IonCol>
           </IonRow>
-        
+
       </IonContent>
 
-      
+
     </IonPage>
   );
 };
