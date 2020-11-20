@@ -29,13 +29,12 @@ import { AppContextProvider } from './data/AppContext';
 import { loadConfData } from './data/sessions/sessions.actions';
 import { setIsLoggedIn, setHost, loadUserData } from './data/user/user.actions';
 import Account from './pages/Account';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+import Connect from './pages/Connect';
 import Support from './pages/Support';
 import Tutorial from './pages/Tutorial';
 import HomeOrTutorial from './components/HomeOrTutorial';
 import { Schedule } from "./models/Schedule";
-import RedirectToLogin from './components/RedirectToLogin';
+import RedirectToConnect from './components/RedirectToConnect';
 
 const App: React.FC = () => {
   return (
@@ -82,12 +81,11 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, schedule, setIsLoggedIn, 
                 */}
                 <Route path="/tabs" render={() => <MainTabs />} />
                 <Route path="/account" component={Account} />
-                <Route path="/login" component={Login} />
-                <Route path="/signup" component={Signup} />
+                <Route path="/connect" component={Connect} />
                 <Route path="/support" component={Support} />
                 <Route path="/tutorial" component={Tutorial} />
                 <Route path="/logout" render={() => {
-                  return <RedirectToLogin
+                  return <RedirectToConnect
                     setIsLoggedIn={setIsLoggedIn}
                     setHost={setHost}
                   />;

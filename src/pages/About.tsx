@@ -54,7 +54,7 @@ const About: React.FC<AboutProps> = () => {
             </IonButtons>
           </IonToolbar>
         </IonHeader>
-
+<canvas className="about-canvas" width="150" height="150"></canvas>
         <div className="about-header">
           {/* Instead of loading an image each time the select changes, use opacity to transition them */}
           <div className="about-image madison" style={{'opacity': location === 'madison' ? '1' : undefined}}></div>

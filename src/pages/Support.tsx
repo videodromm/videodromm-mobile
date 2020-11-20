@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonText, IonTextarea, IonToast } from '@ionic/react';
-import './Login.scss';
+import './Connect.scss';
 import { connect } from '../data/connect';
 import {
   Button,

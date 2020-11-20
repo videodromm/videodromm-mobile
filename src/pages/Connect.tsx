@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IonToast, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonInput, IonText } from '@ionic/react';
-import './Login.scss';
+import './Connect.scss';
 import { setIsLoggedIn, setHost } from '../data/user/user.actions';
 import { connect } from '../data/connect';
 import { RouteComponentProps } from 'react-router';
@@ -12,9 +12,9 @@ interface DispatchProps {
   setHost: typeof setHost;
 }
 
-interface LoginProps extends OwnProps,  DispatchProps { }
+interface ConnectProps extends OwnProps,  DispatchProps { }
 
-const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setHost: setHostAction}) => {
+const Connect: React.FC<ConnectProps> = ({setIsLoggedIn, history, setHost: setHostAction}) => {
 
   const [host, setHost] = useState('51.210.25.82');
   const [port, setPort] = useState('8088');
@@ -23,7 +23,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setHost: setHostAc
   const [portError, setPortError] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
-  const login = async (e: React.FormEvent) => {
+  const connect = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormSubmitted(true);
     if(!host) {
@@ -40,9 +40,9 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setHost: setHostAc
       history.push('/support', {direction: 'none'});
     }
   };
-  
+
   return (
-    <IonPage id="login-page">
+    <IonPage id="connect-page">
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
@@ -53,11 +53,11 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setHost: setHostAc
       </IonHeader>
       <IonContent>
 
-        <div className="login-logo">
+        <div className="connect-logo">
           <img src="assets/img/appicon.svg" alt="Ionic logo" />
         </div>
 
-        <form noValidate onSubmit={login}>
+        <form noValidate onSubmit={connect}>
           <IonList>
             <IonItem>
               <IonLabel position="stacked" color="primary">Host</IonLabel>
@@ -89,7 +89,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setHost: setHostAc
             <IonCol>
               <IonButton type="submit">Connect</IonButton>
             </IonCol>
-            
+
           </IonRow>
         </form>
 
@@ -108,5 +108,5 @@ export default connect<OwnProps, {}, DispatchProps>({
     setIsLoggedIn,
     setHost
   },
-  component: Login
+  component: Connect
 })

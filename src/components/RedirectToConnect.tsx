@@ -1,12 +1,12 @@
 import React, { useEffect, useContext } from 'react';
 import { IonRouterContext } from '@ionic/react';
 
-interface RedirectToLoginProps {
+interface RedirectToConnectProps {
   setIsLoggedIn: Function;
   setHost: Function;
 }
 
-const RedirectToLogin: React.FC<RedirectToLoginProps> = ({ setIsLoggedIn, setHost }) => {
+const RedirectToConnect: React.FC<RedirectToConnectProps> = ({ setIsLoggedIn, setHost }) => {
   const ionRouterContext = useContext(IonRouterContext);
   useEffect(() => {
     setIsLoggedIn(false);
@@ -16,4 +16,4 @@ const RedirectToLogin: React.FC<RedirectToLoginProps> = ({ setIsLoggedIn, setHos
   return null;
 };
 
-export default RedirectToLogin;
+export default RedirectToConnect;

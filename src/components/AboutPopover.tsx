@@ -14,20 +14,11 @@ const AboutPopover: React.FC<AboutPopoverProps> = ({dismiss}) => {
 
   return (
     <IonList>
-      <IonItem button onClick={() => close('https://ionicframework.com/getting-started')}>
-        <IonLabel>Learn Ionic</IonLabel>
-      </IonItem>
-      <IonItem button onClick={() => close('https://ionicframework.com/docs/react')}>
-        <IonLabel>Documentation</IonLabel>
-      </IonItem>
-      <IonItem button onClick={() => close('https://showcase.ionicframework.com')}>
-        <IonLabel>Showcase</IonLabel>
-      </IonItem>
-      <IonItem button onClick={() => close('https://github.com/ionic-team/ionic')}>
-        <IonLabel>GitHub Repo</IonLabel>
+      <IonItem button onClick={() => close('https://videodromm.com')}>
+        <IonLabel>Videodromm website</IonLabel>
       </IonItem>
       <IonItem button onClick={dismiss}>
-        <IonLabel>Support</IonLabel>
+        <IonLabel>Close</IonLabel>
       </IonItem>
     </IonList >
   )
