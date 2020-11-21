@@ -6,7 +6,7 @@ const getSchedule = (state: AppState) => {
 
   return state.data.schedule
 };
-export const getSpeakers = (state: AppState) => state.data.speakers;
+export const getUniforms = (state: AppState) => state.data.uniforms;
 const getSessions = (state: AppState) => state.data.sessions;
 const getFilteredTracks = (state: AppState) => state.data.filteredTracks;
 const getFavoriteIds = (state: AppState) => state.data.favorites;
@@ -104,26 +104,26 @@ export const getSession = createSelector(
   }
 );
 
-export const getSpeaker = createSelector(
-  getSpeakers, getIdParam,
-  (speakers, id) => speakers.find(x => x.id === id)
+export const getUniform = createSelector(
+  getUniforms, getIdParam,
+  (uniforms, id) => uniforms.find(x => x.id === id)
 );
 
-export const getSpeakerSessions = createSelector(
+export const getUniformSessions = createSelector(
   getSessions,
   (sessions) => {
-    const speakerSessions: { [key: string]: Session[] } = {};
+    const uniformSessions: { [key: string]: Session[] } = {};
 
     sessions.forEach(session => {
-      session.speakerNames && session.speakerNames.forEach(name => {
-        if (speakerSessions[name]) {
-          speakerSessions[name].push(session);
+      session.uniformNames && session.uniformNames.forEach(name => {
+        if (uniformSessions[name]) {
+          uniformSessions[name].push(session);
         } else {
-          speakerSessions[name] = [session];
+          uniformSessions[name] = [session];
         }
       })
     });
-    return speakerSessions;
+    return uniformSessions;
   }
 );
 

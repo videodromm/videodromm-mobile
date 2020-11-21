@@ -1,51 +1,51 @@
 import React from 'react';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonGrid, IonRow, IonCol } from '@ionic/react';
-import SpeakerItem from '../components/SpeakerItem';
-import { Speaker } from '../models/Speaker';
+import UniformItem from '../components/UniformItem';
+import { Uniform } from '../models/Uniform';
 import { Session } from '../models/Schedule';
 import { connect } from '../data/connect';
 import * as selectors from '../data/selectors';
-import './SpeakerList.scss';
+import './UniformList.scss';
 
 interface OwnProps { };
 
 interface StateProps {
-  speakers: Speaker[];
-  speakerSessions: { [key: string]: Session[] };
+  uniforms: Uniform[];
+  uniformSessions: { [key: string]: Session[] };
 };
 
 interface DispatchProps { };
 
-interface SpeakerListProps extends OwnProps, StateProps, DispatchProps { };
+interface UniformListProps extends OwnProps, StateProps, DispatchProps { };
 
-const SpeakerList: React.FC<SpeakerListProps> = ({ speakers, speakerSessions }) => {
+const UniformList: React.FC<UniformListProps> = ({ uniforms, uniformSessions }) => {
 
   return (
-    <IonPage id="speaker-list">
+    <IonPage id="uniform-list">
       <IonHeader translucent={true}>
         <IonToolbar>
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Speakers</IonTitle>
+          <IonTitle>Uniforms</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen={true}>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Speakers</IonTitle>
+            <IonTitle size="large">Uniforms</IonTitle>
           </IonToolbar>
         </IonHeader>
 
           <IonGrid fixed>
             <IonRow>
-              {speakers.map(speaker => (
-                <IonCol size="12" size-md="6" key={speaker.id}>
-                  <SpeakerItem
-                    key={speaker.id}
-                    speaker={speaker}
-                    sessions={speakerSessions[speaker.name]}
+              {uniforms.map(uniform => (
+                <IonCol size="12" size-md="6" key={uniform.id}>
+                  <UniformItem
+                    key={uniform.id}
+                    uniform={uniform}
+                    sessions={uniformSessions[uniform.name]}
                   />
                 </IonCol>
               ))}
@@ -58,8 +58,8 @@ const SpeakerList: React.FC<SpeakerListProps> = ({ speakers, speakerSessions }) 
 
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
-    speakers: selectors.getSpeakers(state),
-    speakerSessions: selectors.getSpeakerSessions(state)
+    uniforms: selectors.getUniforms(state),
+    uniformSessions: selectors.getUniformSessions(state)
   }),
-  component: React.memo(SpeakerList)
+  component: React.memo(UniformList)
 });

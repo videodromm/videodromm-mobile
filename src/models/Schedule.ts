@@ -15,6 +15,6 @@ export interface Session {
   name: string;
   location: string;
   description: string;
-  speakerNames: string[];
+  uniformNames: string[];
   tracks: string[];
 }

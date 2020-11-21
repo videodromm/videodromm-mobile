@@ -1,6 +1,6 @@
 import { Plugins } from '@capacitor/core';
 import { Schedule, Session } from '../models/Schedule';
-import { Speaker } from '../models/Speaker';
+import { Uniform } from '../models/Uniform';
 import { Location } from '../models/Location';
 
 const { Storage } = Plugins;
@@ -20,7 +20,7 @@ export const getConfData = async () => {
   const responseData = await response[0].json();
   const schedule = responseData.schedule[0] as Schedule;
   const sessions = parseSessions(schedule);
-  const speakers = responseData.speakers as Speaker[];
+  const uniforms = responseData.uniforms as Uniform[];
   const locations = await response[1].json() as Location[];
   const allTracks = sessions
     .reduce((all, session) => all.concat(session.tracks), [] as string[])
@@ -31,7 +31,7 @@ export const getConfData = async () => {
     schedule,
     sessions,
     locations,
-    speakers,
+    uniforms,
     allTracks,
     filteredTracks: [...allTracks]
   }
@@ -72,7 +72,7 @@ function initWs(host: string) {
   /*window.ws = (function () {
     console.log(`ws init ${host}`);
     window.ws = new WebSocket(host);
-    
+
     this.emit = function (evt, data) {
       window.ws.send(JSON.stringify({ event: evt, message: data }));
     };

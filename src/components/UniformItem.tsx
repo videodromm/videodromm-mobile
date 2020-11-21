@@ -1,26 +1,26 @@
 import React from 'react';
 import { Session } from '../models/Schedule';
-import { Speaker } from '../models/Speaker';
+import { Uniform } from '../models/Uniform';
 import { IonCard, IonCardHeader, IonItem, IonLabel, IonAvatar, IonCardContent, IonList } from '@ionic/react';
 
 
-interface SpeakerItemProps {
-  speaker: Speaker;
+interface UniformItemProps {
+  uniform: Uniform;
   sessions: Session[];
 }
 
-const SpeakerItem: React.FC<SpeakerItemProps> = ({ speaker, sessions }) => {
+const UniformItem: React.FC<UniformItemProps> = ({ uniform, sessions }) => {
   return (
     <>
-      <IonCard className="speaker-card">
+      <IonCard className="uniform-card">
         <IonCardHeader>
-          <IonItem button detail={false} lines="none" className="speaker-item" routerLink={`/tabs/speakers/${speaker.id}`}>
+          <IonItem button detail={false} lines="none" className="uniform-item" routerLink={`/tabs/uniforms/${uniform.id}`}>
             <IonAvatar slot="start">
-              <img src={process.env.PUBLIC_URL + speaker.profilePic} alt="Speaker profile pic" />
+              <img src={process.env.PUBLIC_URL + uniform.profilePic} alt="Uniform profile pic" />
             </IonAvatar>
             <IonLabel>
-              <h2>{speaker.name}</h2>
-              <p>{speaker.title}</p>
+              <h2>{uniform.name}</h2>
+              <p>{uniform.title}</p>
             </IonLabel>
           </IonItem>
         </IonCardHeader>
@@ -28,15 +28,15 @@ const SpeakerItem: React.FC<SpeakerItemProps> = ({ speaker, sessions }) => {
         <IonCardContent>
           <IonList lines="none">
             {sessions.map(session => (
-              <IonItem detail={false} routerLink={`/tabs/speakers/sessions/${session.id}`} key={session.name}>
+              <IonItem detail={false} routerLink={`/tabs/uniforms/sessions/${session.id}`} key={session.name}>
                 <IonLabel>
                   <h3>{session.name}</h3>
                 </IonLabel>
               </IonItem>
             ))}
-            <IonItem detail={false} routerLink={`/tabs/speakers/${speaker.id}`}>
+            <IonItem detail={false} routerLink={`/tabs/uniforms/${uniform.id}`}>
               <IonLabel>
-                <h3>About {speaker.name}</h3>
+                <h3>About {uniform.name}</h3>
               </IonLabel>
             </IonItem>
           </IonList>
@@ -46,4 +46,4 @@ const SpeakerItem: React.FC<SpeakerItemProps> = ({ speaker, sessions }) => {
   );
 };
 
-export default SpeakerItem;
+export default UniformItem;

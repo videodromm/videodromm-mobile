@@ -43,7 +43,7 @@ exports[`renders without crashing 1`] = `
                   slot="start"
                 />
                 <ion-label>
-                  Speakers
+                  Uniforms
                 </ion-label>
               </ion-item>
             </ion-menu-toggle>
@@ -245,12 +245,12 @@ exports[`renders without crashing 1`] = `
               </ion-label>
             </ion-tab-button>
             <ion-tab-button
-              href="/tabs/speakers"
-              tab="speakers"
+              href="/tabs/uniforms"
+              tab="uniforms"
             >
               <ion-icon />
               <ion-label>
-                Speakers
+                Uniforms
               </ion-label>
             </ion-tab-button>
             <ion-tab-button

@@ -12,7 +12,7 @@ import './Menu.css'
 const routes = {
   appPages: [
     { title: 'Schedule', path: '/tabs/schedule', icon: calendarOutline },
-    { title: 'Speakers', path: '/tabs/speakers', icon: peopleOutline },
+    { title: 'Uniforms', path: '/tabs/uniforms', icon: peopleOutline },
     { title: 'Map', path: '/tabs/map', icon: mapOutline },
     { title: 'About', path: '/tabs/about', icon: informationCircleOutline }
   ],
@@ -22,7 +22,7 @@ const routes = {
     { title: 'Logout', path: '/logout', icon: logOut }
   ],
   loggedOutPages: [
-    { title: 'Connect', path: '/login', icon: logIn },
+    { title: 'Connect', path: '/connect', icon: logIn },
     { title: 'Support', path: '/support', icon: help },
   ]
 };
@@ -65,7 +65,7 @@ const Menu: React.FC<MenuProps> = ({ darkMode, history, isAuthenticated, setDark
     <IonMenu  type="overlay" disabled={!menuEnabled} contentId="main">
       <IonContent forceOverscroll={false}>
         <IonList lines="none">
-          <IonListHeader>Conference</IonListHeader>
+          <IonListHeader>Shaders</IonListHeader>
           {renderlistItems(routes.appPages)}
         </IonList>
         <IonList lines="none">

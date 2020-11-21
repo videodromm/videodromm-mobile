@@ -1,4 +1,4 @@
-export interface Speaker {
+export interface Uniform {
   id: number;
   name: string;
   profilePic: string;
