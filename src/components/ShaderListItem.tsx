@@ -57,6 +57,7 @@ const ShaderListItem: React.FC<ShaderListItemProps> = ({ isFavorite, onAddFavori
       <IonItem routerLink={`/tabs/glsl/${shader.id}`}>
         <IonLabel>
           <h3>{shader.name}</h3>
+          <img src={process.env.PUBLIC_URL + shader.profilePic} alt="Uniform profile pic" />
           <p>
             {shader.timeStart}&mdash;&nbsp;
             {shader.timeStart}&mdash;&nbsp;

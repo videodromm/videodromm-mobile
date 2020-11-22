@@ -10,6 +10,7 @@ export interface GlslGroup {
 
 export interface Shader {
   id: number;
+  profilePic: string;
   timeStart: string;
   timeEnd: string;
   name: string;

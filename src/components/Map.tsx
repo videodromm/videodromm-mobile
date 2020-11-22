@@ -52,7 +52,13 @@ const Map: React.FC<MapProps> = ({ mapCenter, locations }) => {
     <div ref={mapEle} className="map-canvas"></div>
   );*/
   return (
-    <div  className="map-canvas"><p>todo</p></div>
+  <div  className="map-canvas"><h3 className="ion-padding-top ion-padding-start">About</h3>
+
+  <p className="ion-padding-start ion-padding-end">
+    The  Shada is a one-day shada on    </p>
+
+  <h3 className="ion-padding-top ion-padding-start">Details</h3><p>todo</p><p>todo</p><p>todo</p><p>todo</p>
+  </div>
   );
 }
 
