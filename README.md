@@ -1,12 +1,9 @@
-# Videodromm Application
-<application android:usesCleartextTraffic="true" />
-npm run build
-npx cap sync
-
+# Videodromm Mobile
 
 ## Table of Contents
 - [Getting Started](#getting-started)
-- [App Preview](#app-preview)
+- [Android](#Android)
+- [Websockets](#Websockets)
 
 ## Getting Started
 
@@ -16,3 +13,10 @@ npx cap sync
 * Run `npm install` from the project root.
 * Run `ionic serve` in a terminal from the project root.
 * Profit. :tada:
+
+## Android
+* `npm run build`
+* `npx cap sync`
+
+## Websockets
+* <application android:usesCleartextTraffic="true" />

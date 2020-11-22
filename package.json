@@ -1,6 +1,6 @@
 {
   "name": "vdmobile",
-  "version": "1.0.20201120",
+  "version": "1.0.20201122",
   "private": true,
   "dependencies": {
     "@capacitor/android": "^2.4.0",
