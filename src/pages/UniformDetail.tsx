@@ -106,7 +106,7 @@ const UniformDetail: React.FC<UniformDetailProps> = ({ uniform }) => {
         </div>
 
         <div className="ion-padding uniform-detail">
-          <p>{uniform.about} Say hello on social media!</p>
+          <p>{uniform.about} Detail</p>
 
           <hr/>
 

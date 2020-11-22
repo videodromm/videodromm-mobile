@@ -3,7 +3,7 @@ import { IonHeader, IonToolbar, IonContent, IonPage, IonButtons, IonBackButton, 
 import { connect } from '../data/connect';
 import { withRouter, RouteComponentProps } from 'react-router';
 import * as selectors from '../data/selectors';
-import { starOutline, star, share, cloudDownload } from 'ionicons/icons';
+import { starOutline, star, share } from 'ionicons/icons';
 import './ShaderDetail.scss';
 import { addFavorite, removeFavorite } from '../data/shaders/shaders.actions';
 import { Shader } from '../models/Glsl';
@@ -64,11 +64,11 @@ const ShaderDetail: React.FC<ShaderDetailProps> = ({ shader, addFavorite, remove
           {shader.tags.map(tag => (
             <span key={tag} className={`shader-tag-${tag.toLowerCase()}`}>{tag}</span>
           ))}
-          <p>{shader.description}</p>
+          <p>Detail {shader.description}</p>
           <img src={process.env.PUBLIC_URL + shader.thumbnail} alt="thumbnail" />
 
           <IonText color="medium">
-            {shader.timeStart} &ndash; {shader.timeEnd}
+
             <br />
             {shader.author}
           </IonText>
@@ -76,19 +76,6 @@ const ShaderDetail: React.FC<ShaderDetailProps> = ({ shader, addFavorite, remove
         <IonList>
           <IonItem onClick={() => shaderClick('watch')} button>
             <IonLabel color="primary">Watch</IonLabel>
-          </IonItem>
-          <IonItem onClick={() => shaderClick('add to calendar')} button>
-            <IonLabel color="primary">Add to Calendar</IonLabel>
-          </IonItem>
-          <IonItem onClick={() => shaderClick('mark as unwatched')} button>
-            <IonLabel color="primary">Mark as Unwatched</IonLabel>
-          </IonItem>
-          <IonItem onClick={() => shaderClick('download video')} button>
-            <IonLabel color="primary">Download Video</IonLabel>
-            <IonIcon slot="end" color="primary" size="small" icon={cloudDownload}></IonIcon>
-          </IonItem>
-          <IonItem onClick={() => shaderClick('leave feedback')} button>
-            <IonLabel color="primary">Leave Feedback</IonLabel>
           </IonItem>
         </IonList>
       </IonContent>

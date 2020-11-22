@@ -58,9 +58,8 @@ const ShaderListItem: React.FC<ShaderListItemProps> = ({ isFavorite, onAddFavori
         <IonLabel>
           <h3>{shader.name}</h3>
           <img src={process.env.PUBLIC_URL + shader.thumbnail} alt="thumbnail" />
-          <p>
-            {shader.timeStart}&mdash;&nbsp;
-            {shader.timeStart}&mdash;&nbsp;
+          <p> ListItem
+
             {shader.author}
           </p>
         </IonLabel>

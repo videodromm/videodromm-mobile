@@ -10,6 +10,7 @@
             {
               "name": "nanotubes",
               "thumbnail": "/assets/img/gif/nanotubes.gif",
+              "description": "dsc",
               "timeStart": "8:00 am",
               "timeEnd": "9:00 am",
               "author": "author",
@@ -36,7 +37,7 @@
               "name": "Onyx",
               "thumbnail": "/assets/img/gif/Onyx.gif",
               "author": "author",
-              "description": "Mobile devices and browsers are now advanced enough that developers can build native-quality mobile apps using open web technologies like HTML5, Javascript, and CSS. In this talk, we’ll provide background on why and how we created Ionic, the design decisions made as we integrated Ionic with Angular, and the performance considerations for mobile platforms that our team had to overcome. We’ll also review new and upcoming Ionic features, and talk about the hidden powers and benefits of combining mobile app development and Angular.",
+              "description": "desc",
               "uniformNames": ["g","r"],
               "timeStart": "9:45 am",
               "timeEnd": "10:00 am",
@@ -60,8 +61,6 @@
       "phone": "+1-541-754-3010",
       "id": "1"
     },
-
-
     {
       "name": "g",
       "thumbnail": "/assets/img/gif/128690.gif",
@@ -71,6 +70,26 @@
       "email": "ted@example.com",
       "phone": "+1-541-754-3010",
       "id": "2"
+    },
+    {
+      "name": "b",
+      "thumbnail": "/assets/img/gif/128690.gif",
+      "about": "(foreground)",
+      "title": "Blue",
+      "author": "Everywhere",
+      "email": "ted@example.com",
+      "phone": "+1-541-754-3010",
+      "id": "3"
+    },
+    {
+      "name": "a",
+      "thumbnail": "/assets/img/gif/128690.gif",
+      "about": "(foreground)",
+      "title": "Alpha",
+      "author": "Everywhere",
+      "email": "ted@example.com",
+      "phone": "+1-541-754-3010",
+      "id": "4"
     }
   ],
 

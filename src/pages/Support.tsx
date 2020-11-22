@@ -51,8 +51,8 @@ interface SupportProps extends OwnProps, DispatchProps { }
 const Support: React.FC<SupportProps> = () => {
 
   const dialColors = ['#a70', '#f00', '#0f0', '#00f', '#aaa', '#f00', '#0f0', '#00f', '#370', '#ff0', '#fff', '#a0f', '#a70', '#270', '#fff', '#a0f', '#370', '#ff0'];
-  const dialNames = ['time', 'red', 'green', 'blue', 'alpha', 'red*', 'green*', 'blue*', 'sobel', 'badtv', 'steps', 'ratio', 'zoom', 'audio*', 'expo', 'pixel8', 'trixel', 'chroma'];
-  let dials = [] as React.ReactElement[];
+  //const dialNames = ['time', 'red', 'green', 'blue', 'alpha', 'red*', 'green*', 'blue*', 'sobel', 'badtv', 'steps', 'ratio', 'zoom', 'audio*', 'expo', 'pixel8', 'trixel', 'chroma'];
+  //let dials = [] as React.ReactElement[];
   let dialRefs = React.useRef([] as any[]);
 
   const emitToSocket = (value: number, index: number) => {
