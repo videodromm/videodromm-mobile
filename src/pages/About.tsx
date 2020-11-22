@@ -11,7 +11,7 @@ const About: React.FC<AboutProps> = () => {
   const [showPopover, setShowPopover] = useState(false);
   const [popoverEvent, setPopoverEvent] = useState();
   const [location, setLocation] = useState<'madison' | 'austin' | 'chicago' | 'seattle'>('madison');
-  const [conferenceDate, setConferenceDate] = useState('2047-05-17T00:00:00-05:00');
+  const [shadaDate, setShadaDate] = useState('2047-05-17T00:00:00-05:00');
 
   const selectOptions = {
     header: 'Select a Location'
@@ -66,7 +66,7 @@ const About: React.FC<AboutProps> = () => {
           <h3 className="ion-padding-top ion-padding-start">About</h3>
 
           <p className="ion-padding-start ion-padding-end">
-            The Ionic Conference is a one-day conference on { displayDate(conferenceDate, 'mediumDate') }    </p>
+            The Ionic Shada is a one-day shada on { displayDate(shadaDate, 'mediumDate') }    </p>
 
           <h3 className="ion-padding-top ion-padding-start">Details</h3>
 
@@ -89,8 +89,8 @@ const About: React.FC<AboutProps> = () => {
               <IonDatetime
                 displayFormat="MMM DD, YYYY"
                 max="2056"
-                value={conferenceDate}
-                onIonChange={(e) => setConferenceDate(e.detail.value as any)}>
+                value={shadaDate}
+                onIonChange={(e) => setShadaDate(e.detail.value as any)}>
               </IonDatetime>
             </IonItem>
           </IonList>
@@ -103,7 +103,7 @@ const About: React.FC<AboutProps> = () => {
                 Wifi network
               </IonLabel>
               <IonLabel className="ion-text-end">
-                ica{ displayDate(conferenceDate, 'y') }
+                ica{ displayDate(shadaDate, 'y') }
               </IonLabel>
             </IonItem>
             <IonItem>

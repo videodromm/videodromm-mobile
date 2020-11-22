@@ -1,7 +1,7 @@
 import { Location } from '../../models/Location';
 import { Uniform } from '../../models/Uniform';
 import { Glsl, Shader } from '../../models/Glsl';
-export interface ConfState {
+export interface GlslState {
   glsl: Glsl;
   shaders: Shader[];
   uniforms: Uniform[];

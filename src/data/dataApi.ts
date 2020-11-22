@@ -13,7 +13,7 @@ const HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
 const DARK_MODE = 'darkMode';
 const HOST = 'host';
 
-export const getConfData = async () => {
+export const getGlslData = async () => {
   const response = await Promise.all([
     fetch(dataUrl),
     fetch(locationsUrl)]);

@@ -1,12 +1,12 @@
 import { ShadersActions } from './shaders.actions';
-import { ConfState } from './conf.state';
+import { GlslState } from './glsl.state';
 
-export const shadersReducer = (state: ConfState, action: ShadersActions): ConfState => {
+export const shadersReducer = (state: GlslState, action: ShadersActions): GlslState => {
   switch (action.type) {
-    case 'set-conf-loading': {
+    case 'set-glsl-loading': {
       return { ...state, loading: action.isLoading };
     }
-    case 'set-conf-data': {
+    case 'set-glsl-data': {
       return { ...state, ...action.data };
     }
     case 'add-favorite': {

@@ -1,21 +1,21 @@
-import { getConfData } from '../dataApi';
+import { getGlslData } from '../dataApi';
 import { ActionType } from '../../util/types';
-import { ConfState } from './conf.state';
+import { GlslState } from './glsl.state';
 
-export const loadConfData = () => async (dispatch: React.Dispatch<any>) => {
+export const loadGlslData = () => async (dispatch: React.Dispatch<any>) => {
   dispatch(setLoading(true));
-  const data = await getConfData();
+  const data = await getGlslData();
   dispatch(setData(data));
   dispatch(setLoading(false));
 }
 
 export const setLoading = (isLoading: boolean) => ({
-  type: 'set-conf-loading',
+  type: 'set-glsl-loading',
   isLoading
 } as const);
 
-export const setData = (data: Partial<ConfState>) => ({
-  type: 'set-conf-data',
+export const setData = (data: Partial<GlslState>) => ({
+  type: 'set-glsl-data',
   data
 } as const);
 

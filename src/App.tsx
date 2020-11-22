@@ -26,7 +26,7 @@ import './theme/variables.css';
 import MainTabs from './pages/MainTabs';
 import { connect } from './data/connect';
 import { AppContextProvider } from './data/AppContext';
-import { loadConfData } from './data/shaders/shaders.actions';
+import { loadGlslData } from './data/shaders/shaders.actions';
 import { setIsLoggedIn, setHost, loadUserData } from './data/user/user.actions';
 import Account from './pages/Account';
 import Connect from './pages/Connect';
@@ -50,7 +50,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  loadConfData: typeof loadConfData;
+  loadGlslData: typeof loadGlslData;
   loadUserData: typeof loadUserData;
   setIsLoggedIn: typeof setIsLoggedIn;
   setHost: typeof setHost;
@@ -58,11 +58,11 @@ interface DispatchProps {
 
 interface IonicAppProps extends StateProps, DispatchProps { }
 
-const IonicApp: React.FC<IonicAppProps> = ({ darkMode, glsl, setIsLoggedIn, setHost, loadConfData, loadUserData }) => {
+const IonicApp: React.FC<IonicAppProps> = ({ darkMode, glsl, setIsLoggedIn, setHost, loadGlslData, loadUserData }) => {
 
   useEffect(() => {
     loadUserData();
-    loadConfData();
+    loadGlslData();
     // eslint-disable-next-line
   }, []);
 
@@ -106,6 +106,6 @@ const IonicAppConnected = connect<{}, StateProps, DispatchProps>({
     darkMode: state.user.darkMode,
     glsl: state.data.glsl
   }),
-  mapDispatchToProps: { loadConfData, loadUserData, setIsLoggedIn, setHost },
+  mapDispatchToProps: { loadGlslData, loadUserData, setIsLoggedIn, setHost },
   component: IonicApp
 });
