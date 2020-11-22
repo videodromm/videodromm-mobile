@@ -5,20 +5,20 @@ import { options, search } from 'ionicons/icons';
 
 import SessionList from '../components/SessionList';
 import SessionListFilter from '../components/SessionListFilter';
-import './SchedulePage.scss'
+import './GlslPage.scss'
 
 import ShareSocialFab from '../components/ShareSocialFab';
 
 import * as selectors from '../data/selectors';
 import { connect } from '../data/connect';
 import { setSearchText } from '../data/sessions/sessions.actions';
-import { Schedule } from '../models/Schedule';
+import { Glsl } from '../models/Glsl';
 
 interface OwnProps { }
 
 interface StateProps {
-  schedule: Schedule;
-  favoritesSchedule: Schedule;
+  glsl: Glsl;
+  favoritesGlsl: Glsl;
   mode: 'ios' | 'md'
 }
 
@@ -26,9 +26,9 @@ interface DispatchProps {
   setSearchText: typeof setSearchText;
 }
 
-type SchedulePageProps = OwnProps & StateProps & DispatchProps;
+type GlslPageProps = OwnProps & StateProps & DispatchProps;
 
-const SchedulePage: React.FC<SchedulePageProps> = ({ favoritesSchedule, schedule, setSearchText, mode }) => {
+const GlslPage: React.FC<GlslPageProps> = ({ favoritesGlsl, glsl, setSearchText, mode }) => {
   const [segment, setSegment] = useState<'all' | 'favorites'>('all');
   const [showSearchbar, setShowSearchbar] = useState<boolean>(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
@@ -47,7 +47,7 @@ const SchedulePage: React.FC<SchedulePageProps> = ({ favoritesSchedule, schedule
   };
 
   return (
-    <IonPage ref={pageRef} id="schedule-page">
+    <IonPage ref={pageRef} id="glsl-page">
       <IonHeader translucent={true}>
         <IonToolbar>
           {!showSearchbar &&
@@ -66,7 +66,7 @@ const SchedulePage: React.FC<SchedulePageProps> = ({ favoritesSchedule, schedule
             </IonSegment>
           }
           {!ios && !showSearchbar &&
-            <IonTitle>Schedule</IonTitle>
+            <IonTitle>Glsl</IonTitle>
           }
           {showSearchbar &&
             <IonSearchbar showCancelButton="always" placeholder="Search" onIonChange={(e: CustomEvent) => setSearchText(e.detail.value)} onIonCancel={() => setShowSearchbar(false)}></IonSearchbar>
@@ -103,7 +103,7 @@ const SchedulePage: React.FC<SchedulePageProps> = ({ favoritesSchedule, schedule
       <IonContent fullscreen={true}>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Schedule</IonTitle>
+            <IonTitle size="large">Glsl</IonTitle>
           </IonToolbar>
           <IonToolbar>
             <IonSearchbar placeholder="Search" onIonChange={(e: CustomEvent) => setSearchText(e.detail.value)}></IonSearchbar>
@@ -122,13 +122,13 @@ const SchedulePage: React.FC<SchedulePageProps> = ({ favoritesSchedule, schedule
         />
 
         <SessionList
-          schedule={schedule}
+          glsl={glsl}
           listType={segment}
           hide={segment === 'favorites'}
         />
         <SessionList
-          // schedule={schedule}
-          schedule={favoritesSchedule}
+          // glsl={glsl}
+          glsl={favoritesGlsl}
           listType={segment}
           hide={segment === 'all'}
         />
@@ -154,12 +154,12 @@ const SchedulePage: React.FC<SchedulePageProps> = ({ favoritesSchedule, schedule
 
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
-    schedule: selectors.getSearchedSchedule(state),
-    favoritesSchedule: selectors.getGroupedFavorites(state),
+    glsl: selectors.getSearchedGlsl(state),
+    favoritesGlsl: selectors.getGroupedFavorites(state),
     mode: getConfig()!.get('mode')
   }),
   mapDispatchToProps: {
     setSearchText
   },
-  component: React.memo(SchedulePage)
+  component: React.memo(GlslPage)
 });

@@ -1,8 +1,8 @@
 import { Location } from '../../models/Location';
 import { Uniform } from '../../models/Uniform';
-import { Schedule, Session } from '../../models/Schedule';
+import { Glsl, Session } from '../../models/Glsl';
 export interface ConfState {
-  schedule: Schedule;
+  glsl: Glsl;
   sessions: Session[];
   uniforms: Uniform[];
   favorites: number[];

@@ -1,9 +1,9 @@
-export interface Schedule {
+export interface Glsl {
   date: string;
-  groups: ScheduleGroup[]
+  groups: GlslGroup[]
 }
 
-export interface ScheduleGroup {
+export interface GlslGroup {
   time: string;
   sessions: Session[];
 }

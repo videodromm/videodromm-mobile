@@ -1,4 +1,4 @@
-import { Session } from './Schedule';
+import { Session } from './Glsl';
 export interface SessionGroup {
   startTime: string;
   sessions: Session[];

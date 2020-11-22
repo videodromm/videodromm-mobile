@@ -33,7 +33,7 @@ import Connect from './pages/Connect';
 import Support from './pages/Support';
 import Tutorial from './pages/Tutorial';
 import HomeOrTutorial from './components/HomeOrTutorial';
-import { Schedule } from "./models/Schedule";
+import { Glsl } from "./models/Glsl";
 import RedirectToConnect from './components/RedirectToConnect';
 
 const App: React.FC = () => {
@@ -46,7 +46,7 @@ const App: React.FC = () => {
 
 interface StateProps {
   darkMode: boolean;
-  schedule: Schedule;
+  glsl: Glsl;
 }
 
 interface DispatchProps {
@@ -58,7 +58,7 @@ interface DispatchProps {
 
 interface IonicAppProps extends StateProps, DispatchProps { }
 
-const IonicApp: React.FC<IonicAppProps> = ({ darkMode, schedule, setIsLoggedIn, setHost, loadConfData, loadUserData }) => {
+const IonicApp: React.FC<IonicAppProps> = ({ darkMode, glsl, setIsLoggedIn, setHost, loadConfData, loadUserData }) => {
 
   useEffect(() => {
     loadUserData();
@@ -67,7 +67,7 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, schedule, setIsLoggedIn, 
   }, []);
 
   return (
-    schedule.groups.length === 0 ? (
+    glsl.groups.length === 0 ? (
       <div></div>
     ) : (
         <IonApp className={`${darkMode ? 'dark-theme' : ''}`}>
@@ -104,7 +104,7 @@ export default App;
 const IonicAppConnected = connect<{}, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
     darkMode: state.user.darkMode,
-    schedule: state.data.schedule
+    glsl: state.data.glsl
   }),
   mapDispatchToProps: { loadConfData, loadUserData, setIsLoggedIn, setHost },
   component: IonicApp

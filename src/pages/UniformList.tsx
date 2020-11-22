@@ -2,7 +2,7 @@ import React from 'react';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonGrid, IonRow, IonCol } from '@ionic/react';
 import UniformItem from '../components/UniformItem';
 import { Uniform } from '../models/Uniform';
-import { Session } from '../models/Schedule';
+import { Session } from '../models/Glsl';
 import { connect } from '../data/connect';
 import * as selectors from '../data/selectors';
 import './UniformList.scss';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Session } from '../models/Schedule';
+import { Session } from '../models/Glsl';
 import { Uniform } from '../models/Uniform';
 import { IonCard, IonCardHeader, IonItem, IonLabel, IonAvatar, IonCardContent, IonList } from '@ionic/react';
 

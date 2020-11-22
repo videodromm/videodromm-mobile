@@ -1,5 +1,5 @@
 import { Plugins } from '@capacitor/core';
-import { Schedule, Session } from '../models/Schedule';
+import { Glsl, Session } from '../models/Glsl';
 import { Uniform } from '../models/Uniform';
 import { Location } from '../models/Location';
 
@@ -18,8 +18,8 @@ export const getConfData = async () => {
     fetch(dataUrl),
     fetch(locationsUrl)]);
   const responseData = await response[0].json();
-  const schedule = responseData.schedule[0] as Schedule;
-  const sessions = parseSessions(schedule);
+  const glsl = responseData.glsl[0] as Glsl;
+  const sessions = parseSessions(glsl);
   const uniforms = responseData.uniforms as Uniform[];
   const locations = await response[1].json() as Location[];
   const allTracks = sessions
@@ -28,7 +28,7 @@ export const getConfData = async () => {
     .sort();
 
   const data = {
-    schedule,
+    glsl,
     sessions,
     locations,
     uniforms,
@@ -122,9 +122,9 @@ export const setHostData = async (host?: string) => {
   }
 }
 
-function parseSessions(schedule: Schedule) {
+function parseSessions(glsl: Glsl) {
   const sessions: Session[] = [];
-  schedule.groups.forEach(g => {
+  glsl.groups.forEach(g => {
     g.sessions.forEach(s => sessions.push(s))
   });
   return sessions;

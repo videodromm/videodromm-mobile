@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect';
-import { Schedule, Session, ScheduleGroup } from '../models/Schedule';
+import { Glsl, Session, GlslGroup } from '../models/Glsl';
 import { AppState } from './state';
 
-const getSchedule = (state: AppState) => {
+const getGlsl = (state: AppState) => {
 
-  return state.data.schedule
+  return state.data.glsl
 };
 export const getUniforms = (state: AppState) => state.data.uniforms;
 const getSessions = (state: AppState) => state.data.sessions;
@@ -12,11 +12,11 @@ const getFilteredTracks = (state: AppState) => state.data.filteredTracks;
 const getFavoriteIds = (state: AppState) => state.data.favorites;
 const getSearchText = (state: AppState) => state.data.searchText;
 
-export const getFilteredSchedule = createSelector(
-  getSchedule, getFilteredTracks,
-  (schedule, filteredTracks) => {
-    const groups: ScheduleGroup[] = [];
-    schedule.groups.forEach(group => {
+export const getFilteredGlsl = createSelector(
+  getGlsl, getFilteredTracks,
+  (glsl, filteredTracks) => {
+    const groups: GlslGroup[] = [];
+    glsl.groups.forEach(group => {
       const sessions: Session[] = [];
       group.sessions.forEach(session => {
         session.tracks.forEach(track => {
@@ -26,7 +26,7 @@ export const getFilteredSchedule = createSelector(
         })
       })
       if (sessions.length) {
-        const groupToAdd: ScheduleGroup = {
+        const groupToAdd: GlslGroup = {
           time: group.time,
           sessions
         }
@@ -35,24 +35,24 @@ export const getFilteredSchedule = createSelector(
     });
 
     return {
-      date: schedule.date,
+      date: glsl.date,
       groups
-    } as Schedule;
+    } as Glsl;
   }
 );
 
-export const getSearchedSchedule = createSelector(
-  getFilteredSchedule, getSearchText,
-  (schedule, searchText) => {
+export const getSearchedGlsl = createSelector(
+  getFilteredGlsl, getSearchText,
+  (glsl, searchText) => {
     if (!searchText) {
-      return schedule;
+      return glsl;
     }
-    const groups: ScheduleGroup[] = [];
-    schedule.groups.forEach(group => {
+    const groups: GlslGroup[] = [];
+    glsl.groups.forEach(group => {
 
       const sessions = group.sessions.filter(s => s.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1)
       if (sessions.length) {
-        const groupToAdd: ScheduleGroup = {
+        const groupToAdd: GlslGroup = {
           time: group.time,
           sessions
         }
@@ -60,25 +60,25 @@ export const getSearchedSchedule = createSelector(
       }
     });
     return {
-      date: schedule.date,
+      date: glsl.date,
       groups
-    } as Schedule;
+    } as Glsl;
   }
 )
 
-export const getScheduleList = createSelector(
-  getSearchedSchedule,
-  (schedule) => schedule
+export const getGlslList = createSelector(
+  getSearchedGlsl,
+  (glsl) => glsl
 );
 
 export const getGroupedFavorites = createSelector(
-  getScheduleList, getFavoriteIds,
-  (schedule, favoriteIds) => {
-    const groups: ScheduleGroup[] = [];
-    schedule.groups.forEach(group => {
+  getGlslList, getFavoriteIds,
+  (glsl, favoriteIds) => {
+    const groups: GlslGroup[] = [];
+    glsl.groups.forEach(group => {
       const sessions = group.sessions.filter(s => favoriteIds.indexOf(s.id) > -1)
       if (sessions.length) {
-        const groupToAdd: ScheduleGroup = {
+        const groupToAdd: GlslGroup = {
           time: group.time,
           sessions
         }
@@ -86,9 +86,9 @@ export const getGroupedFavorites = createSelector(
       }
     });
     return {
-      date: schedule.date,
+      date: glsl.date,
       groups
-    } as Schedule;
+    } as Glsl;
   }
 );
 

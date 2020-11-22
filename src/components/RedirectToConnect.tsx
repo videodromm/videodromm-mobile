@@ -11,7 +11,7 @@ const RedirectToConnect: React.FC<RedirectToConnectProps> = ({ setIsLoggedIn, se
   useEffect(() => {
     setIsLoggedIn(false);
     setHost(undefined);
-    ionRouterContext.push('/tabs/schedule')
+    ionRouterContext.push('/tabs/glsl')
   }, [setIsLoggedIn, setHost, ionRouterContext]);
   return null;
 };

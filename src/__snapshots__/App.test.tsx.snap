@@ -31,7 +31,7 @@ exports[`renders without crashing 1`] = `
                   slot="start"
                 />
                 <ion-label>
-                  Schedule
+                  Glsl
                 </ion-label>
               </ion-item>
             </ion-menu-toggle>
@@ -231,17 +231,17 @@ exports[`renders without crashing 1`] = `
             </ion-router-outlet>
           </div>
           <ion-tab-bar
-            current-path="/tabs/schedule"
-            selected-tab="schedule"
+            current-path="/tabs/glsl"
+            selected-tab="glsl"
             slot="bottom"
           >
             <ion-tab-button
-              href="/tabs/schedule"
-              tab="schedule"
+              href="/tabs/glsl"
+              tab="glsl"
             >
               <ion-icon />
               <ion-label>
-                Schedule
+                Glsl
               </ion-label>
             </ion-tab-button>
             <ion-tab-button

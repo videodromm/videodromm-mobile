@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { IonItemSliding, IonItem, IonLabel, IonItemOptions, IonItemOption, AlertButton } from '@ionic/react';
-import { Session } from '../models/Schedule';
+import { Session } from '../models/Glsl';
 
 interface SessionListItemProps {
   session: Session;
@@ -54,7 +54,7 @@ const SessionListItem: React.FC<SessionListItemProps> = ({ isFavorite, onAddFavo
 
   return (
     <IonItemSliding ref={ionItemSlidingRef} class={'track-' + session.tracks[0].toLowerCase()}>
-      <IonItem routerLink={`/tabs/schedule/${session.id}`}>
+      <IonItem routerLink={`/tabs/glsl/${session.id}`}>
         <IonLabel>
           <h3>{session.name}</h3>
           <p>
