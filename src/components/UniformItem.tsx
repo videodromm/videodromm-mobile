@@ -14,24 +14,13 @@ interface UniformItemProps {
 }
 
 const UniformItem: React.FC<UniformItemProps> = ({ uniform, shaders }) => {
-  const dialColors = ['#a70', '#f00', '#0f0', '#00f', '#aaa', '#f00', '#0f0', '#00f', '#370', '#ff0', '#fff', '#a0f', '#a70', '#270', '#fff', '#a0f', '#370', '#ff0'];
   let dialRefs = React.useRef([] as any[]);
   const emitToSocket = (value: number, index: number) => {
-    /*
-    CONNECTING	0
-    OPEN	1
-    CLOSING	2
-    CLOSED	3
-    */
     if (window.socket && window.socket.readyState === 1) {
       window.socket.send('{"params" :[{"name" : ' + index + ',"value" :' + value + '}]}');
       console.log(`UniformItem emitToSocket readyState val: ${value}, idx: ${index} `);
     } else {
       console.log(`UniformItem not ready val: ${value}, idx: ${index} `);
-      /* ko if (dialRefs[1]) {
-        console.log(`emitToSocket dialRefs[0]: ${dialRefs[0]},  ${JSON.stringify(dialRefs[0])} `);
-        dialRefs[1].value = 0.5;
-      }*/
     }
 
   };
@@ -47,7 +36,7 @@ const UniformItem: React.FC<UniformItemProps> = ({ uniform, shaders }) => {
               key={1}
               onReady={dialRef => {
                 dialRefs.current.push(dialRef);
-                dialRef.colorize("accent", dialColors[uniform.id]);
+                dialRef.colorize("accent", uniform.color);
               }}
               onChange={value => {
                 emitToSocket(value, uniform.id);
@@ -69,7 +58,7 @@ const UniformItem: React.FC<UniformItemProps> = ({ uniform, shaders }) => {
         <Slider size={[120, 20]}
               onReady={dialRef => {
                 dialRefs.current.push(dialRef);
-                dialRef.colorize("accent", dialColors[uniform.id]);
+                dialRef.colorize("accent", uniform.color);
               }}
               onChange={value => {
                 emitToSocket(value, uniform.id);

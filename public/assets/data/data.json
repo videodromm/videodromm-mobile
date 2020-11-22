@@ -57,8 +57,7 @@
       "about": "(foreground)",
       "title": "Red",
       "author": "Everywhere",
-      "email": "burt@example.com",
-      "phone": "+1-541-754-3010",
+      "color": "#f00",
       "id": "1"
     },
     {
@@ -67,8 +66,7 @@
       "about": "(foreground)",
       "title": "Green",
       "author": "Everywhere",
-      "email": "ted@example.com",
-      "phone": "+1-541-754-3010",
+      "color": "#0f0",
       "id": "2"
     },
     {
@@ -77,8 +75,7 @@
       "about": "(foreground)",
       "title": "Blue",
       "author": "Everywhere",
-      "email": "ted@example.com",
-      "phone": "+1-541-754-3010",
+      "color": "#00f",
       "id": "3"
     },
     {
@@ -87,8 +84,7 @@
       "about": "(foreground)",
       "title": "Alpha",
       "author": "Everywhere",
-      "email": "ted@example.com",
-      "phone": "+1-541-754-3010",
+      "color": "#aaa",
       "id": "4"
     }
   ],

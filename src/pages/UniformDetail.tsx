@@ -5,7 +5,7 @@ import './UniformDetail.scss';
 
 import { ActionSheetButton } from '@ionic/core';
 import { IonActionSheet, IonChip, IonIcon, IonHeader, IonLabel, IonToolbar, IonButtons, IonContent, IonButton, IonBackButton, IonPage } from '@ionic/react'
-import { callOutline, callSharp, logoGithub, shareOutline, shareSharp } from 'ionicons/icons';
+import { callOutline, callSharp } from 'ionicons/icons';
 
 import { connect } from '../data/connect';
 import * as selectors from '../data/selectors';
@@ -35,19 +35,6 @@ const UniformDetail: React.FC<UniformDetailProps> = ({ uniform }) => {
         handler: () => {
           console.log('Copy Link clicked');
         }
-      },
-      {
-        text: 'Share via ...',
-        handler: () => {
-          console.log('Share via clicked');
-        }
-      },
-      {
-        text: 'Cancel',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel clicked');
-        }
       }
     ]);
     setActionSheetHeader(`Share ${uniform.name}`);
@@ -57,15 +44,9 @@ const UniformDetail: React.FC<UniformDetailProps> = ({ uniform }) => {
   function openContact(uniform: Uniform) {
     setActionSheetButtons([
       {
-        text: `Email ( ${uniform.email} )`,
+        text: `color ( ${uniform.color} )`,
         handler: () => {
-          window.open('mailto:' + uniform.email);
-        }
-      },
-      {
-        text: `Call ( ${uniform.phone} )`,
-        handler: () => {
-          window.open('tel:' + uniform.phone);
+          window.open('mailto:' + uniform.color);
         }
       }
     ]);
@@ -93,9 +74,7 @@ const UniformDetail: React.FC<UniformDetailProps> = ({ uniform }) => {
               <IonButton onClick={() => openContact(uniform)}>
                 <IonIcon slot="icon-only" ios={callOutline} md={callSharp}></IonIcon>
               </IonButton>
-              <IonButton onClick={() => openUniformShare(uniform)}>
-                <IonIcon slot="icon-only" ios={shareOutline} md={shareSharp}></IonIcon>
-              </IonButton>
+
             </IonButtons>
           </IonToolbar>
         </IonHeader>
@@ -109,13 +88,6 @@ const UniformDetail: React.FC<UniformDetailProps> = ({ uniform }) => {
           <p>{uniform.about} Detail</p>
 
           <hr/>
-
-
-
-          <IonChip color="dark" onClick={() => openExternalUrl('https://github.com/ionic-team/ionic')}>
-            <IonIcon icon={logoGithub}></IonIcon>
-            <IonLabel>GitHub</IonLabel>
-          </IonChip>
 
         </div>
       </IonContent>

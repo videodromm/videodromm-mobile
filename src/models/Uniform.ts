@@ -4,6 +4,5 @@ export interface Uniform {
   thumbnail: string;
   about: string;
   title: string;
-  email: string;
-  phone: string;
+  color: string;
 }

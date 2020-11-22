@@ -40,6 +40,21 @@ const Connect: React.FC<ConnectProps> = ({setIsLoggedIn, history, setHost: setHo
       history.push('/support', {direction: 'none'});
     }
   };
+  const local = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormSubmitted(true);
+
+    if(!port) {
+      setPortError(true);
+    }
+
+    if(port) {
+      //await setIsLoggedIn(true);
+      await setHostAction(`ws://127.0.0.1:${port}`);
+      setShowToast(true);
+      history.push('/support', {direction: 'none'});
+    }
+  };
 
   return (
     <IonPage id="connect-page">
@@ -89,10 +104,30 @@ const Connect: React.FC<ConnectProps> = ({setIsLoggedIn, history, setHost: setHo
             <IonCol>
               <IonButton type="submit">Connect</IonButton>
             </IonCol>
-
           </IonRow>
         </form>
+        <form noValidate onSubmit={local}>
+          <IonList>
 
+            <IonItem>
+              <IonLabel position="stacked" color="primary">Port</IonLabel>
+              <IonInput name="port" type="text" value={port} onIonChange={e => setPort(e.detail.value!)}>
+              </IonInput>
+            </IonItem>
+
+            {formSubmitted && portError && <IonText color="danger">
+              <p className="ion-padding-start">
+                Port is required
+              </p>
+            </IonText>}
+          </IonList>
+
+          <IonRow>
+            <IonCol>
+              <IonButton type="submit">Local</IonButton>
+            </IonCol>
+          </IonRow>
+        </form>
       </IonContent>
       <IonToast
         isOpen={showToast}
