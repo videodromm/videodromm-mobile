@@ -12,7 +12,7 @@
               "thumbnail": "/assets/img/gif/nanotubes.gif",
               "timeStart": "8:00 am",
               "timeEnd": "9:00 am",
-              "location": "Dining Hall",
+              "author": "author",
               "tags": ["Audio"],
               "id": "1"
             }
@@ -24,7 +24,7 @@
             {
               "name": "Noise electric",
               "thumbnail": "/assets/img/gif/NoiseAnimation3D.gif",
-              "location": "Hall 2",
+              "author": "author",
               "description": "d",
               "uniformNames": ["r"],
               "timeStart": "9:30 am",
@@ -35,7 +35,7 @@
             {
               "name": "Onyx",
               "thumbnail": "/assets/img/gif/Onyx.gif",
-              "location": "Executive Ballroom",
+              "author": "author",
               "description": "Mobile devices and browsers are now advanced enough that developers can build native-quality mobile apps using open web technologies like HTML5, Javascript, and CSS. In this talk, we’ll provide background on why and how we created Ionic, the design decisions made as we integrated Ionic with Angular, and the performance considerations for mobile platforms that our team had to overcome. We’ll also review new and upcoming Ionic features, and talk about the hidden powers and benefits of combining mobile app development and Angular.",
               "uniformNames": ["g","r"],
               "timeStart": "9:45 am",
@@ -53,11 +53,9 @@
     {
       "name": "r",
       "thumbnail": "/assets/img/gif/2TweetsChallenge.gif",
-      "instagram": "ionicframework",
-      "twitter": "ionicframework",
       "about": "(foreground)",
       "title": "Red",
-      "location": "Everywhere",
+      "author": "Everywhere",
       "email": "burt@example.com",
       "phone": "+1-541-754-3010",
       "id": "1"
@@ -67,11 +65,9 @@
     {
       "name": "g",
       "thumbnail": "/assets/img/gif/128690.gif",
-      "instagram": "ionicframework",
-      "twitter": "ionicframework",
       "about": "(foreground)",
       "title": "Green",
-      "location": "Everywhere",
+      "author": "Everywhere",
       "email": "ted@example.com",
       "phone": "+1-541-754-3010",
       "id": "2"

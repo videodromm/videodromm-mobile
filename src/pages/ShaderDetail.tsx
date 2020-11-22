@@ -70,7 +70,7 @@ const ShaderDetail: React.FC<ShaderDetailProps> = ({ shader, addFavorite, remove
           <IonText color="medium">
             {shader.timeStart} &ndash; {shader.timeEnd}
             <br />
-            {shader.location}
+            {shader.author}
           </IonText>
         </div>
         <IonList>

@@ -14,7 +14,7 @@ export interface Shader {
   timeStart: string;
   timeEnd: string;
   name: string;
-  location: string;
+  author: string;
   description: string;
   uniformNames: string[];
   tags: string[];

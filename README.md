@@ -19,4 +19,4 @@
 * `npx cap sync`
 
 ## Websockets
-* <application android:usesCleartextTraffic="true" />
+* `<application android:usesCleartextTraffic="true" />`

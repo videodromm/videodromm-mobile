@@ -61,7 +61,7 @@ const ShaderListItem: React.FC<ShaderListItemProps> = ({ isFavorite, onAddFavori
           <p>
             {shader.timeStart}&mdash;&nbsp;
             {shader.timeStart}&mdash;&nbsp;
-            {shader.location}
+            {shader.author}
           </p>
         </IonLabel>
       </IonItem>
