@@ -1,9 +1,9 @@
 import { Location } from '../../models/Location';
 import { Uniform } from '../../models/Uniform';
-import { Glsl, Session } from '../../models/Glsl';
+import { Glsl, Shader } from '../../models/Glsl';
 export interface ConfState {
   glsl: Glsl;
-  sessions: Session[];
+  shaders: Shader[];
   uniforms: Uniform[];
   favorites: number[];
   locations: Location[];

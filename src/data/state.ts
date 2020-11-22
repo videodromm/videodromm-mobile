@@ -1,11 +1,11 @@
 import { combineReducers } from './combineReducers';
-import { sessionsReducer } from './sessions/sessions.reducer';
+import { shadersReducer } from './shaders/shaders.reducer';
 import { userReducer } from './user/user.reducer';
 
 export const initialState: AppState = {
   data: {
     glsl: { groups: [] } as any,
-    sessions: [],
+    shaders: [],
     uniforms: [],
     favorites: [],
     locations: [],
@@ -24,7 +24,7 @@ export const initialState: AppState = {
 };
 
 export const reducers = combineReducers({
-  data: sessionsReducer,
+  data: shadersReducer,
   user: userReducer
 });
 

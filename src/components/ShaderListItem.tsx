@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import { IonItemSliding, IonItem, IonLabel, IonItemOptions, IonItemOption, AlertButton } from '@ionic/react';
-import { Session } from '../models/Glsl';
+import { Shader } from '../models/Glsl';
 
-interface SessionListItemProps {
-  session: Session;
+interface ShaderListItemProps {
+  shader: Shader;
   listType: "all" | "favorites";
   onAddFavorite: (id: number) => void;
   onRemoveFavorite: (id: number) => void;
@@ -11,15 +11,15 @@ interface SessionListItemProps {
   isFavorite: boolean;
 }
 
-const SessionListItem: React.FC<SessionListItemProps> = ({ isFavorite, onAddFavorite, onRemoveFavorite, onShowAlert, session, listType }) => {
+const ShaderListItem: React.FC<ShaderListItemProps> = ({ isFavorite, onAddFavorite, onRemoveFavorite, onShowAlert, shader, listType }) => {
   const ionItemSlidingRef = useRef<HTMLIonItemSlidingElement>(null)
 
   const dismissAlert = () => {
     ionItemSlidingRef.current && ionItemSlidingRef.current.close();
   }
 
-  const removeFavoriteSession = () => {
-    onAddFavorite(session.id);
+  const removeFavoriteShader = () => {
+    onAddFavorite(shader.id);
     onShowAlert('Favorite already added', [
       {
         text: 'Cancel',
@@ -28,21 +28,21 @@ const SessionListItem: React.FC<SessionListItemProps> = ({ isFavorite, onAddFavo
       {
         text: 'Remove',
         handler: () => {
-          onRemoveFavorite(session.id);
+          onRemoveFavorite(shader.id);
           dismissAlert();
         }
       }
     ]);
   }
 
-  const addFavoriteSession = () => {
+  const addFavoriteShader = () => {
     if (isFavorite) {
       // woops, they already favorited it! What shall we do!?
       // prompt them to remove it
-      removeFavoriteSession();
+      removeFavoriteShader();
     } else {
-      // remember this session as a user favorite
-      onAddFavorite(session.id);
+      // remember this shader as a user favorite
+      onAddFavorite(shader.id);
       onShowAlert('Favorite Added', [
         {
           text: 'OK',
@@ -53,24 +53,24 @@ const SessionListItem: React.FC<SessionListItemProps> = ({ isFavorite, onAddFavo
   };
 
   return (
-    <IonItemSliding ref={ionItemSlidingRef} class={'track-' + session.tracks[0].toLowerCase()}>
-      <IonItem routerLink={`/tabs/glsl/${session.id}`}>
+    <IonItemSliding ref={ionItemSlidingRef} class={'track-' + shader.tracks[0].toLowerCase()}>
+      <IonItem routerLink={`/tabs/glsl/${shader.id}`}>
         <IonLabel>
-          <h3>{session.name}</h3>
+          <h3>{shader.name}</h3>
           <p>
-            {session.timeStart}&mdash;&nbsp;
-            {session.timeStart}&mdash;&nbsp;
-            {session.location}
+            {shader.timeStart}&mdash;&nbsp;
+            {shader.timeStart}&mdash;&nbsp;
+            {shader.location}
           </p>
         </IonLabel>
       </IonItem>
       <IonItemOptions>
         {listType === "favorites" ?
-          <IonItemOption color="danger" onClick={() => removeFavoriteSession()}>
+          <IonItemOption color="danger" onClick={() => removeFavoriteShader()}>
             Remove
           </IonItemOption>
           :
-          <IonItemOption color="favorite" onClick={addFavoriteSession}>
+          <IonItemOption color="favorite" onClick={addFavoriteShader}>
             Favorite
           </IonItemOption>
         }
@@ -79,4 +79,4 @@ const SessionListItem: React.FC<SessionListItemProps> = ({ isFavorite, onAddFavo
   );
 };
 
-export default React.memo(SessionListItem);
+export default React.memo(ShaderListItem);

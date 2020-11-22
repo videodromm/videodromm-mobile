@@ -6,7 +6,7 @@
       "groups": [
         {
           "time": "8:00 am",
-          "sessions": [
+          "shaders": [
             {
               "name": "Breakfast",
               "timeStart": "8:00 am",
@@ -19,7 +19,7 @@
         },
         {
           "time": "9:15 am",
-          "sessions": [
+          "shaders": [
             {
               "name": "Getting Started with Ionic",
               "location": "Hall 2",

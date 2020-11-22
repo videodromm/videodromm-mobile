@@ -4,15 +4,15 @@ import { connect } from '../data/connect';
 import { withRouter, RouteComponentProps } from 'react-router';
 import * as selectors from '../data/selectors';
 import { starOutline, star, share, cloudDownload } from 'ionicons/icons';
-import './SessionDetail.scss';
-import { addFavorite, removeFavorite } from '../data/sessions/sessions.actions';
-import { Session } from '../models/Glsl';
+import './ShaderDetail.scss';
+import { addFavorite, removeFavorite } from '../data/shaders/shaders.actions';
+import { Shader } from '../models/Glsl';
 
 interface OwnProps extends RouteComponentProps { };
 
 interface StateProps {
-  session?: Session;
-  favoriteSessions: number[],
+  shader?: Shader;
+  favoriteShaders: number[],
 };
 
 interface DispatchProps {
@@ -20,26 +20,26 @@ interface DispatchProps {
   removeFavorite: typeof removeFavorite;
 }
 
-type SessionDetailProps = OwnProps & StateProps & DispatchProps;
+type ShaderDetailProps = OwnProps & StateProps & DispatchProps;
 
-const SessionDetail: React.FC<SessionDetailProps> = ({ session, addFavorite, removeFavorite, favoriteSessions }) => {
+const ShaderDetail: React.FC<ShaderDetailProps> = ({ shader, addFavorite, removeFavorite, favoriteShaders }) => {
 
-  if (!session) {
-    return <div>Session not found</div>
+  if (!shader) {
+    return <div>Shader not found</div>
   }
 
-  const isFavorite = favoriteSessions.indexOf(session.id) > -1;
+  const isFavorite = favoriteShaders.indexOf(shader.id) > -1;
 
   const toggleFavorite = () => {
-    isFavorite ? removeFavorite(session.id) : addFavorite(session.id);
+    isFavorite ? removeFavorite(shader.id) : addFavorite(shader.id);
   };
-  const shareSession = () => { };
-  const sessionClick = (text: string) => {
+  const shareShader = () => { };
+  const shaderClick = (text: string) => {
     console.log(`Clicked ${text}`);
   };
 
   return (
-    <IonPage id="session-detail-page">
+    <IonPage id="shader-detail-page">
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
@@ -52,7 +52,7 @@ const SessionDetail: React.FC<SessionDetailProps> = ({ session, addFavorite, rem
                 <IonIcon slot="icon-only" icon={starOutline}></IonIcon>
               }
             </IonButton>
-            <IonButton onClick={() => shareSession}>
+            <IonButton onClick={() => shareShader}>
               <IonIcon slot="icon-only" icon={share}></IonIcon>
             </IonButton>
           </IonButtons>
@@ -60,32 +60,32 @@ const SessionDetail: React.FC<SessionDetailProps> = ({ session, addFavorite, rem
       </IonHeader>
       <IonContent>
         <div className="ion-padding">
-          <h1>{session.name}</h1>
-          {session.tracks.map(track => (
-            <span key={track} className={`session-track-${track.toLowerCase()}`}>{track}</span>
+          <h1>{shader.name}</h1>
+          {shader.tracks.map(track => (
+            <span key={track} className={`shader-track-${track.toLowerCase()}`}>{track}</span>
           ))}
-          <p>{session.description}</p>
+          <p>{shader.description}</p>
           <IonText color="medium">
-            {session.timeStart} &ndash; {session.timeEnd}
+            {shader.timeStart} &ndash; {shader.timeEnd}
             <br />
-            {session.location}
+            {shader.location}
           </IonText>
         </div>
         <IonList>
-          <IonItem onClick={() => sessionClick('watch')} button>
+          <IonItem onClick={() => shaderClick('watch')} button>
             <IonLabel color="primary">Watch</IonLabel>
           </IonItem>
-          <IonItem onClick={() => sessionClick('add to calendar')} button>
+          <IonItem onClick={() => shaderClick('add to calendar')} button>
             <IonLabel color="primary">Add to Calendar</IonLabel>
           </IonItem>
-          <IonItem onClick={() => sessionClick('mark as unwatched')} button>
+          <IonItem onClick={() => shaderClick('mark as unwatched')} button>
             <IonLabel color="primary">Mark as Unwatched</IonLabel>
           </IonItem>
-          <IonItem onClick={() => sessionClick('download video')} button>
+          <IonItem onClick={() => shaderClick('download video')} button>
             <IonLabel color="primary">Download Video</IonLabel>
             <IonIcon slot="end" color="primary" size="small" icon={cloudDownload}></IonIcon>
           </IonItem>
-          <IonItem onClick={() => sessionClick('leave feedback')} button>
+          <IonItem onClick={() => shaderClick('leave feedback')} button>
             <IonLabel color="primary">Leave Feedback</IonLabel>
           </IonItem>
         </IonList>
@@ -96,12 +96,12 @@ const SessionDetail: React.FC<SessionDetailProps> = ({ session, addFavorite, rem
 
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state, OwnProps) => ({
-    session: selectors.getSession(state, OwnProps),
-    favoriteSessions: state.data.favorites
+    shader: selectors.getShader(state, OwnProps),
+    favoriteShaders: state.data.favorites
   }),
   mapDispatchToProps: {
     addFavorite,
     removeFavorite
   },
-  component: withRouter(SessionDetail)
+  component: withRouter(ShaderDetail)
 })

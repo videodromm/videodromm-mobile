@@ -1,5 +1,5 @@
 import { Plugins } from '@capacitor/core';
-import { Glsl, Session } from '../models/Glsl';
+import { Glsl, Shader } from '../models/Glsl';
 import { Uniform } from '../models/Uniform';
 import { Location } from '../models/Location';
 
@@ -19,17 +19,17 @@ export const getConfData = async () => {
     fetch(locationsUrl)]);
   const responseData = await response[0].json();
   const glsl = responseData.glsl[0] as Glsl;
-  const sessions = parseSessions(glsl);
+  const shaders = parseShaders(glsl);
   const uniforms = responseData.uniforms as Uniform[];
   const locations = await response[1].json() as Location[];
-  const allTracks = sessions
-    .reduce((all, session) => all.concat(session.tracks), [] as string[])
+  const allTracks = shaders
+    .reduce((all, shader) => all.concat(shader.tracks), [] as string[])
     .filter((trackName, index, array) => array.indexOf(trackName) === index)
     .sort();
 
   const data = {
     glsl,
-    sessions,
+    shaders,
     locations,
     uniforms,
     allTracks,
@@ -122,10 +122,10 @@ export const setHostData = async (host?: string) => {
   }
 }
 
-function parseSessions(glsl: Glsl) {
-  const sessions: Session[] = [];
+function parseShaders(glsl: Glsl) {
+  const shaders: Shader[] = [];
   glsl.groups.forEach(g => {
-    g.sessions.forEach(s => sessions.push(s))
+    g.shaders.forEach(s => shaders.push(s))
   });
-  return sessions;
+  return shaders;
 }

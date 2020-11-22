@@ -187,7 +187,7 @@ exports[`renders without crashing 1`] = `
                   </ion-refresher>
                   <ion-list>
                     <ion-list-header>
-                      No Sessions Found
+                      No Shaders Found
                     </ion-list-header>
                   </ion-list>
                   <ion-list

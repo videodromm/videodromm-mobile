@@ -5,7 +5,7 @@ import { calendar, location, informationCircle, people } from 'ionicons/icons';
 import GlslPage from './GlslPage';
 import UniformList from './UniformList';
 import UniformDetail from './UniformDetail';
-import SessionDetail from './SessionDetail';
+import ShaderDetail from './ShaderDetail';
 import MapView from './MapView';
 import About from './About';
 
@@ -24,8 +24,8 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         <Route path="/tabs/glsl" render={() => <GlslPage />} exact={true} />
         <Route path="/tabs/uniforms" render={() => <UniformList />} exact={true} />
         <Route path="/tabs/uniforms/:id" component={UniformDetail} exact={true} />
-        <Route path="/tabs/glsl/:id" component={SessionDetail} />
-        <Route path="/tabs/uniforms/sessions/:id" component={SessionDetail} />
+        <Route path="/tabs/glsl/:id" component={ShaderDetail} />
+        <Route path="/tabs/uniforms/shaders/:id" component={ShaderDetail} />
         <Route path="/tabs/map" render={() => <MapView />} exact={true} />
         <Route path="/tabs/about" render={() => <About />} exact={true} />
       </IonRouterOutlet>

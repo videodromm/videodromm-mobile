@@ -5,10 +5,10 @@ export interface Glsl {
 
 export interface GlslGroup {
   time: string;
-  sessions: Session[];
+  shaders: Shader[];
 }
 
-export interface Session {
+export interface Shader {
   id: number;
   timeStart: string;
   timeEnd: string;

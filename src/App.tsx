@@ -26,7 +26,7 @@ import './theme/variables.css';
 import MainTabs from './pages/MainTabs';
 import { connect } from './data/connect';
 import { AppContextProvider } from './data/AppContext';
-import { loadConfData } from './data/sessions/sessions.actions';
+import { loadConfData } from './data/shaders/shaders.actions';
 import { setIsLoggedIn, setHost, loadUserData } from './data/user/user.actions';
 import Account from './pages/Account';
 import Connect from './pages/Connect';

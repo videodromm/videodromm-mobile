@@ -3,15 +3,15 @@ import React, { useState, useRef } from 'react';
 import { IonToolbar, IonContent, IonPage, IonButtons, IonTitle, IonMenuButton, IonSegment, IonSegmentButton, IonButton, IonIcon, IonSearchbar, IonRefresher, IonRefresherContent, IonToast, IonModal, IonHeader, getConfig } from '@ionic/react';
 import { options, search } from 'ionicons/icons';
 
-import SessionList from '../components/SessionList';
-import SessionListFilter from '../components/SessionListFilter';
+import ShaderList from '../components/ShaderList';
+import ShaderListFilter from '../components/ShaderListFilter';
 import './GlslPage.scss'
 
 import ShareSocialFab from '../components/ShareSocialFab';
 
 import * as selectors from '../data/selectors';
 import { connect } from '../data/connect';
-import { setSearchText } from '../data/sessions/sessions.actions';
+import { setSearchText } from '../data/shaders/shaders.actions';
 import { Glsl } from '../models/Glsl';
 
 interface OwnProps { }
@@ -121,12 +121,12 @@ const GlslPage: React.FC<GlslPageProps> = ({ favoritesGlsl, glsl, setSearchText,
           onDidDismiss={() => setShowCompleteToast(false)}
         />
 
-        <SessionList
+        <ShaderList
           glsl={glsl}
           listType={segment}
           hide={segment === 'favorites'}
         />
-        <SessionList
+        <ShaderList
           // glsl={glsl}
           glsl={favoritesGlsl}
           listType={segment}
@@ -139,9 +139,9 @@ const GlslPage: React.FC<GlslPageProps> = ({ favoritesGlsl, glsl, setSearchText,
         onDidDismiss={() => setShowFilterModal(false)}
         swipeToClose={true}
         presentingElement={pageRef.current!}
-        cssClass="session-list-filter"
+        cssClass="shader-list-filter"
       >
-        <SessionListFilter
+        <ShaderListFilter
           onDismissModal={() => setShowFilterModal(false)}
         />
       </IonModal>

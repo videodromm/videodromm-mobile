@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { Glsl, Session, GlslGroup } from '../models/Glsl';
+import { Glsl, Shader, GlslGroup } from '../models/Glsl';
 import { AppState } from './state';
 
 const getGlsl = (state: AppState) => {
@@ -7,7 +7,7 @@ const getGlsl = (state: AppState) => {
   return state.data.glsl
 };
 export const getUniforms = (state: AppState) => state.data.uniforms;
-const getSessions = (state: AppState) => state.data.sessions;
+const getShaders = (state: AppState) => state.data.shaders;
 const getFilteredTracks = (state: AppState) => state.data.filteredTracks;
 const getFavoriteIds = (state: AppState) => state.data.favorites;
 const getSearchText = (state: AppState) => state.data.searchText;
@@ -17,18 +17,18 @@ export const getFilteredGlsl = createSelector(
   (glsl, filteredTracks) => {
     const groups: GlslGroup[] = [];
     glsl.groups.forEach(group => {
-      const sessions: Session[] = [];
-      group.sessions.forEach(session => {
-        session.tracks.forEach(track => {
+      const shaders: Shader[] = [];
+      group.shaders.forEach(shader => {
+        shader.tracks.forEach(track => {
           if (filteredTracks.indexOf(track) > -1) {
-            sessions.push(session);
+            shaders.push(shader);
           }
         })
       })
-      if (sessions.length) {
+      if (shaders.length) {
         const groupToAdd: GlslGroup = {
           time: group.time,
-          sessions
+          shaders
         }
         groups.push(groupToAdd);
       }
@@ -50,11 +50,11 @@ export const getSearchedGlsl = createSelector(
     const groups: GlslGroup[] = [];
     glsl.groups.forEach(group => {
 
-      const sessions = group.sessions.filter(s => s.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1)
-      if (sessions.length) {
+      const shaders = group.shaders.filter(s => s.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1)
+      if (shaders.length) {
         const groupToAdd: GlslGroup = {
           time: group.time,
-          sessions
+          shaders
         }
         groups.push(groupToAdd);
       }
@@ -76,11 +76,11 @@ export const getGroupedFavorites = createSelector(
   (glsl, favoriteIds) => {
     const groups: GlslGroup[] = [];
     glsl.groups.forEach(group => {
-      const sessions = group.sessions.filter(s => favoriteIds.indexOf(s.id) > -1)
-      if (sessions.length) {
+      const shaders = group.shaders.filter(s => favoriteIds.indexOf(s.id) > -1)
+      if (shaders.length) {
         const groupToAdd: GlslGroup = {
           time: group.time,
-          sessions
+          shaders
         }
         groups.push(groupToAdd);
       }
@@ -97,10 +97,10 @@ const getIdParam = (_state: AppState, props: any) => {
   return props.match.params['id'];
 }
 
-export const getSession = createSelector(
-  getSessions, getIdParam,
-  (sessions, id) => {
-    return sessions.find(s => s.id === id);
+export const getShader = createSelector(
+  getShaders, getIdParam,
+  (shaders, id) => {
+    return shaders.find(s => s.id === id);
   }
 );
 
@@ -109,21 +109,21 @@ export const getUniform = createSelector(
   (uniforms, id) => uniforms.find(x => x.id === id)
 );
 
-export const getUniformSessions = createSelector(
-  getSessions,
-  (sessions) => {
-    const uniformSessions: { [key: string]: Session[] } = {};
+export const getUniformShaders = createSelector(
+  getShaders,
+  (shaders) => {
+    const uniformShaders: { [key: string]: Shader[] } = {};
 
-    sessions.forEach(session => {
-      session.uniformNames && session.uniformNames.forEach(name => {
-        if (uniformSessions[name]) {
-          uniformSessions[name].push(session);
+    shaders.forEach(shader => {
+      shader.uniformNames && shader.uniformNames.forEach(name => {
+        if (uniformShaders[name]) {
+          uniformShaders[name].push(shader);
         } else {
-          uniformSessions[name] = [session];
+          uniformShaders[name] = [shader];
         }
       })
     });
-    return uniformSessions;
+    return uniformShaders;
   }
 );
 

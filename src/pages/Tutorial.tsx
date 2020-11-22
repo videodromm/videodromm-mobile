@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { IonContent, IonPage, IonHeader, IonToolbar, IonButtons, IonButton, IonSlides, IonSlide, IonIcon, useIonViewWillEnter } from '@ionic/react';
 import { arrowForward } from 'ionicons/icons';
-import { setMenuEnabled } from '../data/sessions/sessions.actions';
+import { setMenuEnabled } from '../data/shaders/shaders.actions';
 import { setHasSeenTutorial } from '../data/user/user.actions';
 import './Tutorial.scss';
 import { connect } from '../data/connect';

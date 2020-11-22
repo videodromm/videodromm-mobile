@@ -2,7 +2,7 @@ import React from 'react';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonGrid, IonRow, IonCol } from '@ionic/react';
 import UniformItem from '../components/UniformItem';
 import { Uniform } from '../models/Uniform';
-import { Session } from '../models/Glsl';
+import { Shader } from '../models/Glsl';
 import { connect } from '../data/connect';
 import * as selectors from '../data/selectors';
 import './UniformList.scss';
@@ -11,14 +11,14 @@ interface OwnProps { };
 
 interface StateProps {
   uniforms: Uniform[];
-  uniformSessions: { [key: string]: Session[] };
+  uniformShaders: { [key: string]: Shader[] };
 };
 
 interface DispatchProps { };
 
 interface UniformListProps extends OwnProps, StateProps, DispatchProps { };
 
-const UniformList: React.FC<UniformListProps> = ({ uniforms, uniformSessions }) => {
+const UniformList: React.FC<UniformListProps> = ({ uniforms, uniformShaders }) => {
 
   return (
     <IonPage id="uniform-list">
@@ -45,7 +45,7 @@ const UniformList: React.FC<UniformListProps> = ({ uniforms, uniformSessions }) 
                   <UniformItem
                     key={uniform.id}
                     uniform={uniform}
-                    sessions={uniformSessions[uniform.name]}
+                    shaders={uniformShaders[uniform.name]}
                   />
                 </IonCol>
               ))}
@@ -59,7 +59,7 @@ const UniformList: React.FC<UniformListProps> = ({ uniforms, uniformSessions }) 
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
     uniforms: selectors.getUniforms(state),
-    uniformSessions: selectors.getUniformSessions(state)
+    uniformShaders: selectors.getUniformShaders(state)
   }),
   component: React.memo(UniformList)
 });

@@ -1,15 +1,15 @@
 import React from 'react';
-import { Session } from '../models/Glsl';
+import { Shader } from '../models/Glsl';
 import { Uniform } from '../models/Uniform';
 import { IonCard, IonCardHeader, IonItem, IonLabel, IonAvatar, IonCardContent, IonList } from '@ionic/react';
 
 
 interface UniformItemProps {
   uniform: Uniform;
-  sessions: Session[];
+  shaders: Shader[];
 }
 
-const UniformItem: React.FC<UniformItemProps> = ({ uniform, sessions }) => {
+const UniformItem: React.FC<UniformItemProps> = ({ uniform, shaders }) => {
   return (
     <>
       <IonCard className="uniform-card">
@@ -27,10 +27,10 @@ const UniformItem: React.FC<UniformItemProps> = ({ uniform, sessions }) => {
 
         <IonCardContent>
           <IonList lines="none">
-            {sessions.map(session => (
-              <IonItem detail={false} routerLink={`/tabs/uniforms/sessions/${session.id}`} key={session.name}>
+            {shaders.map(shader => (
+              <IonItem detail={false} routerLink={`/tabs/uniforms/shaders/${shader.id}`} key={shader.name}>
                 <IonLabel>
-                  <h3>{session.name}</h3>
+                  <h3>{shader.name}</h3>
                 </IonLabel>
               </IonItem>
             ))}

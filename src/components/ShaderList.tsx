@@ -1,9 +1,9 @@
 import { IonItemDivider, IonItemGroup, IonLabel, IonList, IonListHeader, IonAlert, AlertButton } from '@ionic/react';
 import React, { useState, useCallback } from 'react';
-import { Glsl, Session } from '../models/Glsl';
-import SessionListItem from './SessionListItem';
+import { Glsl, Shader } from '../models/Glsl';
+import ShaderListItem from './ShaderListItem';
 import { connect } from '../data/connect';
-import { addFavorite, removeFavorite } from '../data/sessions/sessions.actions';
+import { addFavorite, removeFavorite } from '../data/shaders/shaders.actions';
 
 interface OwnProps {
   glsl: Glsl;
@@ -12,7 +12,7 @@ interface OwnProps {
 }
 
 interface StateProps {
-  favoriteSessions: number[];
+  favoriteShaders: number[];
 }
 
 interface DispatchProps {
@@ -20,9 +20,9 @@ interface DispatchProps {
   removeFavorite: typeof removeFavorite;
 }
 
-interface SessionListProps extends OwnProps, StateProps, DispatchProps { };
+interface ShaderListProps extends OwnProps, StateProps, DispatchProps { };
 
-const SessionList: React.FC<SessionListProps> = ({ addFavorite, removeFavorite, favoriteSessions, hide, glsl, listType }) => {
+const ShaderList: React.FC<ShaderListProps> = ({ addFavorite, removeFavorite, favoriteShaders, hide, glsl, listType }) => {
 
   const [showAlert, setShowAlert] = useState(false);
   const [alertHeader, setAlertHeader] = useState('');
@@ -38,7 +38,7 @@ const SessionList: React.FC<SessionListProps> = ({ addFavorite, removeFavorite, 
     return (
       <IonList>
         <IonListHeader>
-          No Sessions Found
+          No Shaders Found
         </IonListHeader>
       </IonList>
     );
@@ -54,14 +54,14 @@ const SessionList: React.FC<SessionListProps> = ({ addFavorite, removeFavorite, 
                 {group.time}
               </IonLabel>
             </IonItemDivider>
-            {group.sessions.map((session: Session, sessionIndex: number) => (
-              <SessionListItem
+            {group.shaders.map((shader: Shader, shaderIndex: number) => (
+              <ShaderListItem
                 onShowAlert={handleShowAlert}
-                isFavorite={favoriteSessions.indexOf(session.id) > -1}
+                isFavorite={favoriteShaders.indexOf(shader.id) > -1}
                 onAddFavorite={addFavorite}
                 onRemoveFavorite={removeFavorite}
-                key={`group-${index}-${sessionIndex}`}
-                session={session}
+                key={`group-${index}-${shaderIndex}`}
+                shader={shader}
                 listType={listType}
               />
             ))}
@@ -80,11 +80,11 @@ const SessionList: React.FC<SessionListProps> = ({ addFavorite, removeFavorite, 
 
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
-    favoriteSessions: state.data.favorites
+    favoriteShaders: state.data.favorites
   }),
   mapDispatchToProps: ({
     addFavorite,
     removeFavorite
   }),
-  component: SessionList
+  component: ShaderList
 });
