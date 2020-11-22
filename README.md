@@ -17,6 +17,7 @@
 ## Android
 * `npm run build`
 * `npx cap sync`
+* `npm run ionic:build`
 
 ## Websockets
 * `<application android:usesCleartextTraffic="true" />`
