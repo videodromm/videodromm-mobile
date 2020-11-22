@@ -7,10 +7,10 @@ export interface GlslState {
   uniforms: Uniform[];
   favorites: number[];
   locations: Location[];
-  filteredTracks: string[];
+  filteredTags: string[];
   searchText?: string;
   mapCenterId?: number;
   loading?: boolean;
-  allTracks: string[];
+  allTags: string[];
   menuEnabled: boolean;
 }

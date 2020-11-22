@@ -22,8 +22,8 @@ export const getGlslData = async () => {
   const shaders = parseShaders(glsl);
   const uniforms = responseData.uniforms as Uniform[];
   const locations = await response[1].json() as Location[];
-  const allTracks = shaders
-    .reduce((all, shader) => all.concat(shader.tracks), [] as string[])
+  const allTags = shaders
+    .reduce((all, shader) => all.concat(shader.tags), [] as string[])
     .filter((trackName, index, array) => array.indexOf(trackName) === index)
     .sort();
 
@@ -32,8 +32,8 @@ export const getGlslData = async () => {
     shaders,
     locations,
     uniforms,
-    allTracks,
-    filteredTracks: [...allTracks]
+    allTags,
+    filteredTags: [...allTags]
   }
   return data;
 }

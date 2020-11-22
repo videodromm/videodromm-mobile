@@ -8,19 +8,19 @@ const getGlsl = (state: AppState) => {
 };
 export const getUniforms = (state: AppState) => state.data.uniforms;
 const getShaders = (state: AppState) => state.data.shaders;
-const getFilteredTracks = (state: AppState) => state.data.filteredTracks;
+const getFilteredTags = (state: AppState) => state.data.filteredTags;
 const getFavoriteIds = (state: AppState) => state.data.favorites;
 const getSearchText = (state: AppState) => state.data.searchText;
 
 export const getFilteredGlsl = createSelector(
-  getGlsl, getFilteredTracks,
-  (glsl, filteredTracks) => {
+  getGlsl, getFilteredTags,
+  (glsl, filteredTags) => {
     const groups: GlslGroup[] = [];
     glsl.groups.forEach(group => {
       const shaders: Shader[] = [];
       group.shaders.forEach(shader => {
-        shader.tracks.forEach(track => {
-          if (filteredTracks.indexOf(track) > -1) {
+        shader.tags.forEach(tag => {
+          if (filteredTags.indexOf(tag) > -1) {
             shaders.push(shader);
           }
         })

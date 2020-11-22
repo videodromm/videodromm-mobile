@@ -10,12 +10,12 @@ export interface GlslGroup {
 
 export interface Shader {
   id: number;
-  profilePic: string;
+  thumbnail: string;
   timeStart: string;
   timeEnd: string;
   name: string;
   location: string;
   description: string;
   uniformNames: string[];
-  tracks: string[];
+  tags: string[];
 }

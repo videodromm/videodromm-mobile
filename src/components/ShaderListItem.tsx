@@ -53,11 +53,11 @@ const ShaderListItem: React.FC<ShaderListItemProps> = ({ isFavorite, onAddFavori
   };
 
   return (
-    <IonItemSliding ref={ionItemSlidingRef} class={'track-' + shader.tracks[0].toLowerCase()}>
+    <IonItemSliding ref={ionItemSlidingRef} class={'tag-' + shader.tags[0].toLowerCase()}>
       <IonItem routerLink={`/tabs/glsl/${shader.id}`}>
         <IonLabel>
           <h3>{shader.name}</h3>
-          <img src={process.env.PUBLIC_URL + shader.profilePic} alt="Uniform profile pic" />
+          <img src={process.env.PUBLIC_URL + shader.thumbnail} alt="thumbnail" />
           <p>
             {shader.timeStart}&mdash;&nbsp;
             {shader.timeStart}&mdash;&nbsp;

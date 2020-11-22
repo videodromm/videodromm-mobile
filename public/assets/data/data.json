@@ -9,11 +9,11 @@
           "shaders": [
             {
               "name": "nanotubes",
-              "profilePic": "/assets/img/gif/nanotubes.gif",
+              "thumbnail": "/assets/img/gif/nanotubes.gif",
               "timeStart": "8:00 am",
               "timeEnd": "9:00 am",
               "location": "Dining Hall",
-              "tracks": ["Audio"],
+              "tags": ["Audio"],
               "id": "1"
             }
           ]
@@ -23,24 +23,24 @@
           "shaders": [
             {
               "name": "Noise electric",
-              "profilePic": "/assets/img/gif/NoiseAnimation3D.gif",
+              "thumbnail": "/assets/img/gif/NoiseAnimation3D.gif",
               "location": "Hall 2",
               "description": "d",
               "uniformNames": ["r"],
               "timeStart": "9:30 am",
               "timeEnd": "9:45 am",
-              "tracks": ["2D"],
+              "tags": ["2D"],
               "id": "2"
             },
             {
               "name": "Onyx",
-              "profilePic": "/assets/img/gif/Onyx.gif",
+              "thumbnail": "/assets/img/gif/Onyx.gif",
               "location": "Executive Ballroom",
               "description": "Mobile devices and browsers are now advanced enough that developers can build native-quality mobile apps using open web technologies like HTML5, Javascript, and CSS. In this talk, we’ll provide background on why and how we created Ionic, the design decisions made as we integrated Ionic with Angular, and the performance considerations for mobile platforms that our team had to overcome. We’ll also review new and upcoming Ionic features, and talk about the hidden powers and benefits of combining mobile app development and Angular.",
               "uniformNames": ["g","r"],
               "timeStart": "9:45 am",
               "timeEnd": "10:00 am",
-              "tracks": ["3D"],
+              "tags": ["3D"],
               "id": "3"
             }
           ]
@@ -52,7 +52,7 @@
   "uniforms": [
     {
       "name": "r",
-      "profilePic": "/assets/img/gif/2TweetsChallenge.gif",
+      "thumbnail": "/assets/img/gif/2TweetsChallenge.gif",
       "instagram": "ionicframework",
       "twitter": "ionicframework",
       "about": "(foreground)",
@@ -66,7 +66,7 @@
 
     {
       "name": "g",
-      "profilePic": "/assets/img/gif/128690.gif",
+      "thumbnail": "/assets/img/gif/128690.gif",
       "instagram": "ionicframework",
       "twitter": "ionicframework",
       "about": "(foreground)",
@@ -87,7 +87,7 @@
     }
   ],
 
-  "tracks": [
+  "tags": [
     {
       "name": "2D",
       "icon": "hammer"

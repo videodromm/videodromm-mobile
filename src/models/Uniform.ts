@@ -1,7 +1,7 @@
 export interface Uniform {
   id: number;
   name: string;
-  profilePic: string;
+  thumbnail: string;
   twitter: string;
   instagram: string;
   about: string;

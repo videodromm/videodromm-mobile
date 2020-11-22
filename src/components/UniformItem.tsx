@@ -16,7 +16,7 @@ const UniformItem: React.FC<UniformItemProps> = ({ uniform, shaders }) => {
         <IonCardHeader>
           <IonItem button detail={false} lines="none" className="uniform-item" routerLink={`/tabs/uniforms/${uniform.id}`}>
             <IonAvatar slot="start">
-              <img src={process.env.PUBLIC_URL + uniform.profilePic} alt="Uniform profile pic" />
+              <img src={process.env.PUBLIC_URL + uniform.thumbnail} alt="Uniform profile pic" />
             </IonAvatar>
             <IonLabel>
               <h2>{uniform.name}</h2>

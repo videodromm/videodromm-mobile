@@ -61,10 +61,12 @@ const ShaderDetail: React.FC<ShaderDetailProps> = ({ shader, addFavorite, remove
       <IonContent>
         <div className="ion-padding">
           <h1>{shader.name}</h1>
-          {shader.tracks.map(track => (
-            <span key={track} className={`shader-track-${track.toLowerCase()}`}>{track}</span>
+          {shader.tags.map(tag => (
+            <span key={tag} className={`shader-tag-${tag.toLowerCase()}`}>{tag}</span>
           ))}
           <p>{shader.description}</p>
+          <img src={process.env.PUBLIC_URL + shader.thumbnail} alt="thumbnail" />
+
           <IonText color="medium">
             {shader.timeStart} &ndash; {shader.timeEnd}
             <br />

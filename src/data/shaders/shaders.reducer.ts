@@ -15,8 +15,8 @@ export const shadersReducer = (state: GlslState, action: ShadersActions): GlslSt
     case 'remove-favorite': {
       return { ...state, favorites: [...(state.favorites).filter(x => x !== action.shaderId)] };
     }
-    case 'update-filtered-tracks': {
-      return { ...state, filteredTracks: action.filteredTracks };
+    case 'update-filtered-tags': {
+      return { ...state, filteredTags: action.filteredTags };
     }
     case 'set-search-text': {
       return { ...state, searchText: action.searchText };

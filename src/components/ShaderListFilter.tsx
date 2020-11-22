@@ -7,40 +7,40 @@ import { logoAngular, call, document, logoIonic, hammer, restaurant, cog, colorP
 import './ShaderListFilter.css'
 
 import { connect } from '../data/connect';
-import { updateFilteredTracks } from '../data/shaders/shaders.actions';
+import { updateFilteredTags } from '../data/shaders/shaders.actions';
 
 interface OwnProps {
   onDismissModal: () => void;
 }
 
 interface StateProps {
-  allTracks: string[],
-  filteredTracks: string[]
+  allTags: string[],
+  filteredTags: string[]
 }
 
 interface DispatchProps {
-  updateFilteredTracks: typeof updateFilteredTracks;
+  updateFilteredTags: typeof updateFilteredTags;
 }
 
 type ShaderListFilterProps = OwnProps & StateProps & DispatchProps;
 
-const ShaderListFilter: React.FC<ShaderListFilterProps> = ({ allTracks, filteredTracks, onDismissModal, updateFilteredTracks }) => {
+const ShaderListFilter: React.FC<ShaderListFilterProps> = ({ allTags, filteredTags, onDismissModal, updateFilteredTags }) => {
   const ios = getMode() === 'ios';
 
-  const toggleTrackFilter = (track: string) => {
-    if (filteredTracks.indexOf(track) > -1) {
-      updateFilteredTracks(filteredTracks.filter(x => x !== track));
+  const toggleTagFilter = (tag: string) => {
+    if (filteredTags.indexOf(tag) > -1) {
+      updateFilteredTags(filteredTags.filter(x => x !== tag));
     } else {
-      updateFilteredTracks([...filteredTracks, track]);
+      updateFilteredTags([...filteredTags, tag]);
     }
   };
 
   const handleDeselectAll = () => {
-    updateFilteredTracks([]);
+    updateFilteredTags([]);
   };
 
   const handleSelectAll = () => {
-    updateFilteredTracks([...allTracks]);
+    updateFilteredTags([...allTags]);
   };
 
   const iconMap: { [key: string]: any } = {
@@ -81,19 +81,19 @@ const ShaderListFilter: React.FC<ShaderListFilterProps> = ({ allTracks, filtered
 
       <IonContent>
         <IonList lines={ ios ? 'inset' : 'full'}>
-          <IonListHeader>Tracks</IonListHeader>
+          <IonListHeader>Tags</IonListHeader>
 
-          {allTracks.map((track, index) => (
-            <IonItem key={track}>
+          {allTags.map((tag, index) => (
+            <IonItem key={tag}>
               { ios &&
-                <IonIcon slot="start" icon={iconMap[track]} color="medium" />
+                <IonIcon slot="start" icon={iconMap[tag]} color="medium" />
               }
-              <IonLabel>{track}</IonLabel>
+              <IonLabel>{tag}</IonLabel>
               <IonCheckbox
-                onClick={() => toggleTrackFilter(track)}
-                checked={filteredTracks.indexOf(track) !== -1}
+                onClick={() => toggleTagFilter(tag)}
+                checked={filteredTags.indexOf(tag) !== -1}
                 color="primary"
-                value={track}
+                value={tag}
               ></IonCheckbox>
             </IonItem>
           ))}
@@ -118,11 +118,11 @@ const ShaderListFilter: React.FC<ShaderListFilterProps> = ({ allTracks, filtered
 
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
-    allTracks: state.data.allTracks,
-    filteredTracks: state.data.filteredTracks
+    allTags: state.data.allTags,
+    filteredTags: state.data.filteredTags
   }),
   mapDispatchToProps: {
-    updateFilteredTracks
+    updateFilteredTags
   },
   component: ShaderListFilter
 })

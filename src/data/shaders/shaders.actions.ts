@@ -29,9 +29,9 @@ export const removeFavorite = (shaderId: number) => ({
   shaderId
 } as const);
 
-export const updateFilteredTracks = (filteredTracks: string[]) => ({
-  type: 'update-filtered-tracks',
-  filteredTracks
+export const updateFilteredTags = (filteredTags: string[]) => ({
+  type: 'update-filtered-tags',
+  filteredTags
 } as const);
 
 export const setSearchText = (searchText?: string) => ({
@@ -49,6 +49,6 @@ export type ShadersActions =
   | ActionType<typeof setData>
   | ActionType<typeof addFavorite>
   | ActionType<typeof removeFavorite>
-  | ActionType<typeof updateFilteredTracks>
+  | ActionType<typeof updateFilteredTags>
   | ActionType<typeof setSearchText>
   | ActionType<typeof setMenuEnabled>
