@@ -98,7 +98,7 @@ function initWs(host: string) {
     //console.log(`ws rcvd name:${evt.data.params[0].name} value:${evt.data.params[0].value}`);
     if (evt.data) {
       var messageData = JSON.parse(evt.data);
-      if (messageData.params[0]) {
+      if (messageData.params && messageData.params[0]) {
         console.log(`ws rcvd name:${messageData.params[0].name} value:${messageData.params[0].value}`);
 
       }

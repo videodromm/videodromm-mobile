@@ -11,8 +11,6 @@ export interface GlslGroup {
 export interface Shader {
   id: number;
   thumbnail: string;
-  timeStart: string;
-  timeEnd: string;
   name: string;
   author: string;
   description: string;

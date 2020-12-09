@@ -11,8 +11,6 @@
               "name": "nanotubes",
               "thumbnail": "/assets/img/gif/nanotubes.gif",
               "description": "dsc",
-              "timeStart": "8:00 am",
-              "timeEnd": "9:00 am",
               "author": "author",
               "tags": ["Audio"],
               "id": "1"
@@ -28,8 +26,6 @@
               "author": "author",
               "description": "d",
               "uniformNames": ["r"],
-              "timeStart": "9:30 am",
-              "timeEnd": "9:45 am",
               "tags": ["2D"],
               "id": "2"
             },
@@ -39,8 +35,6 @@
               "author": "author",
               "description": "desc",
               "uniformNames": ["g","r"],
-              "timeStart": "9:45 am",
-              "timeEnd": "10:00 am",
               "tags": ["3D"],
               "id": "3"
             }
@@ -53,7 +47,6 @@
   "uniforms": [
     {
       "name": "r",
-      "thumbnail": "/assets/img/gif/2TweetsChallenge.gif",
       "about": "(foreground)",
       "title": "Red",
       "author": "Everywhere",
@@ -62,7 +55,6 @@
     },
     {
       "name": "g",
-      "thumbnail": "/assets/img/gif/128690.gif",
       "about": "(foreground)",
       "title": "Green",
       "author": "Everywhere",
@@ -71,7 +63,6 @@
     },
     {
       "name": "b",
-      "thumbnail": "/assets/img/gif/128690.gif",
       "about": "(foreground)",
       "title": "Blue",
       "author": "Everywhere",
@@ -80,7 +71,6 @@
     },
     {
       "name": "a",
-      "thumbnail": "/assets/img/gif/128690.gif",
       "about": "(foreground)",
       "title": "Alpha",
       "author": "Everywhere",

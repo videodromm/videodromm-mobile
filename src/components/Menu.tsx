@@ -2,7 +2,7 @@ import React from 'react';
 import { RouteComponentProps, withRouter, useLocation } from 'react-router';
 
 import { IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonMenuToggle, IonToggle } from '@ionic/react';
-import { calendarOutline, hammer, moonOutline, help, informationCircleOutline, logIn, logOut, mapOutline, peopleOutline, person } from 'ionicons/icons';
+import { calendarOutline, hammer, moonOutline, help, informationCircleOutline, logIn, mapOutline, peopleOutline } from 'ionicons/icons';
 
 import { connect } from '../data/connect';
 import { setDarkMode } from '../data/user/user.actions';
@@ -17,9 +17,8 @@ const routes = {
     { title: 'About', path: '/tabs/about', icon: informationCircleOutline }
   ],
   loggedInPages: [
-    { title: 'Account', path: '/account', icon: person },
     { title: 'Support', path: '/support', icon: help },
-    { title: 'Logout', path: '/logout', icon: logOut }
+    { title: 'Connect', path: '/connect', icon: logIn }
   ],
   loggedOutPages: [
     { title: 'Connect', path: '/connect', icon: logIn },
@@ -69,7 +68,7 @@ const Menu: React.FC<MenuProps> = ({ darkMode, history, isAuthenticated, setDark
           {renderlistItems(routes.appPages)}
         </IonList>
         <IonList lines="none">
-          <IonListHeader>Account</IonListHeader>
+          <IonListHeader>WebSocket</IonListHeader>
           {isAuthenticated ? renderlistItems(routes.loggedInPages) : renderlistItems(routes.loggedOutPages)}
           <IonItem>
             <IonIcon slot="start" icon={moonOutline}></IonIcon>

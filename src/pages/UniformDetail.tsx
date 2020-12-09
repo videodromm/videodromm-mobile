@@ -80,7 +80,6 @@ const UniformDetail: React.FC<UniformDetailProps> = ({ uniform }) => {
         </IonHeader>
 
         <div className="uniform-background">
-          <img src={uniform.thumbnail} alt={uniform.name}/>
           <h2>{uniform.name}</h2>
         </div>
 

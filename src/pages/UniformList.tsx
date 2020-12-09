@@ -41,7 +41,7 @@ const UniformList: React.FC<UniformListProps> = ({ uniforms, uniformShaders }) =
           <IonGrid fixed>
             <IonRow>
               {uniforms.map(uniform => (
-                <IonCol size="12" size-md="6" key={uniform.id}>
+                <IonCol size="12" size-md="3" key={uniform.id}>
                   <UniformItem
                     key={uniform.id}
                     uniform={uniform}

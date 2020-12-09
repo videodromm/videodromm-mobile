@@ -28,7 +28,6 @@ import { connect } from './data/connect';
 import { AppContextProvider } from './data/AppContext';
 import { loadGlslData } from './data/shaders/shaders.actions';
 import { setIsLoggedIn, setHost, loadUserData } from './data/user/user.actions';
-import Account from './pages/Account';
 import Connect from './pages/Connect';
 import Support from './pages/Support';
 import Tutorial from './pages/Tutorial';
@@ -80,7 +79,6 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, glsl, setIsLoggedIn, setH
                 which makes transitions between tabs and non tab pages smooth
                 */}
                 <Route path="/tabs" render={() => <MainTabs />} />
-                <Route path="/account" component={Account} />
                 <Route path="/connect" component={Connect} />
                 <Route path="/support" component={Support} />
                 <Route path="/tutorial" component={Tutorial} />
