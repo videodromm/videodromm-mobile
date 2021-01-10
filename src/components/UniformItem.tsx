@@ -1,7 +1,7 @@
 import React from 'react';
 import { Shader } from '../models/Glsl';
 import { Uniform } from '../models/Uniform';
-import { IonCard, IonCardHeader, IonItem, IonLabel, IonAvatar, IonCardContent, IonList } from '@ionic/react';
+import { IonCard, IonCardHeader, IonItem, IonLabel, IonCardContent } from '@ionic/react';
 import {
   Dial,
   Slider
@@ -49,7 +49,7 @@ const UniformItem: React.FC<UniformItemProps> = ({ uniform, shaders }) => {
             {/* </IonAvatar> */}
             <IonLabel>
               <h2>{uniform.id} - {uniform.name}</h2>
-              <p>Item {uniform.title}</p>
+              <p>{uniform.title}</p>
             </IonLabel>
           </IonItem>
         </IonCardHeader>
