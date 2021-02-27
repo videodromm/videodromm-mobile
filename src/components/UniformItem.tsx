@@ -4,6 +4,7 @@ import { Uniform } from '../models/Uniform';
 import { IonCard, IonCardHeader, IonItem, IonLabel, IonCardContent } from '@ionic/react';
 import {
   Dial,
+  RadioButton,
   Slider
 } from 'react-nexusui';
 
@@ -20,9 +21,16 @@ const UniformItem: React.FC<UniformItemProps> = ({ uniform, shaders }) => {
       window.socket.send('{"params" :[{"name" : ' + index + ',"value" :' + value + '}]}');
       console.log(`UniformItem emitToSocket readyState val: ${value}, idx: ${index} `);
     } else {
-      console.log(`UniformItem not ready val: ${value}, idx: ${index} `);
+      console.log(`UniformItem emitToSocket not ready val: ${value}, idx: ${index} `);
     }
-
+  };
+  const setAnim = (value: number, index: number) => {
+    if (window.socket && window.socket.readyState === 1) {
+      window.socket.send('{"anim" :[{"name" : ' + index + ',"value" :' + value + '}]}');
+      console.log(`UniformItem setAnim readyState val: ${value}, idx: ${index} `);
+    } else {
+      console.log(`UniformItem setAnim not ready val: ${value}, idx: ${index} `);
+    }
   };
   return (
     <>
@@ -45,7 +53,15 @@ const UniformItem: React.FC<UniformItemProps> = ({ uniform, shaders }) => {
               min={0}
               max={1}
             />
-
+            <RadioButton
+              size={[40,40]}
+              numberOfButtons={4}
+              onChange={
+                rbRef => {
+                  setAnim(rbRef, uniform.id);
+                }
+              }
+            />
             {/* </IonAvatar> */}
             <IonLabel>
               <h2>{uniform.id} - {uniform.name}</h2>
