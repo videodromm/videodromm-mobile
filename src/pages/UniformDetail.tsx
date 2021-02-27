@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router';
 import './UniformDetail.scss';
 
 import { ActionSheetButton } from '@ionic/core';
-import { IonActionSheet, IonChip, IonIcon, IonHeader, IonLabel, IonToolbar, IonButtons, IonContent, IonButton, IonBackButton, IonPage } from '@ionic/react'
+import { IonActionSheet, IonIcon, IonHeader, IonToolbar, IonButtons, IonContent, IonButton, IonBackButton, IonPage } from '@ionic/react'
 import { callOutline, callSharp } from 'ionicons/icons';
 
 import { connect } from '../data/connect';
@@ -28,7 +28,7 @@ const UniformDetail: React.FC<UniformDetailProps> = ({ uniform }) => {
   const [actionSheetButtons, setActionSheetButtons] = useState<ActionSheetButton[]>([]);
   const [actionSheetHeader, setActionSheetHeader] = useState('');
 
-  function openUniformShare(uniform: Uniform) {
+  /*function openUniformShare(uniform: Uniform) {
     setActionSheetButtons([
       {
         text: 'Copy Link',
@@ -39,7 +39,7 @@ const UniformDetail: React.FC<UniformDetailProps> = ({ uniform }) => {
     ]);
     setActionSheetHeader(`Share ${uniform.name}`);
     setShowActionSheet(true);
-  }
+  }*/
 
   function openContact(uniform: Uniform) {
     setActionSheetButtons([
@@ -54,9 +54,9 @@ const UniformDetail: React.FC<UniformDetailProps> = ({ uniform }) => {
     setShowActionSheet(true);
   }
 
-  function openExternalUrl(url: string) {
+  /*function openExternalUrl(url: string) {
     window.open(url, '_blank');
-  }
+  }*/
 
   if (!uniform) {
     return <div>Uniform not found</div>

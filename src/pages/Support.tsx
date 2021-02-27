@@ -1,25 +1,12 @@
 
-import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonText, IonTextarea, IonToast } from '@ionic/react';
+import React from 'react';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol } from '@ionic/react';
 import './Connect.scss';
 import { connect } from '../data/connect';
 import {
-  Button,
-  Toggle,
   Dial,
-  Number,
-  Position,
   Slider,
-  Envelope,
-  Multislider,
-  Piano,
-  RadioButton,
-  Select,
-  Sequencer,
-  TextButton,
-  Tilt,
-  Pan,
-  Pan2D
+  Tilt
 } from 'react-nexusui';
 
 /*

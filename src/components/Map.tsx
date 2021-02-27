@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { Location } from '../models/Location';
 
 interface MapProps {
@@ -6,7 +6,9 @@ interface MapProps {
   mapCenter: Location
 }
 
-const Map: React.FC<MapProps> = ({ mapCenter, locations }) => {
+const Map: React.FC<MapProps> = (
+  // { mapCenter, locations }
+  ) => {
   /*const mapEle = useRef<HTMLDivElement>(null);
   const map = useRef<google.maps.Map>();
 
