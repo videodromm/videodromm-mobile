@@ -1,35 +1,57 @@
-import React, {useEffect, useState} from 'react';
-import Map from '../components/Map';
-import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent, IonPage } from '@ionic/react';
-import { Location } from '../models/Location';
-import { connect } from '../data/connect';
-import * as selectors from '../data/selectors';
-import './MapView.scss';
+import React, { useEffect, useState } from "react";
+import Map from "../components/Map";
+import {
+  IonHeader,
+  IonToolbar,
+  IonButtons,
+  IonMenuButton,
+  IonTitle,
+  IonContent,
+  IonPage,
+} from "@ionic/react";
+import { Location } from "../models/Location";
+import { connect } from "../data/connect";
+import * as selectors from "../data/selectors";
+import "./MapView.scss";
 import { Shaders, Node, GLSL } from "gl-react";
 import { Surface } from "gl-react-dom";
 
-interface OwnProps { }
+import { Controlled as CodeMirror } from "react-codemirror2";
+import "codemirror/lib/codemirror.css";
+import "codemirror/theme/material.css";
+import "codemirror/mode/javascript/javascript";
+import "codemirror/addon/hint/show-hint";
+import "codemirror/addon/hint/javascript-hint";
+import "codemirror/addon/hint/show-hint.css";
+import "codemirror/keymap/sublime";
+import "codemirror/addon/edit/closebrackets";
+import "codemirror/addon/edit/closetag";
+import "codemirror/addon/fold/foldcode";
+import "codemirror/addon/fold/foldgutter";
+import "codemirror/addon/fold/brace-fold";
+import "codemirror/addon/fold/comment-fold";
+import "codemirror/addon/fold/foldgutter.css";
+
+interface OwnProps {}
 
 interface StateProps {
   locations: Location[];
   mapCenter: Location;
 }
 
-interface DispatchProps { }
+interface DispatchProps {}
 
-interface MapViewProps extends OwnProps, StateProps, DispatchProps { };
-
+interface MapViewProps extends OwnProps, StateProps, DispatchProps {}
 
 const MapView: React.FC<MapViewProps> = ({ locations, mapCenter }) => {
-
   const shaders = Shaders.create({
     helloBlue: {
       frag: GLSL`
-  precision highp float;
-  varying vec2 uv;
-  void main() {
-    gl_FragColor = vec4(uv.x, uv.y, 0.1, 1.0);
-  }`
+        precision highp float;
+        varying vec2 uv;
+        void main() {
+          gl_FragColor = vec4(uv.x, uv.y, 0.1, 1.0);
+        }`,
     },
     smoke: {
       frag: GLSL`
@@ -78,50 +100,72 @@ const MapView: React.FC<MapViewProps> = ({ locations, mapCenter }) => {
           gl_FragColor = vec4(c * sin(shift * gl_FragCoord.y / resolution.y), 1.0);
           gl_FragColor.xyz *= 1.0;
         }
-      `
-    }
-
-
-
+      `,
+    },
   });
+
   const [time, setTime] = useState(0.0);
-
+  const [code, setCode] = React.useState("balh");
+  //KO console.log(shaders.smoke.frag);
   useEffect(() => {
-    console.log('MAJ time');
-
+    console.log("useEffect init time");
     const interval = setInterval(() => {
-      setTime(time => time + 0.1);
-    }
-    , 100);
+      setTime((time) => time + 0.1);
+    }, 1000);
     return () => clearInterval(interval);
     // eslint-disable-next-line
   }, []);
 
   return (
-  <IonPage id="map-view">
-    <IonHeader>
-      <IonToolbar>
-        <IonButtons slot="start">
-          <IonMenuButton></IonMenuButton>
-        </IonButtons>
-        <IonTitle>Map</IonTitle>
-      </IonToolbar>
-    </IonHeader>
+    <IonPage id="map-view">
+      <IonHeader>
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonMenuButton></IonMenuButton>
+          </IonButtons>
+          <IonTitle>Map</IonTitle>
+        </IonToolbar>
+      </IonHeader>
 
-    <IonContent class="map-page">
-      <p>MapView</p>
-      <Surface width={200} height={200} >
-        <Node
-          shader={shaders.smoke}
-          uniforms={{
-            shift: 1.6,
-            time: time,
-            speed: [1.0, 1.0],
-            resolution: [200, 200]
+      <IonContent class="map-page">
+        <p>MapView</p>
+        <Surface width={200} height={200}>
+          <Node
+            shader={shaders.smoke}
+            uniforms={{
+              shift: 1.6,
+              time: time,
+              speed: [1.0, 1.0],
+              resolution: [200, 200],
+            }}
+          />
+        </Surface>
+
+        <CodeMirror
+          value={code}
+          options={{
+            mode: "javascript",
+            theme: "tomorrow-night-eighties",
+            lineWrapping: true,
+            smartIndent: true,
+            lineNumbers: true,
+            foldGutter: true,
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+            autoCloseTags: true,
+            keyMap: "sublime",
+            matchBrackets: true,
+            autoCloseBrackets: true,
+            extraKeys: {
+              "Ctrl-Space": "autocomplete",
+            },
           }}
+          onBeforeChange={(editor, data, value) => {
+            setCode(value);
+          }}
+          onChange={(editor, data, value) => {}}
         />
-      </Surface>
- {/*
+
+        {/*
  ok <Node
           shader={shaders.helloBlue}
         />
@@ -136,14 +180,15 @@ const MapView: React.FC<MapViewProps> = ({ locations, mapCenter }) => {
 
     />
       <Map locations={locations} mapCenter={mapCenter} /> */}
-    </IonContent>
-  </IonPage>
-)};
+      </IonContent>
+    </IonPage>
+  );
+};
 
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
     locations: state.data.locations,
-    mapCenter: selectors.mapCenter(state)
+    mapCenter: selectors.mapCenter(state),
   }),
-  component: MapView
+  component: MapView,
 });

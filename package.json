@@ -1,6 +1,6 @@
 {
   "name": "vdmobile",
-  "version": "1.0.20210517",
+  "version": "1.0.20210518",
   "private": true,
   "dependencies": {
     "@capacitor/android": "^2.4.0",
@@ -13,12 +13,14 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-router": "^5.1.8",
     "@types/react-router-dom": "^5.1.5",
+    "codemirror": "^5.61.0",
     "gl-react": "^4.0.0",
     "gl-react-dom": "^5.1.0",
     "ionicons": "^5.0.1",
     "nexusui": "^2.1.5",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
+    "react-codemirror2": "^7.2.1",
     "react-dom": "^16.13.1",
     "react-nexusui": "^0.1.7",
     "react-router": "^5.2.0",

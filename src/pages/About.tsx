@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonContent, IonPage, IonButtons, IonMenuButton, IonButton, IonIcon, IonDatetime, IonSelectOption, IonList, IonItem, IonLabel, IonSelect, IonPopover } from '@ionic/react';
+import { IonHeader, IonToolbar, IonContent, IonPage, IonButtons, IonMenuButton, IonButton, IonIcon } from '@ionic/react';
 import './About.scss';
 import ShadertoyReact from 'shadertoy-react';
 
@@ -124,7 +124,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
         <IonHeader className="ion-no-border">
           <IonToolbar>
             <IonButtons slot="start">
-              <IonMenuButton>jjj</IonMenuButton>
+              <IonMenuButton></IonMenuButton>
             </IonButtons>
             <IonButtons slot="end">
               <IonButton >
@@ -133,8 +133,6 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
             </IonButtons>
           </IonToolbar>
         </IonHeader>
-
-
 
          <ShadertoyReact fs={fragmentShader}/>
 
