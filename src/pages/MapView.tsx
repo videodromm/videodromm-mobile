@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Map from "../components/Map";
+
 import {
   IonHeader,
   IonToolbar,
@@ -16,21 +16,7 @@ import "./MapView.scss";
 import { Shaders, Node, GLSL } from "gl-react";
 import { Surface } from "gl-react-dom";
 
-import { Controlled as CodeMirror } from "react-codemirror2";
-import "codemirror/lib/codemirror.css";
-import "codemirror/theme/material.css";
-import "codemirror/mode/javascript/javascript";
-import "codemirror/addon/hint/show-hint";
-import "codemirror/addon/hint/javascript-hint";
-import "codemirror/addon/hint/show-hint.css";
-import "codemirror/keymap/sublime";
-import "codemirror/addon/edit/closebrackets";
-import "codemirror/addon/edit/closetag";
-import "codemirror/addon/fold/foldcode";
-import "codemirror/addon/fold/foldgutter";
-import "codemirror/addon/fold/brace-fold";
-import "codemirror/addon/fold/comment-fold";
-import "codemirror/addon/fold/foldgutter.css";
+
 
 interface OwnProps {}
 
@@ -105,7 +91,7 @@ const MapView: React.FC<MapViewProps> = ({ locations, mapCenter }) => {
   });
 
   const [time, setTime] = useState(0.0);
-  const [code, setCode] = React.useState("balh");
+
   //KO console.log(shaders.smoke.frag);
   useEffect(() => {
     console.log("useEffect init time");
@@ -141,29 +127,7 @@ const MapView: React.FC<MapViewProps> = ({ locations, mapCenter }) => {
           />
         </Surface>
 
-        <CodeMirror
-          value={code}
-          options={{
-            mode: "javascript",
-            theme: "tomorrow-night-eighties",
-            lineWrapping: true,
-            smartIndent: true,
-            lineNumbers: true,
-            foldGutter: true,
-            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-            autoCloseTags: true,
-            keyMap: "sublime",
-            matchBrackets: true,
-            autoCloseBrackets: true,
-            extraKeys: {
-              "Ctrl-Space": "autocomplete",
-            },
-          }}
-          onBeforeChange={(editor, data, value) => {
-            setCode(value);
-          }}
-          onChange={(editor, data, value) => {}}
-        />
+
 
         {/*
  ok <Node

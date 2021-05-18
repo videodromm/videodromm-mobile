@@ -1,13 +1,32 @@
-import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonContent, IonPage, IonButtons, IonMenuButton, IonButton, IonIcon } from '@ionic/react';
-import './About.scss';
-import ShadertoyReact from 'shadertoy-react';
+import React, {useState} from "react";
+import { IonContent, IonPage } from "@ionic/react";
+import "./About.scss";
+import ShadertoyReact from "shadertoy-react";
 
+import { Controlled as CodeMirror } from "react-codemirror2";
+import "codemirror/lib/codemirror.css";
+import "codemirror/theme/material.css";
+import "codemirror/mode/javascript/javascript";
+import "codemirror/addon/hint/show-hint";
+import "codemirror/addon/hint/javascript-hint";
+import "codemirror/addon/hint/show-hint.css";
+import "codemirror/keymap/sublime";
+import "codemirror/addon/edit/closebrackets";
+import "codemirror/addon/edit/closetag";
+import "codemirror/addon/fold/foldcode";
+import "codemirror/addon/fold/foldgutter";
+import "codemirror/addon/fold/brace-fold";
+import "codemirror/addon/fold/comment-fold";
+import "codemirror/addon/fold/foldgutter.css";
 
-interface AboutProps { }
+interface AboutProps {}
 
 const About: React.FC<AboutProps> = () => {
-  const fragmentShader = `
+  /*
+ https://www.npmjs.com/package/shadertoy-react
+
+ Device Orientation!
+ const fragmentShader = `
 #define PI 3.1415926535898
 #define DEGTORAD PI / 180.
 
@@ -118,27 +137,64 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 }
 `;
 
+https://codesandbox.io/s/434qm4x4w0
+
+*/
+  const scrollY = 0.5;
+
+  const uniforms = {
+    uScrollY: { type: "1f", value: scrollY }, // float
+    uTestArrayFloats: { type: "1fv", value: [0.2, 0.4, 0.5, 0.5, 0.6] }, // Array of float
+    uTestArrayVecs2: { type: "2fv", value: [0.2, 0.4, 0.5, 0.5] }, // 2 vec2 passed as a flat array
+    uTestMatrix: {
+      type: "Matrix2fv",
+      value: [0, 1, 2, 3], // 2x2 Matrix
+    },
+  };
+
+  const [code, setCode] = useState(`
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+	vec2 uv = fragCoord.xy / iResolution.xy;
+  vec4 texture = texture(iChannel0, uv);
+  vec3 col = texture.rgb *  0.5*cos(iTime+uv.xyx+vec3(0,2,4));
+	fragColor = vec4(col,1.0);
+}
+`);
   return (
     <IonPage id="about-page">
       <IonContent>
-        <IonHeader className="ion-no-border">
-          <IonToolbar>
-            <IonButtons slot="start">
-              <IonMenuButton></IonMenuButton>
-            </IonButtons>
-            <IonButtons slot="end">
-              <IonButton >
-                <IonIcon slot="icon-only" ></IonIcon>
-              </IonButton>
-            </IonButtons>
-          </IonToolbar>
-        </IonHeader>
-
-         <ShadertoyReact fs={fragmentShader}/>
-
+        <ShadertoyReact
+          uniforms={uniforms}
+          fs={code}
+          textures={[{ url: "/assets/textures/stingray1024.jpg" }]}
+        />
+        <CodeMirror
+          value={code}
+          options={{
+            mode: "javascript",
+            theme: "tomorrow-night-eighties",
+            lineWrapping: true,
+            smartIndent: true,
+            lineNumbers: true,
+            foldGutter: true,
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+            autoCloseTags: true,
+            keyMap: "sublime",
+            matchBrackets: true,
+            autoCloseBrackets: true,
+            extraKeys: {
+              "Ctrl-Space": "autocomplete",
+            },
+          }}
+          onBeforeChange={(editor, data, value) => {
+            setCode(value);
+          }}
+          onChange={(editor, data, value) => {
+            setCode(value);
+          }}
+        />
       </IonContent>
-
-
     </IonPage>
   );
 };
