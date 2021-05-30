@@ -167,7 +167,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
         <ShadertoyReact
           uniforms={uniforms}
           fs={code}
-          textures={[{ url: "/assets/textures/stingray1024.jpg" }]}
+          textures={[{ url: "/assets/textures/texture.jpg" }]}
         />
         <CodeMirror
           value={code}

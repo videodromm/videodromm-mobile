@@ -1,0 +1,30 @@
+.cm {
+  position: absolute;
+  top: 5px;
+  left: -9px;
+  max-height: 100%;
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+}
+.compile{
+  --color: rgb(255, 0, 0);
+}
+#gl-view {
+  .gl-canvas {
+    position: absolute;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: transparent;
+
+    opacity: 0;
+    transition: opacity 250ms ease-in;
+  }
+
+  .show-gl {
+    opacity: 1;
+  }
+
+}

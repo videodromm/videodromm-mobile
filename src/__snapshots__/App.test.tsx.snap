@@ -254,7 +254,7 @@ exports[`renders without crashing 1`] = `
               </ion-label>
             </ion-tab-button>
             <ion-tab-button
-              href="/tabs/map"
+              href="/tabs/livecode"
               tab="map"
             >
               <ion-icon />

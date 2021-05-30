@@ -1,9 +1,9 @@
-import { Plugins } from '@capacitor/core';
+
 import { Glsl, Shader } from '../models/Glsl';
 import { Uniform } from '../models/Uniform';
 import { Location } from '../models/Location';
 
-const { Storage } = Plugins;
+import { Storage } from '@capacitor/storage';
 
 const dataUrl = '/assets/data/data.json';
 const locationsUrl = '/assets/data/locations.json';

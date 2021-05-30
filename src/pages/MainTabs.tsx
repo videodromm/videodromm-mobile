@@ -6,7 +6,7 @@ import GlslPage from './GlslPage';
 import UniformList from './UniformList';
 import UniformDetail from './UniformDetail';
 import ShaderDetail from './ShaderDetail';
-import MapView from './MapView';
+import LiveCode from './LiveCode';
 import About from './About';
 
 interface MainTabsProps { }
@@ -26,7 +26,7 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         <Route path="/tabs/uniforms/:id" component={UniformDetail} exact={true} />
         <Route path="/tabs/glsl/:id" component={ShaderDetail} />
         <Route path="/tabs/uniforms/shaders/:id" component={ShaderDetail} />
-        <Route path="/tabs/map" render={() => <MapView />} exact={true} />
+        <Route path="/tabs/livecode" render={() => <LiveCode />} exact={true} />
         <Route path="/tabs/about" render={() => <About />} exact={true} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
@@ -38,9 +38,9 @@ const MainTabs: React.FC<MainTabsProps> = () => {
           <IonIcon icon={people} />
           <IonLabel>Uniforms</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="map" href="/tabs/map">
+        <IonTabButton tab="map" href="/tabs/livecode">
           <IonIcon icon={location} />
-          <IonLabel>Map</IonLabel>
+          <IonLabel>LiveCode</IonLabel>
         </IonTabButton>
         <IonTabButton tab="about" href="/tabs/about">
           <IonIcon icon={informationCircle} />

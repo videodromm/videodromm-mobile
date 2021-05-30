@@ -57,9 +57,11 @@ const ShaderListItem: React.FC<ShaderListItemProps> = ({ isFavorite, onAddFavori
       <IonItem routerLink={`/tabs/glsl/${shader.id}`}>
         <IonLabel>
           <h3>{shader.name}</h3>
-          <img src={process.env.PUBLIC_URL + shader.thumbnail} alt="thumbnail" />
-          <p> ListItem
-
+          { shader.thumbnail && (<img
+            src={process.env.PUBLIC_URL + shader.thumbnail}
+            alt="thumbnail"
+          />)}
+          <p>
             {shader.author}
           </p>
         </IonLabel>

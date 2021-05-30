@@ -13,7 +13,7 @@ const routes = {
   appPages: [
     { title: 'Glsl', path: '/tabs/glsl', icon: calendarOutline },
     { title: 'Uniforms', path: '/tabs/uniforms', icon: peopleOutline },
-    { title: 'Map', path: '/tabs/map', icon: mapOutline },
+    { title: 'Map', path: '/tabs/livecode', icon: mapOutline },
     { title: 'About', path: '/tabs/about', icon: informationCircleOutline }
   ],
   loggedInPages: [
