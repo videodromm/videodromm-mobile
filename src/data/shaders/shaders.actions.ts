@@ -1,6 +1,7 @@
 import { getGlslData } from '../dataApi';
 import { ActionType } from '../../util/types';
 import { GlslState } from './glsl.state';
+import { Uniform } from '../../models/Uniform';
 
 export const loadGlslData = () => async (dispatch: React.Dispatch<any>) => {
   dispatch(setLoading(true));
@@ -22,6 +23,16 @@ export const setData = (data: Partial<GlslState>) => ({
 export const addFavorite = (shaderId: number) => ({
   type: 'add-favorite',
   shaderId
+} as const);
+
+export const updateUniform = (uniform: Uniform) => ({
+  type: 'update-uniform',
+  uniform
+} as const);
+
+export const changeUniform = (uniform: Uniform) => ({
+  type: 'change-uniform',
+  uniform
 } as const);
 
 export const removeFavorite = (shaderId: number) => ({
@@ -47,6 +58,8 @@ export const setMenuEnabled = (menuEnabled: boolean) => ({
 export type ShadersActions =
   | ActionType<typeof setLoading>
   | ActionType<typeof setData>
+  | ActionType<typeof updateUniform>
+  | ActionType<typeof changeUniform>
   | ActionType<typeof addFavorite>
   | ActionType<typeof removeFavorite>
   | ActionType<typeof updateFilteredTags>

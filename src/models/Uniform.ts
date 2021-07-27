@@ -4,4 +4,5 @@ export interface Uniform {
   about: string;
   title: string;
   color: string;
+  value: number;
 }

@@ -9,7 +9,6 @@ export interface GlslState {
   locations: Location[];
   filteredTags: string[];
   searchText?: string;
-  mapCenterId?: number;
   loading?: boolean;
   allTags: string[];
   menuEnabled: boolean;

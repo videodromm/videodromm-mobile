@@ -1,5 +1,6 @@
 import { ShadersActions } from './shaders.actions';
 import { GlslState } from './glsl.state';
+import { sendUniform } from '../dataApi';
 
 export const shadersReducer = (state: GlslState, action: ShadersActions): GlslState => {
   switch (action.type) {
@@ -8,6 +9,17 @@ export const shadersReducer = (state: GlslState, action: ShadersActions): GlslSt
     }
     case 'set-glsl-data': {
       return { ...state, ...action.data };
+    }
+    case 'update-uniform': {
+      sendUniform(action.uniform);
+      return { ...state, uniforms: state.uniforms.map(u => u === action.uniform ?
+        {...u, value:action.uniform.value} : u
+       ) };
+    }
+    case 'change-uniform': {
+      return { ...state, uniforms: state.uniforms.map(u => u === action.uniform ?
+        {...u, value:action.uniform.value} : u
+       ) };
     }
     case 'add-favorite': {
       return { ...state, favorites: [...(state.favorites), action.shaderId] };

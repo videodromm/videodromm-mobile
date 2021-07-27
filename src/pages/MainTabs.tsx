@@ -26,7 +26,7 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         <Route path="/tabs/uniforms/:id" component={UniformDetail} exact={true} />
         <Route path="/tabs/glsl/:id" component={ShaderDetail} />
         <Route path="/tabs/uniforms/shaders/:id" component={ShaderDetail} />
-        <Route path="/tabs/livecode" render={() => <LiveCode />} exact={true} />
+        <Route path="/tabs/livecode" component={LiveCode} />
         <Route path="/tabs/about" render={() => <About />} exact={true} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">

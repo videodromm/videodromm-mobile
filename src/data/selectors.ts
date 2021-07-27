@@ -103,7 +103,13 @@ export const getShader = createSelector(
     return shaders.find(s => s.id === id);
   }
 );
-
+export const getProjectionShader = createSelector(
+  getShaders,
+  (shaders) => {
+    //console.log(`${JSON.stringify(shaders)}`);
+    return shaders.find(s => s.id === 0);
+  }
+);
 export const getUniform = createSelector(
   getUniforms, getIdParam,
   (uniforms, id) => uniforms.find(x => x.id === id)
@@ -126,16 +132,3 @@ export const getUniformShaders = createSelector(
     return uniformShaders;
   }
 );
-
-export const mapCenter = (state: AppState) => {
-  const item = state.data.locations.find(l => l.id === state.data.mapCenterId);
-  if (item == null) {
-    return {
-      id: 1,
-      name: 'Map Center',
-      lat: 43.071584,
-      lng: -89.380120
-    };
-  }
-  return item;
-}

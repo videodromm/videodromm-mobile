@@ -11,7 +11,7 @@ export const initialState: AppState = {
     locations: [],
     allTags: [],
     filteredTags: [],
-    mapCenterId: 0,
+
     loading: false,
     menuEnabled: true
   },
