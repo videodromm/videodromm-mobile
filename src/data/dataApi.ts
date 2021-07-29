@@ -136,30 +136,28 @@ function initSignalR(signalr: string) {
   connexion
     .start()
     .then(() => {
-      console.log("SignalR listen");
+      //console.log("SignalR listen");
       connexion.on("newMessage", (msg) => {
         //console.log(`SignalR newMessage: ${JSON.stringify(msg)}`);
         if (msg.sender === 'api') {
           if (msg.text ) {
             uniforms[msg.text.id].value = msg.text.value;
             changeUniform(uniforms[msg.text.id]);
-            console.log(`SignalR api id: ${msg.text.id} name: ${msg.text.name} value: ${msg.text.value} uniform: ${uniforms[msg.text.id].value}`);
+            //console.log(`SignalR api id: ${msg.text.id} name: ${msg.text.name} value: ${msg.text.value} uniform: ${uniforms[msg.text.id].value}`);
             if (window.socket && window.socket.readyState === 1) {
               //if (msg.text.id < 4) msg.text.id += 4;
               window.socket.send(
                 '{"params" :[{"name" : ' + msg.text.id + ',"value" :' + msg.text.value + "}]}"
               );
-              console.log(
-                `signalR emitToSocket readyState val: ${msg.text.value}, idx: ${msg.text.id} `
-              );
+              console.log( `signalR emitToSocket readyState val: ${msg.text.value}, idx: ${msg.text.id} ` );
             } else {
               //console.log(`UniformItem emitToSocket not ready val: ${value}, idx: ${index} `);
             }
           }
         }
-        if (msg.uuid === 'core2') {
+        /*if (msg.uuid === 'core2') {
           console.log(`SignalR iothub id: ${msg.uuid} timestamp: ${msg.timestamp} temperature: ${msg.temperature}`);
-        }
+        }*/
       });
     })
     .catch((error) => console.log(error));
@@ -172,8 +170,14 @@ function initSignalR(signalr: string) {
 initSignalR(signalRUrl);
 
 export const sendUniform = async (u: Uniform) => {
+  if (window.socket && window.socket.readyState === 1) {
+    window.socket.send('{"params" :[{"name" : ' + u.id + ',"value" :' + u.value + '}]}');
+    console.log(`UniformItem emitToSocket readyState val: ${u.value}, idx: ${u.id} `);
+  } else {
+    //console.log(`UniformItem emitToSocket not ready val: ${value}, idx: ${index} `);
+  }
   if (connexion) {
-    console.log(`sendUniform ${u.name} :  ${JSON.stringify(u)}`);
+    //console.log(`sendUniform ${u.name} :  ${JSON.stringify(u)}`);
     /*await connexion.send("messages", JSON.stringify(u));*/
     axios.post(`${signalRUrl}/messages`, {
       sender: "api",

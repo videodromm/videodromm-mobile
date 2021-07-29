@@ -46,212 +46,232 @@
 
   "uniforms": [
     {
+      "name": "time",
+      "about": "",
+      "title": "Time",
+      "color": "#222",
+      "value": 0.2,
+      "id": 0
+    },
+    {
       "name": "r",
       "about": "(foreground)",
       "title": "Red",
-      "author": "BL",
       "color": "#f00",
-      "id": "1"
+      "value": 0.42,
+      "id": 1
     },
     {
       "name": "g",
       "about": "(foreground)",
       "title": "Green",
-      "author": "BL",
       "color": "#0f0",
-      "id": "2"
+      "value": 0.82,
+      "id": 2
     },
     {
       "name": "b",
       "about": "(foreground)",
       "title": "Blue",
-      "author": "BL",
       "color": "#00f",
-      "id": "3"
+      "value": 0.22,
+      "id": 3
     },
     {
       "name": "a",
       "about": "(foreground)",
       "title": "Alpha",
-      "author": "BL",
       "color": "#aaa",
-      "id": "4"
+      "value": 0.42,
+      "id": 4
     },
     {
       "name": "rx",
       "about": "(foreground)",
       "title": "RedMultiplier",
-      "author": "BL",
       "color": "#f00",
-      "id": "5"
+      "value": 0.42,
+      "id": 5
     },
     {
       "name": "gx",
       "about": "(foreground)",
       "title": "GreenMultiplier",
-      "author": "BL",
       "color": "#0f0",
-      "id": "6"
+      "value": 0.42,
+      "id": 6
     },
     {
       "name": "bx",
       "about": "(foreground)",
       "title": "BlueMultiplier",
-      "author": "BL",
       "color": "#00f",
-      "id": "7"
+      "value": 0.42,
+      "id": 7
     },
     {
       "name": "sobel",
       "about": "bw contours",
       "title": "Sobel",
-      "author": "BL",
       "color": "#aaa",
-      "id": "8"
+      "value": 0.02,
+      "id": 8
     },
     {
       "name": "zoom",
       "about": "zoom",
       "title": "Zoom",
-      "author": "BL",
       "color": "#0a3",
-      "id": "12"
+      "value": 0.42,
+      "id": 12
     },
     {
       "name": "audx",
       "about": "audio multiplier",
       "title": "AudioMultiplier",
-      "author": "BL",
       "color": "#6a3",
-      "id": "13"
+      "value": 0.42,
+      "id": 13
     },
     {
       "name": "expo",
       "about": "exposure",
       "title": "Exposure",
-      "author": "BL",
       "color": "#444",
-      "id": "14"
+      "value": 0.42,
+      "id": 14
     },
     {
       "name": "pix8",
       "about": "pixelate",
       "title": "Pixelate",
-      "author": "BL",
       "color": "#604",
-      "id": "15"
+      "value": 0.42,
+      "id": 15
     },
     {
       "name": "trix",
       "about": "trixels",
       "title": "Trixels",
-      "author": "BL",
       "color": "#604",
-      "id": "16"
+      "value": 0.42,
+      "id": 16
     },
     {
       "name": "chrm",
       "about": "chromatic",
       "title": "Chromatic",
-      "author": "BL",
-      "color": "#c04",
-      "id": "17"
+      "color": "#111",
+      "value": 0.0,
+      "id": 17
     },
     {
       "name": "br",
       "about": "(background)",
       "title": "BG Red",
-      "author": "BL",
+
       "color": "#f00",
-      "id": "26"
+      "value": 0.42,
+      "id": 26
     },
     {
       "name": "bg",
       "about": "(background)",
       "title": "BG Green",
-      "author": "BL",
+
       "color": "#0f0",
-      "id": "27"
+      "value": 0.42,
+      "id": 27
     },
     {
       "name": "bb",
       "about": "(background)",
       "title": "BG Blue",
-      "author": "BL",
+
       "color": "#00f",
-      "id": "28"
+      "value": 0.42,
+      "id": 28
     },
     {
       "name": "w0",
       "about": "(mix weight)",
       "title": "Weight0",
-      "author": "BL",
+
       "color": "#c01",
-      "id": "31"
+      "value": 0.42,
+      "id": 31
     },
     {
       "name": "w1",
       "about": "(mix weight)",
       "title": "Weight1",
-      "author": "BL",
+
       "color": "#c02",
-      "id": "32"
+      "value": 0.42,
+      "id": 32
     },
     {
       "name": "w2",
       "about": "(mix weight)",
       "title": "Weight2",
-      "author": "BL",
+
       "color": "#c03",
-      "id": "33"
+      "value": 0.42,
+      "id": 33
     },
     {
       "name": "w3",
       "about": "(mix weight)",
       "title": "Weight3",
-      "author": "BL",
+
       "color": "#c04",
-      "id": "34"
+      "value": 0.42,
+      "id": 34
     },
     {
       "name": "w4",
       "about": "(mix weight)",
       "title": "Weight4",
-      "author": "BL",
+
       "color": "#c05",
-      "id": "35"
+      "value": 0.42,
+      "id": 35
     },
     {
       "name": "w5",
       "about": "(mix weight)",
       "title": "Weight5",
-      "author": "BL",
+
       "color": "#c06",
-      "id": "36"
+      "value": 0.42,
+      "id": 36
     },
     {
       "name": "w6",
       "about": "(mix weight)",
       "title": "Weight6",
-      "author": "BL",
+
       "color": "#c07",
-      "id": "37"
+      "value": 0.42,
+      "id": 37
     },
     {
       "name": "w7",
       "about": "(mix weight)",
       "title": "Weight7",
-      "author": "BL",
+
       "color": "#c08",
-      "id": "38"
+      "value": 0.42,
+      "id": 38
     },
     {
       "name": "w8",
       "about": "(mix weight)",
       "title": "Weight8",
-      "author": "BL",
+
       "color": "#c09",
-      "id": "39"
+      "value": 0.42,
+      "id": 39
     }
   ],
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { isPlatform  } from '@ionic/core';
 import {
   useIonViewWillEnter,
   IonHeader,
@@ -61,8 +62,13 @@ const LiveCode: React.FC<ProjectionProps> = ({
 }) => {
   const [time, setTime] = useState(0.0);
   useEffect(() => {
-    console.log("useEffect init time and signalR");
-    window.socket = new WebSocket(`ws://127.0.0.1:8088`);
+    console.log(`useEffect init time and signalR mode: ${isPlatform('android')}`);
+
+    if (isPlatform('android')) {
+      window.socket = new WebSocket(`ws://51.210.25.82:8088`);
+    } else {
+      window.socket = new WebSocket(`ws://127.0.0.1:8088`);
+    }
     const interval = setInterval(() => {
       setTime((time) => time + 0.1);
     }, 100);
@@ -70,7 +76,7 @@ const LiveCode: React.FC<ProjectionProps> = ({
     // eslint-disable-next-line
   }, []);
   useEffect(() => {
-    console.log("useEffect uniforms");
+    //console.log("useEffect uniforms");
 
     // eslint-disable-next-line
   }, [uniforms]);
@@ -88,7 +94,7 @@ const LiveCode: React.FC<ProjectionProps> = ({
 
   const [frag, setFrag] = useState({ frag: `${code}` });
   useEffect(() => {
-    console.log("useEffect frag");
+    //console.log("useEffect frag");
     setFrag({ frag: `${code}` });
     // eslint-disable-next-line
   }, [code]);
@@ -165,7 +171,7 @@ const LiveCode: React.FC<ProjectionProps> = ({
   let dialRefs = React.useRef([] as any[]);
 
   const emitToSocket = async (value: number, index: number) => {
-    console.log(`emitToSocket index: ${index}`);
+    //console.log(`emitToSocket index: ${index}`);
     uniforms[index].value = value;
     updateUniform(uniforms[index]);
   };
