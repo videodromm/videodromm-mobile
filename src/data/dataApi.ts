@@ -2,11 +2,11 @@
 import { Glsl, Shader } from '../models/Glsl';
 import { Uniform } from '../models/Uniform';
 
-import { Storage } from '@capacitor/storage';
+//import { Storage } from '@capacitor/storage';
 
 import axios from "axios";
 import { config } from '../env';
-import { HubConnection, HubConnectionBuilder } from "@microsoft/signalr";
+//import { HubConnection, HubConnectionBuilder } from "@microsoft/signalr";
 import { changeUniform } from './shaders/shaders.actions';
 
 
@@ -55,31 +55,31 @@ export const getGlslData = async () => {
 }
 
 export const getUserData = async () => {
-  const response = await Promise.all([
+  /*const response = await Promise.all([
     Storage.get({ key: HAS_LOGGED_IN }),
     Storage.get({ key: HAS_SEEN_TUTORIAL }),
     Storage.get({ key: HOST })]);
   const isLoggedin = await response[0].value === 'true';
   const hasSeenTutorial = await response[1].value === 'true';
-  const host = await response[2].value || undefined;
+  const host = await response[2].value || undefined; */
   const data = {
-    isLoggedin,
-    hasSeenTutorial,
-    host
+    isLoggedin: false,
+    hasSeenTutorial:true,
+    host:'127.0.0.1'
   }
   return data;
 }
 
 export const setIsLoggedInData = async (isLoggedIn: boolean) => {
-  await Storage.set({ key: HAS_LOGGED_IN, value: JSON.stringify(isLoggedIn) });
+ // await Storage.set({ key: HAS_LOGGED_IN, value: JSON.stringify(isLoggedIn) });
 }
 
 export const setHasSeenTutorialData = async (hasSeenTutorial: boolean) => {
-  await Storage.set({ key: HAS_SEEN_TUTORIAL, value: JSON.stringify(hasSeenTutorial) });
+  //await Storage.set({ key: HAS_SEEN_TUTORIAL, value: JSON.stringify(hasSeenTutorial) });
 }
 
 export const setDarkModeData = async (darkMode: boolean) => {
-  await Storage.set({ key: DARK_MODE, value: JSON.stringify(darkMode) });
+  //await Storage.set({ key: DARK_MODE, value: JSON.stringify(darkMode) });
 }
 declare global {
   interface Window { socket: any; ws: any; }
@@ -127,6 +127,7 @@ function initWs(host: string) {
     window.ws.dispatchEvent(customEvt);*/
   };
 }
+/*
 let connexion: HubConnection;
 function initSignalR(signalr: string) {
   connexion = new HubConnectionBuilder()
@@ -155,19 +156,17 @@ function initSignalR(signalr: string) {
             }
           }
         }
-        /*if (msg.uuid === 'core2') {
-          console.log(`SignalR iothub id: ${msg.uuid} timestamp: ${msg.timestamp} temperature: ${msg.temperature}`);
-        }*/
+
       });
     })
     .catch((error) => console.log(error));
-}
+}*/
 /*
 {
   "sender":"api",
   "text":"{\"name\":\"r\",\"about\":\"(foreground)\",\"title\":\"Red\",\"color\":\"#f00\",\"value\":0.17783191032722478,\"id\":1}"}
-*/
-initSignalR(signalRUrl);
+
+initSignalR(signalRUrl);*/
 
 export const sendUniform = async (u: Uniform) => {
   if (window.socket && window.socket.readyState === 1) {
@@ -176,24 +175,24 @@ export const sendUniform = async (u: Uniform) => {
   } else {
     //console.log(`UniformItem emitToSocket not ready val: ${value}, idx: ${index} `);
   }
-  if (connexion) {
+  /*if (connexion) {
     //console.log(`sendUniform ${u.name} :  ${JSON.stringify(u)}`);
-    /*await connexion.send("messages", JSON.stringify(u));*/
+    await connexion.send("messages", JSON.stringify(u));
     axios.post(`${signalRUrl}/messages`, {
       sender: "api",
       text: u,
     });
-  }
+  }*/
 }
 
 export const setHostData = async (host?: string) => {
-  if (!host) {
+  /*if (!host) {
     await Storage.remove({ key: HOST });
   } else {
     await Storage.set({ key: HOST, value: host });
     initWs(host);
 
-  }
+  }*/
 }
 
 function parseShaders(glsl: Glsl) {

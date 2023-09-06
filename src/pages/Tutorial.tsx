@@ -3,7 +3,7 @@ import { IonContent, IonPage, IonHeader, IonToolbar, IonButtons, IonButton, IonS
 import { arrowForward } from 'ionicons/icons';
 import { setMenuEnabled } from '../data/shaders/shaders.actions';
 import { setHasSeenTutorial } from '../data/user/user.actions';
-import './Tutorial.scss';
+import './Tutorial.css';
 import { connect } from '../data/connect';
 import { RouteComponentProps } from 'react-router';
 
@@ -18,7 +18,7 @@ interface TutorialProps extends OwnProps, DispatchProps { };
 
 const Tutorial: React.FC<TutorialProps> = ({ history, setHasSeenTutorial, setMenuEnabled }) => {
   const [showSkip, setShowSkip] = useState(true);
-  const slideRef = useRef<HTMLIonSlidesElement>(null);
+  //const slideRef = useRef<HTMLIonSlidesElement>(null);
 
   useIonViewWillEnter(() => {
     setMenuEnabled(false);
@@ -31,7 +31,7 @@ const Tutorial: React.FC<TutorialProps> = ({ history, setHasSeenTutorial, setMen
   };
 
   const handleSlideChangeStart = () => {
-    slideRef.current!.isEnd().then(isEnd => setShowSkip(!isEnd));
+    //slideRef.current!.isEnd().then(isEnd => setShowSkip(!isEnd));
   };
 
   return (
@@ -45,7 +45,7 @@ const Tutorial: React.FC<TutorialProps> = ({ history, setHasSeenTutorial, setMen
       </IonHeader>
       <IonContent fullscreen>
 
-        <IonSlides ref={slideRef} onIonSlideWillChange={handleSlideChangeStart} pager={false}>
+        {/* <IonSlides ref={slideRef} onIonSlideWillChange={handleSlideChangeStart} pager={false}>
           <IonSlide>
             <img src="assets/img/ica-slidebox-img-1.png" alt="" className="slide-image" />
             <h2 className="slide-title">
@@ -66,7 +66,7 @@ const Tutorial: React.FC<TutorialProps> = ({ history, setHasSeenTutorial, setMen
               <IonIcon slot="end" icon={arrowForward} />
             </IonButton>
           </IonSlide>
-        </IonSlides>
+        </IonSlides> */}
       </IonContent>
     </IonPage>
   );

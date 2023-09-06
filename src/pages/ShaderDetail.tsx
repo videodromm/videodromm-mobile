@@ -14,14 +14,14 @@ import { connect } from "../data/connect";
 import { withRouter, RouteComponentProps } from "react-router";
 import * as selectors from "../data/selectors";
 import { starOutline, star, share } from "ionicons/icons";
-import "./ShaderDetail.scss";
+import "./ShaderDetail.css";
 import { addFavorite, removeFavorite } from "../data/shaders/shaders.actions";
 import { Shader } from "../models/Glsl";
 
 import { Node } from "gl-react";
 import { Surface } from "gl-react-dom";
-import { Controlled as CodeMirror } from "react-codemirror2";
-import "codemirror/lib/codemirror.css";
+//import { Controlled as CodeMirror } from "react-codemirror2";
+/*import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
 import "codemirror/mode/javascript/javascript";
 import "codemirror/addon/hint/show-hint";
@@ -34,9 +34,9 @@ import "codemirror/addon/fold/foldcode";
 import "codemirror/addon/fold/foldgutter";
 import "codemirror/addon/fold/brace-fold";
 import "codemirror/addon/fold/comment-fold";
-import "codemirror/addon/fold/foldgutter.css";
+import "codemirror/addon/fold/foldgutter.css";*/
 import { save } from "ionicons/icons";
-import { Filesystem, Directory, Encoding } from "@capacitor/filesystem";
+//import { Filesystem, Directory, Encoding } from "@capacitor/filesystem";
 
 interface OwnProps extends RouteComponentProps {}
 
@@ -87,7 +87,7 @@ const ShaderDetail: React.FC<ShaderDetailProps> = ({
   useIonViewWillEnter(async () => {
     const file = shader.frag;
     console.log(`${file}`);
-    if (file) {
+    /*if (file) {
       try {
         const { data } = await Filesystem.readFile({
           path: `shaders/${file}`,
@@ -98,7 +98,7 @@ const ShaderDetail: React.FC<ShaderDetailProps> = ({
       } catch (error) {
         setCode(shader.fragtext);
       }
-    }
+    }*/
   });
   /* check on azure if (!shader) {
     return <div>Shader introuvable</div>;
@@ -111,13 +111,13 @@ const ShaderDetail: React.FC<ShaderDetailProps> = ({
   const shareShader = () => {};
 
   const saveFile = async () => {
-    const file = shader.frag ? shader.frag : shader.name;
+    /*const file = shader.frag ? shader.frag : shader.name;
     await Filesystem.writeFile({
       path: `shaders/${file}`,
       data: code,
       directory: Directory.Documents,
       encoding: Encoding.UTF8,
-    });
+    });*/
   };
   return (
     <IonPage id="shader-detail-page">
@@ -153,7 +153,7 @@ const ShaderDetail: React.FC<ShaderDetailProps> = ({
           />
         </Surface>
 
-        <CodeMirror
+        {/* <CodeMirror
           value={code}
           options={{
             mode: "javascript",
@@ -177,7 +177,7 @@ const ShaderDetail: React.FC<ShaderDetailProps> = ({
           onChange={(editor, data, value) => {
 
           }}
-        />
+        /> */}
       </IonContent>
     </IonPage>
   );

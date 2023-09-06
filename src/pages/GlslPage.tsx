@@ -5,7 +5,7 @@ import { options, search } from 'ionicons/icons';
 
 import ShaderList from '../components/ShaderList';
 import ShaderListFilter from '../components/ShaderListFilter';
-import './GlslPage.scss'
+import './GlslPage.css'
 
 import * as selectors from '../data/selectors';
 import { connect } from '../data/connect';

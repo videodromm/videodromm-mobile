@@ -1,19 +1,61 @@
-import React, { useEffect } from 'react';
+
+import {
+  IonApp,
+  setupIonicReact,
+} from "@ionic/react";
+import { IonReactRouter } from "@ionic/react-router";
+
+import "./App.css";
+/* Core CSS required for Ionic components to work properly */
+import "@ionic/react/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+import "@ionic/react/css/normalize.css";
+import "@ionic/react/css/structure.css";
+import "@ionic/react/css/typography.css";
+
+/* Optional CSS utils that can be commented out */
+import "@ionic/react/css/padding.css";
+import "@ionic/react/css/float-elements.css";
+import "@ionic/react/css/text-alignment.css";
+import "@ionic/react/css/text-transformation.css";
+import "@ionic/react/css/flex-utils.css";
+import "@ionic/react/css/display.css";
+/* Theme variables */
+import "./theme/variables.css";
+import UniformList from "./pages/UniformList";
+
+setupIonicReact();
+
+function App() {
+
+  return (
+      <IonApp>
+        <IonReactRouter>
+          <UniformList />
+        </IonReactRouter>
+      </IonApp>
+  );
+}
+
+export default App;
+
+/*import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
+import { IonApp, setupIonicReact, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
 import Menu from './components/Menu';
 
-/* Core CSS required for Ionic components to work properly */
+
 import '@ionic/react/css/core.css';
 
-/* Basic CSS for apps built with Ionic */
+
 import '@ionic/react/css/normalize.css';
 import '@ionic/react/css/structure.css';
 import '@ionic/react/css/typography.css';
 
-/* Optional CSS utils that can be commented out */
+
 import '@ionic/react/css/padding.css';
 import '@ionic/react/css/float-elements.css';
 import '@ionic/react/css/text-alignment.css';
@@ -21,7 +63,7 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
-/* Theme variables */
+
 import './theme/variables.css';
 import MainTabs from './pages/MainTabs';
 import { connect } from './data/connect';
@@ -34,6 +76,8 @@ import Tutorial from './pages/Tutorial';
 import HomeOrTutorial from './components/HomeOrTutorial';
 import { Glsl } from "./models/Glsl";
 import RedirectToConnect from './components/RedirectToConnect';
+
+
 
 const App: React.FC = () => {
   return (
@@ -74,10 +118,7 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, glsl, setIsLoggedIn, setH
             <IonSplitPane contentId="main">
               <Menu />
               <IonRouterOutlet id="main">
-                {/*
-                We use IonRoute here to keep the tabs state intact,
-                which makes transitions between tabs and non tab pages smooth
-                */}
+
                 <Route path="/tabs" render={() => <MainTabs />} />
                 <Route path="/connect" component={Connect} />
                 <Route path="/support" component={Support} />
@@ -107,3 +148,4 @@ const IonicAppConnected = connect<{}, StateProps, DispatchProps>({
   mapDispatchToProps: { loadGlslData, loadUserData, setIsLoggedIn, setHost },
   component: IonicApp
 });
+*/

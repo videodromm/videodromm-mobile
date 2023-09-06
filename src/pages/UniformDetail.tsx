@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { RouteComponentProps } from 'react-router';
 
-import './UniformDetail.scss';
+import './UniformDetail.css';
 
 import { ActionSheetButton } from '@ionic/core';
 import { IonActionSheet, IonIcon, IonHeader, IonToolbar, IonButtons, IonContent, IonButton, IonBackButton, IonPage } from '@ionic/react'

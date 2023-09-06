@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import { IonContent, IonPage } from "@ionic/react";
-import "./About.scss";
-import ShadertoyReact from "shadertoy-react";
+import "./About.css";
+//import ShadertoyReact from "shadertoy-react";
 
-import { Controlled as CodeMirror } from "react-codemirror2";
-import "codemirror/lib/codemirror.css";
+//import { Controlled as CodeMirror } from "react-codemirror2";
+/*import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
 import "codemirror/mode/javascript/javascript";
 import "codemirror/addon/hint/show-hint";
@@ -17,7 +17,7 @@ import "codemirror/addon/fold/foldcode";
 import "codemirror/addon/fold/foldgutter";
 import "codemirror/addon/fold/brace-fold";
 import "codemirror/addon/fold/comment-fold";
-import "codemirror/addon/fold/foldgutter.css";
+import "codemirror/addon/fold/foldgutter.css";*/
 
 interface AboutProps {}
 
@@ -164,7 +164,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
   return (
     <IonPage id="about-page">
       <IonContent>
-        <ShadertoyReact
+        {/* <ShadertoyReact
           uniforms={uniforms}
           fs={code}
           textures={[{ url: "/assets/textures/texture.jpg" }]}
@@ -193,7 +193,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
           onChange={(editor, data, value) => {
             setCode(value);
           }}
-        />
+        /> */}
       </IonContent>
     </IonPage>
   );

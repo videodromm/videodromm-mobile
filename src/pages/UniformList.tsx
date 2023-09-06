@@ -5,7 +5,7 @@ import { Uniform } from '../models/Uniform';
 import { Shader } from '../models/Glsl';
 import { connect } from '../data/connect';
 import * as selectors from '../data/selectors';
-import './UniformList.scss';
+import './UniformList.css';
 
 interface OwnProps { };
 

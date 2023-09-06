@@ -12,7 +12,7 @@ import {
   IonIcon,
 } from "@ionic/react";
 
-import "./LiveCode.scss";
+import "./LiveCode.css";
 
 import { connect } from "../data/connect";
 import { withRouter, RouteComponentProps } from "react-router";
@@ -25,8 +25,8 @@ import { Uniform } from "../models/Uniform";
 
 import { Node } from "gl-react";
 import { Surface } from "gl-react-dom";
-import { Controlled as CodeMirror } from "react-codemirror2";
-import "codemirror/lib/codemirror.css";
+//import { Controlled as CodeMirror } from "react-codemirror2";
+/*import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
 import "codemirror/mode/javascript/javascript";
 import "codemirror/addon/hint/show-hint";
@@ -39,9 +39,9 @@ import "codemirror/addon/fold/foldcode";
 import "codemirror/addon/fold/foldgutter";
 import "codemirror/addon/fold/brace-fold";
 import "codemirror/addon/fold/comment-fold";
-import "codemirror/addon/fold/foldgutter.css";
+import "codemirror/addon/fold/foldgutter.css";*/
 import { save } from "ionicons/icons";
-import { Filesystem, Directory, Encoding } from "@capacitor/filesystem";
+//import { Filesystem, Directory, Encoding } from "@capacitor/filesystem";
 import { Dial } from "react-nexusui";
 
 interface OwnProps extends RouteComponentProps {}
@@ -103,7 +103,7 @@ const LiveCode: React.FC<ProjectionProps> = ({
       const file = shader.frag;
       console.log(`file: ${file}`);
       //console.log(`${JSON.stringify(uniforms[0])}`);
-      if (file) {
+      /*if (file) {
         try {
           const { data } = await Filesystem.readFile({
             path: `shaders/${file}`,
@@ -114,7 +114,7 @@ const LiveCode: React.FC<ProjectionProps> = ({
         } catch (error) {
           setCode(shader.fragtext);
         }
-      }
+      }*/
     }
   });
 
@@ -145,12 +145,12 @@ const LiveCode: React.FC<ProjectionProps> = ({
 
   const saveFile = async () => {
     const file = shader.frag ? shader.frag : shader.name;
-    await Filesystem.writeFile({
+    /*await Filesystem.writeFile({
       path: `shaders/${file}`,
       data: code,
       directory: Directory.Documents,
       encoding: Encoding.UTF8,
-    });
+    });*/
   };
   // ws
 
@@ -269,7 +269,7 @@ const LiveCode: React.FC<ProjectionProps> = ({
           />
         </Surface>
         <div className="cm">
-        <CodeMirror
+        {/* <CodeMirror
           value={code}
           options={{
             mode: "javascript",
@@ -291,7 +291,7 @@ const LiveCode: React.FC<ProjectionProps> = ({
             setCode(value);
           }}
           onChange={(editor, data, value) => {}}
-        />
+        /> */}
         </div>
       </IonContent>
     </IonPage>
